@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { Link} from "react-router-dom";
 import { useAuth, login, signup, logout } from "../../../firebase";
 import styled from "styled-components";
-import { PageTitle, TitleLable } from "../../css/component.css";
-import { BtnSubmit, P } from "../../css/component.css";
+import { PageTitle, TitleLable } from "../../../components/styles/component.css";
+import { BtnSubmit, P } from "../../../components/styles/component.css";
 
 const FormContainer = styled.div`
   text-align: center;

@@ -1,13 +1,13 @@
-import { AppContainer } from "../css/container.css";
+import { AppContainer } from "../../components/styles/container.css"
 import React, { useReducer } from "react";
 import Tags from "./components/Tags";
 import StressRating from "./components/StressRating";
 import Keyword from "./components/Keyword";
 import Worry from "./components/Worry";
-import { BtnSubmit, PageTitle } from "./../css/component.css";
+import { BtnSubmit, PageTitle } from "../../components/styles/component.css";
 
 
-export default function CreateItemPage() {
+export default function CreateNotePage() {
   const noteInitialState = {
     tag: "",
     keyword: "",

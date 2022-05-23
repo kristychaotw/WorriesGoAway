@@ -44,5 +44,6 @@ display:block;
   &:active{
     background-color: #AFDAE3;
     color: #f0f0f0;
+  }
 `
 

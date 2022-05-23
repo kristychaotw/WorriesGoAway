@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import whaleBG from "../image/loginBG.jpg";
-import { PageTitle } from "./../css/component.css";
+import whaleBG from '../../../src/components/images/loginBG.jpg'
+import { PageTitle } from "../../components/styles/component.css";
 import LoginForm from "./components/LoginForm";
 
 const BgContainer = styled.div`

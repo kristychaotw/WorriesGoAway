@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { TitleLable } from "../../css/component.css";
+import { TitleLable } from "../../../components/styles/component.css";
 
 const Button = styled.button`
 padding: 10px;

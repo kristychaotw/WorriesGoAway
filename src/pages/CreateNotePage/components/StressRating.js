@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { FaCircle } from "react-icons/fa";
-import styled from "styled-components"
 import { TitleLable } from "../../../components/styles/component.css";
-
-const ContainerRating=styled.div`
-display: flex;
-justify-content: center;
-`
+import { StyledRating } from "../../../components/styles/note.css";
 
 export default function StressRating(props) {
   const [rating, setRating] = useState(null);
@@ -19,7 +14,7 @@ export default function StressRating(props) {
   return (
     <>
       <TitleLable>Stress Rating</TitleLable>
-      <ContainerRating>
+      <StyledRating>
       {[...Array(5)].map((circle, i) => {
         const ratingValue = i + 1;
      
@@ -42,7 +37,7 @@ export default function StressRating(props) {
           </label>
         );
       })}
-      </ContainerRating>
+      </StyledRating>
        {/* <p>The rating is {rating}.</p> */}
     </>
   );

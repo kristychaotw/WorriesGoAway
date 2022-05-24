@@ -1,7 +1,9 @@
 import styled from "styled-components"
 
 export const PageTitle=styled.div`
-font-weight: 900;
+font-family: 'Raleway', sans-serif;
+font-weight: 400;
+font-style: italic;
 font-size: 2rem;
 padding: 5px 10px;
 color:#e6e6e6;
@@ -22,8 +24,6 @@ export const P=styled.p`
 padding: 10px;
 color:#e6e6e6;
 `
-
-
 
 export const BtnSubmit=styled.button`
 padding: 10px;
@@ -47,3 +47,19 @@ display:block;
   }
 `
 
+export const StyledCard = styled.div`
+  /* display: flex;
+  justify-content: space-between; */
+  background-color: aliceblue;
+  border-bottom: 1px solid #454545;
+  padding:40px;
+`
+
+export const StyledGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+
+  h3{
+    font-weight: 700;
+  }
+`

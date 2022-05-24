@@ -1,19 +1,6 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { TitleLable } from "../../../components/styles/component.css";
-
-
-const TextAreaBox = styled.input`
-  font-size: 1em;
-  padding: 10px;
-  margin: 10px;
-  background: #fcfcfc;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color:#8BA6BC;
-  }
-`;
+import { TextAreaBox } from "../../../components/styles/note.css";
 
 export default function Worry(props) {
   const [worry, setWorry] = useState();

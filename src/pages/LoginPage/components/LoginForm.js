@@ -64,7 +64,7 @@ export default function LoginForm() {
         <>
           <PageTitle>Welcome</PageTitle>
           <BtnSubmit disabled={loading || !currentUser} onClick={()=>handleLogout()}>Log Out</BtnSubmit>
-          <BtnSubmit disabled={loading || !currentUser}> <Link to="/editor">Enter</Link></BtnSubmit>
+          <BtnSubmit disabled={loading || !currentUser}> <Link to="/list">Enter</Link></BtnSubmit>
 
         </>
       ) : (

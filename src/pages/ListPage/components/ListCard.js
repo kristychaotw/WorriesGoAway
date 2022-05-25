@@ -1,21 +1,19 @@
 import React from "react";
-import { StyledCard } from "../../../components/styles/component.css";
-import { StyledGrid } from "../../../components/styles/component.css";
+import { StyledCard, H3, TagBox, RateBox } from "../../../components/styles/component.css";
 import StaticRating from "./StaticRating";
-import { TagButton } from "../../../components/styles/note.css";
-export default function ListCard({ item: { id, title, rating, createDate, tag } }) {
+
+export default function ListCard({
+  item: { id, title, rating, createDate, tag, animal, timePass },
+}) {
   return (
     <StyledCard>
-      <StyledGrid>
-        <div>
-          <TagButton key={id} disabled>{tag}</TagButton>
-        </div>
-        <div>
-          <h3>{title}</h3>
-          <p>CreateDate: {createDate}</p>
-          <StaticRating rate={rating}></StaticRating>
-        </div>
-      </StyledGrid>
+      <H3>{title}</H3>
+      <TagBox>{tag}</TagBox>
+      <img src={animal}></img>
+      <p>
+        {createDate} ‧ Has Been Passed : {timePass}
+      </p>
+      <RateBox><StaticRating rate={rating}></StaticRating></RateBox>
     </StyledCard>
   );
 }

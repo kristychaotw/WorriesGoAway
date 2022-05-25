@@ -11,8 +11,6 @@ const GlobalStyles = createGlobalStyle`
 body{
     font-family: 'Raleway', sans-serif;
     background-color: #F2F2F2;
-
-
 }
 
 `

@@ -1,11 +1,16 @@
 import React from "react";
 import { FaCircle } from "react-icons/fa";
-import { StyledRating } from "../../../components/styles/note.css";
 import styled from "styled-components";
 
 const StyledCircle = styled.div`
-  margin: 10px;
+  margin: 2px;
 `;
+
+export const StyledRating = styled.div`
+display: flex;
+justify-content: flex-start;
+`
+
 
 export default function StaticRating({ rate }) {
   return (
@@ -16,7 +21,7 @@ export default function StaticRating({ rate }) {
           <StyledCircle key={index}>
             <div>
               <FaCircle
-                size={20}
+                size={16}
                 color={rate <= index ? "#e4e5e9" : "#8BA6BC"}
               ></FaCircle>
             </div>

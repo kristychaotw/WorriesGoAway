@@ -2,8 +2,9 @@ import styled from "styled-components"
 
 export const StyledRating = styled.div`
 display: flex;
-justify-content: center;
+justify-content: flex-start;
 `
+
 
 export const Button = styled.button`
 padding: 10px;

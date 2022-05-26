@@ -13,8 +13,10 @@ const theme = {
   colors: {
     body: "#000",
     nav: "#000",
-    primary: "#000",
+    primary: "#5085A5",
     secondary: "#656565",
+    third:"#8BA6BC",
+    white:"#fcfcfc"
   },
   fontSize: {
     s: "0.8rem",
@@ -55,8 +57,8 @@ export default function App() {
         >
           <Routes>
             <Route path="/d" element={<LoginPage />} />
-            <Route path="/ds" element={<CreateNotePage />} />
-            <Route path="/" element={<ListPage />} />
+            <Route path="/" element={<CreateNotePage />} />
+            <Route path="/ff" element={<ListPage />} />
           </Routes>
         </AppContainer>
       </ThemeProvider>

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import edit from "../images/icons/edit.png";
+import add from "../images/icons/add.svg";
 import home from "../images/icons/home.svg";
 import list from "../images/icons/list.svg";
 import whale from "../images/icons/whale.svg";
 import none from "../images/icons/userphoto.svg";
-import editActive from "../images/icons/edit_active.svg";
+import addActive from "../images/icons/add_active.svg";
 import homeActive from "../images/icons/home_active.svg";
 import listActive from "../images/icons/list_active.svg";
 import whaleActive from "../images/icons/whale_active.svg";
 
 const NavContainer = styled.div`
-  background-color: #fcfcfc;
+  background-color: ${({theme})=>theme.colors.white};
   padding-top: 100px;
   height: 100vh;
   /* display: flex; */
@@ -21,6 +21,7 @@ const NavContainer = styled.div`
   left: 0;
   bottom: 0;
   border-right: 1px solid #e4e5e9;
+  z-index: 9;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     padding-top: 0;
@@ -63,7 +64,7 @@ const IconWrapper = styled.div`
 export default function Nav() {
   const [iconActive, setIconActive] = useState("Home");
   const navIcons = [
-    { name: "Edit", url: edit, urlActive: editActive },
+    { name: "Add", url: add, urlActive: addActive },
     { name: "Home", url: home, urlActive: homeActive },
     { name: "List", url: list, urlActive: listActive },
     { name: "Whale", url: whale, urlActive: whaleActive },

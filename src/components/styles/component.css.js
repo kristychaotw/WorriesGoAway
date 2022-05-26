@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+
+export const FlexBox = styled.div`
+display: flex;
+justify-content: center;
+width: ${({width})=>width||"100%"};
+`
+
+
 export const PageTitle = styled.div`
   font-family: "Raleway", sans-serif;
   font-weight: 400;

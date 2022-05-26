@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaCircle } from "react-icons/fa";
-import { TitleLable } from "../../../components/styles/component.css";
 import { StyledRating } from "../../../components/styles/note.css";
 
 export default function StressRating(props) {
@@ -13,7 +12,6 @@ export default function StressRating(props) {
   }
   return (
     <>
-      <TitleLable>Stress Rating</TitleLable>
       <StyledRating>
       {[...Array(5)].map((circle, i) => {
         const ratingValue = i + 1;
@@ -28,8 +26,7 @@ export default function StressRating(props) {
               // onClick={()=>props.newRate(ratingValue)}
             />
             <FaCircle
-              size={40}
-              className="rateCircle"
+              size={26}
               color={ratingValue <= (hover || rating) ? "#8BA6BC" : "#e4e5e9"}
               onMouseEnter={()=> setHover(ratingValue)}
               onMouseLeave={()=> setHover(null)}

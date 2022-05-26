@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { TitleLable } from "../../../components/styles/component.css";
-import { TagButton } from "../../../components/styles/note.css";
+import { TagButton,TagBox } from "../../../components/styles/note.css";
 
 export default function Tags(props) {
   const tags = ["Life", "Wealth", "Health", "Love", "Relationship", "Others"];
@@ -12,9 +11,7 @@ export default function Tags(props) {
   }
 
   return (
-    <>
-      <TitleLable>Tags</TitleLable>
-      <div>
+      <TagBox grid={"tag"}>
         {tags.map((tag) => {
           return (
             <TagButton
@@ -25,8 +22,7 @@ export default function Tags(props) {
             </TagButton>
           );
         })}
-      </div>
       {/* <p>Tag you chosed: {tagActive}</p> */}
-    </>
+      </TagBox>
   );
 }

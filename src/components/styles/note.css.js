@@ -20,37 +20,41 @@ export const FormWrapper = styled.div`
     "tag tag tag"
     "tcontent . ."
     "content content content";
-
-  /* @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "."
-      "trate"
-      "rate"
-      "ttitle"
-      "title"
-      "ttag"
-      "tag"
-      "tcontent"
-      "content";
-  } */
 `;
+
+export const StampWrapper = styled.div`
+  grid-area: ${({ grid }) => grid};
+  position: absolute;
+  top: ${({ top }) => top};
+  right: ${({ right }) => right};
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  top:15px;
+  right:-30px;
+  
+  }
+
+`;
+
 
 export const Line = styled.div`
   width: 250px;
-  height: 150px;
+  height: 0px;
   border-bottom: 2px dashed ${({ theme }) => theme.colors.primary};
-  position: absolute;
-  top: -40px;
-  right: -87px;
   transform: rotate(45deg);
   display: flex;
   justify-content: center;
   align-items: end;
+ 
   img {
     width: 30%;
     margin-bottom: 5px;
   }
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 100px;
+  }
+
+
 `;
 
 export const TitleLable = styled.div`

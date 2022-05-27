@@ -2,17 +2,22 @@ import React, { useState, useRef } from "react";
 import { Link} from "react-router-dom";
 import { useAuth, login, signup, logout } from "../../../firebase";
 import styled from "styled-components";
-import { PageTitle, TitleLable } from "../../../components/styles/component.css";
+import { PageTitle, TextInput, InputLable } from "../../../components/styles/component.css";
 import { BtnSubmit, P } from "../../../components/styles/component.css";
 
 const FormContainer = styled.div`
+  width: 30%;
+  margin: 30px auto;
+  padding:40px 0px;
   text-align: center;
   background: #00000040;
   border: 1px solid rgba(19, 19, 19, 0.053);
   border-radius: 5px;
   box-shadow: 3px 3px 5px #000000a1;
-  width: 50%;
-  margin: 30px auto;
+
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    width: 50%;
+  }
 `;
 
 export default function LoginForm() {
@@ -70,10 +75,10 @@ export default function LoginForm() {
       ) : (
         <>
           <form>
-            <TitleLable primary>User Email</TitleLable>
-            <input ref={emailRef} type="email" />
-            <TitleLable primary>Password</TitleLable>
-            <input ref={passwordRef} type="password" />
+            <InputLable primary>User Email</InputLable>
+            <TextInput ref={emailRef} type="email" />
+            <InputLable primary>Password</InputLable>
+            <TextInput ref={passwordRef} type="password" />
           </form>
           <div>
             {loginForm ? (
@@ -84,7 +89,7 @@ export default function LoginForm() {
                 >
                   Log In
                 </BtnSubmit>
-                <P style={{ paddingBottom: 50 }}>
+                <P style={{ paddingBottom: 20 }}>
                   Need an account ?{" "}
                   <span
                     onClick={changetoSignupForm}
@@ -103,7 +108,7 @@ export default function LoginForm() {
                   Sign Up
                 </BtnSubmit>
 
-                <P style={{ paddingBottom: 50 }}>
+                <P style={{ paddingBottom: 20 }}>
                   Already a user ?{" "}
                   <span
                     onClick={changetoLoginForm}

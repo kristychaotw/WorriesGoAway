@@ -21,6 +21,8 @@ export const PageTitle = styled.div`
 `;
 
 export const TitleLable = styled.div`
+  text-align: left;
+  margin-left: 23%;
   font-weight: 400;
   font-size: 1.2rem;
   padding: 40px 10px 10px 10px;
@@ -32,26 +34,7 @@ export const P = styled.p`
   color: #e6e6e6;
 `;
 
-export const BtnSubmit = styled.button`
-  padding: 10px;
-  margin: 50px auto;
-  color: #fcfcfc;
-  border: none;
-  border-radius: 3px;
-  background: #8ba6bc;
-  font-weight: bold;
-  display: block;
 
-  &:hover {
-    background-color: #587b90;
-  }
-
-  &:active {
-    background-color: #afdae3;
-    color: #f0f0f0;
-  }
-
-`;
 
 
 export const H2 =styled.h2`
@@ -127,22 +110,85 @@ export const H3 = styled.div`
   font-weight: 600;
   text-align: start;
   color: #333333;
-  grid-area: gtitle;
+  grid-area: ${({ grid }) => grid};
+  border-bottom:  ${({ border }) => border};
+  padding: ${({ padding }) => padding};
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  padding:20px;
+  }
+
   `;
 
 export const TagBox = styled.div`
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: 300;
   color: #656565;
-  grid-area: gtag;
+  grid-area: ${({ grid }) => grid};
+  justify-self: ${({align})=>align||"end"};
+
   `;
 
 export const RateBox = styled.div`
   color: #656565;
   grid-area: grate;
-  justify-self: end;
+  justify-self: ${({align})=>align||"end"};
+  grid-area: ${({ grid }) => grid};
+
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     justify-self: start;
   }
+`;
+
+export const InputLable = styled.div`
+  text-align: left;
+  margin-left: 23%;
+  font-weight: 400;
+  font-size: 1.2rem;
+  padding: 10px;
+  color: ${(props) => (props.primary ? "#f2f2f2" : "#5185A6")};
+`;
+
+
+
+export const TextInput =styled.input`
+height: 30px;
+width: 50%;
+font-weight: 300;
+font-size: 18px;
+margin-bottom: 10px;
+align-self: stretch;
+color:${({theme})=>theme.colors.white};
+background-color: transparent;
+border: none;
+border-bottom: 1px solid ${({theme})=>theme.colors.white};
+outline: none;
+::placeholder{
+  color:${({theme})=>theme.colors.white};
+}
+
+`
+
+export const BtnSubmit = styled.button`
+  border: none;
+  width: 50%;
+  margin: 50px auto;
+  padding: 10px;
+  border-radius: 40px;
+  color: ${({theme})=>theme.colors.white};
+  background: #8ba6bc;
+  font-weight: bold;
+  display: block;
+  box-shadow: 2px 2px 4px #000000a1;
+
+  &:hover {
+    background-color: ${({theme})=>theme.colors.third};
+  }
+
+  &:active {
+    color: #f0f0f0;
+    transform: scale(0.95);
+    transition: all .1s;
+  }
+
 `;

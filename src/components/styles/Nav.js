@@ -11,9 +11,9 @@ import listActive from "../images/icons/list_active.svg";
 import whaleActive from "../images/icons/whale_active.svg";
 
 const NavContainer = styled.div`
+  height: 100%;
   background-color: ${({theme})=>theme.colors.white};
   padding-top: 100px;
-  height: 100vh;
   /* display: flex; */
   display: ${({ display }) => display || "flex"};
   flex-direction: column;
@@ -26,7 +26,7 @@ const NavContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     padding-top: 0;
     height: 60px;
-    width: 100vw;
+    width: 100%;
     flex-direction: row;
     justify-content: space-evenly;
     border-top: 1px solid #e4e5e9;

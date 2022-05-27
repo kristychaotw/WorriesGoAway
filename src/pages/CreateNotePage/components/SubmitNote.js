@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-const SendBtn = styled.div`
+const SendBtn = styled.button`
 padding: 5px 10px;
   margin: 10px;
   margin-bottom: 180px;

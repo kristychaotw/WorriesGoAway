@@ -1,22 +1,27 @@
-import React from "react";
-import CreateNotePage from "./CreateNotePage/CreateNotePage";
-import LoginPage from "./LoginPage/LoginPage";
-import ListPage from "./ListPage/ListPage";
-import { Routes, Route } from "react-router-dom";
+import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
 import Nav from "../components/styles/Nav";
-import { useAuth } from "../firebase";
+import { Routes, Route } from "react-router-dom";
+import CreateNotePage from "./CreateNotePage/CreateNotePage";
+import LoginPage from "./LoginPage/LoginPage";
+import ListPage from "./ListPage/ListPage";
+import PrivateRoute from "../PrivateRoute";
+import ShowNotePage from "./ShowNotePage/ShowNotePage";
+import Test from "./Test";
+import { AuthProvider } from "../firebase";
+import { AuthContext } from "../firebase";
 
 const theme = {
   colors: {
-    body: "#000",
-    nav: "#000",
-    primary: "#5085A5",
+    body: "#F2F2F2",
+    nav: "#5085A5",
+    primary: "#8BA6BC",
     secondary: "#656565",
-    third:"#8BA6BC",
-    white:"#fcfcfc"
+    third: "#5085A5",
+    dark: "#656565",
+    white: "#FCFCFC",
   },
   fontSize: {
     s: "0.8rem",
@@ -41,27 +46,32 @@ const theme = {
 };
 
 export default function App() {
-  const currentUser = useAuth();
-  console.log("c-ser:", currentUser);
+  const currentUser = useContext(AuthContext);
+  console.log("my:",currentUser);
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        {/* {currentUser? <Nav />:<Nav display={"none"}/>} */}
-        {/* <Nav /> */}
-        {/* <AppContainer> */}
-        <Nav display={currentUser == null && "none"} />
-        <AppContainer
-          padding={currentUser === null && "0"}
-          maxWidth={currentUser === null && "1800px"}
-        >
-          <Routes>
-            <Route path="/d" element={<LoginPage />} />
-            <Route path="/" element={<CreateNotePage />} />
-            <Route path="/ff" element={<ListPage />} />
-          </Routes>
-        </AppContainer>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Nav display={currentUser == null && "none"} />
+          <AppContainer
+            padding={currentUser === null && "0"}
+            maxWidth={currentUser === null && "1800px"}
+          >
+            <Routes>
+              <Route path="/" element={<LoginPage />} />
+              <Route path="/test" element={<Test />} />
+              <Route path="*" element={<Test />} />
+              <Route element={<PrivateRoute />}>
+                <Route path="/list" element={<CreateNotePage />} />
+                <Route path="/l" element={<ListPage />} />
+                <Route path="/s" element={<ShowNotePage />} />
+                <Route path="*" element={<div>404 Not Found</div>} />
+              </Route>
+            </Routes>
+          </AppContainer>
+        </ThemeProvider>
+      </AuthProvider>
     </>
   );
 }

@@ -4,7 +4,7 @@ import StressRating from "./StressRating";
 import NoteTitle from "./NoteTitle";
 import Worry from "./Worry";
 import Stamp from "./Stamp";
-import { TitleLable, FormWrapper } from "../../../components/styles/note.css";
+import { TitleLable, FormWrapper, StampWrapper } from "../../../components/styles/note.css";
 
 export default function PaperForm() {
   const noteInitialState = {
@@ -54,7 +54,7 @@ export default function PaperForm() {
   return (
     <>
       <FormWrapper>
-        <Stamp />
+        <StampWrapper top={"90px"} right={"-35px"}><Stamp /></StampWrapper>
         <TitleLable grid={"trate"}>Rate your stress</TitleLable>
         <StressRating>
           grid={"rate"}

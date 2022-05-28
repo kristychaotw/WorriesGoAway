@@ -60,12 +60,13 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  useEffect(()=>{
+
+  useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
     return unsub;
-  },[])
+  }, []);
   return (
     <AuthContext.Provider value={{ currentUser }}>
       {children}

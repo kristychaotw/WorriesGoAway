@@ -1,14 +1,18 @@
 import React, { useState, useRef } from "react";
-import { Link} from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth, login, signup, logout } from "../../../firebase";
 import styled from "styled-components";
-import { PageTitle, TextInput, InputLable } from "../../../components/styles/component.css";
+import {
+  PageTitle,
+  TextInput,
+  InputLable,
+} from "../../../components/styles/component.css";
 import { BtnSubmit, P } from "../../../components/styles/component.css";
 
 const FormContainer = styled.div`
   width: 30%;
   margin: 30px auto;
-  padding:40px 0px;
+  padding: 40px 0px;
   text-align: center;
   background: #00000040;
   border: 1px solid rgba(19, 19, 19, 0.053);
@@ -26,6 +30,8 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const currentUser = useAuth();
   const [loginForm, setLoginForm] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   function changetoLoginForm() {
     setLoginForm(true);
@@ -65,12 +71,20 @@ export default function LoginForm() {
     <FormContainer>
       {console.log("currentuser:", currentUser)}
       {console.log("form:", loginForm)}
+      
       {currentUser ? (
         <>
           <PageTitle>Welcome</PageTitle>
-          <BtnSubmit disabled={loading || !currentUser} onClick={()=>handleLogout()}>Log Out</BtnSubmit>
-          <BtnSubmit disabled={loading || !currentUser}> <Link to="/list">Enter</Link></BtnSubmit>
-
+          <BtnSubmit
+            disabled={loading || !currentUser}
+            onClick={() => handleLogout()}
+          >
+            Log Out
+          </BtnSubmit>
+          <BtnSubmit disabled={loading || !currentUser}>
+            {" "}
+            <Link to="/list">Enter</Link>
+          </BtnSubmit>
         </>
       ) : (
         <>

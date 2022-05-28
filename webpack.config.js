@@ -15,9 +15,9 @@ module.exports = {
     },
     compress: true,
     port: 9000,
-    historyApiFallback: true,
+    // historyApiFallback: true,
+    // hot: true,
     // contentBase: './',
-    hot: true
   },
   module: {
     rules: [

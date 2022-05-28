@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
-import Nav from "../components/styles/Nav";
+import Nav from "../components/Nav";
 import { Routes, Route } from "react-router-dom";
 import CreateNotePage from "./CreateNotePage/CreateNotePage";
 import LoginPage from "./LoginPage/LoginPage";
@@ -47,7 +47,8 @@ const theme = {
 
 export default function App() {
   const currentUser = useContext(AuthContext);
-  console.log("my:",currentUser);
+  console.log("my:", currentUser);
+
   return (
     <>
       <AuthProvider>
@@ -63,9 +64,12 @@ export default function App() {
               <Route path="/test" element={<Test />} />
               <Route path="*" element={<Test />} />
               <Route element={<PrivateRoute />}>
-                <Route path="/list" element={<CreateNotePage />} />
-                <Route path="/l" element={<ListPage />} />
-                <Route path="/s" element={<ShowNotePage />} />
+                <Route path="/Home" element={<CreateNotePage />} />
+                <Route path="/Add" element={<CreateNotePage />} />
+                <Route path="/List" element={<ListPage />} />
+                <Route path="/Whale" element={<ShowNotePage />} />
+                <Route path="/User" element={<ShowNotePage />} />
+
                 <Route path="*" element={<div>404 Not Found</div>} />
               </Route>
             </Routes>

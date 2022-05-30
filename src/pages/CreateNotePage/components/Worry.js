@@ -11,7 +11,7 @@ export default function Worry(props) {
         name="worry"
         // onChange={(e) => setWorry(e.target.value)}
         onChange={(e) => props.newWorry(e.target.value)}
-        placeholder="Write down your worry"
+        placeholder="Write down your thoughts"
         rows={5}
       ></TextAreaBox>
       {/* <p>your worry:{worry}</p> */}

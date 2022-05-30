@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import whaleBG from '../../../src/components/images/loginBG.jpg'
-import { PageTitle } from "../../components/styles/component.css";
+import { WebTitle } from "../../components/styles/component.css";
 import LoginForm from "./components/LoginForm";
 
 const BgContainer = styled.div`
@@ -14,7 +14,7 @@ const BgContainer = styled.div`
 export default function LoginPage() {
   return (
     <BgContainer>
-      <PageTitle>Worries Go Away</PageTitle>
+      <WebTitle>Worries Go Away</WebTitle>
       <LoginForm></LoginForm>
     </BgContainer>
   );

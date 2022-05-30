@@ -9,6 +9,7 @@ const ShowNoteWrapper = styled.div`
   width: 100%; 
   margin: 0 auto;
   height: 150vh;
+  overflow: hidden;
 `;
 
 export default function ShowNotePage() {

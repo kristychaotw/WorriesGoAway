@@ -1,7 +1,7 @@
 import React from "react";
 import SelectAnimal from "./components/SelectAnimal";
 import PaperForm from "./components/PaperForm";
-import { H2 } from "../../components/styles/component.css";
+import { H2, PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
 import SubmitNote from "./components/SubmitNote";
 
@@ -24,7 +24,7 @@ const GridContainer = styled.div`
 export default function CreateNotePage() {
   return (
     <>
-      <H2>Write A New Note </H2>
+      <PageTitle>Add A New Note </PageTitle>
       <GridContainer>
         <SelectAnimal></SelectAnimal>
         <PaperForm></PaperForm>

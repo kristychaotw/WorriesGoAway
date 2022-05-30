@@ -54,10 +54,10 @@ export default function App() {
       <AuthProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <Nav display={currentUser == null && "none"} />
+          <Nav />
           <AppContainer
-            padding={currentUser === null && "0"}
-            maxWidth={currentUser === null && "1800px"}
+            padding={currentUser == null && "0"}
+            maxWidth={currentUser == null && "2000px"}
           >
             <Routes>
               <Route path="/" element={<LoginPage />} />

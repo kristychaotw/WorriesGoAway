@@ -1,7 +1,28 @@
 import React from "react";
 import ListCard from "./components/ListCard";
 import whaleBG from "../../components/images/icons/whale.svg" 
-import { H2 } from "../../components/styles/component.css";
+import { PageTitle } from "../../components/styles/component.css";
+import styled from "styled-components";
+
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
+  grid-template-areas: ". list list list";
+  width: 85%;
+  margin: 60px auto;
+
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "list"
+     
+  }
+`;
+
+const ContentWrapper= styled.div`
+grid-area: list;`
 
 const content = [
   {
@@ -44,13 +65,15 @@ const content = [
 
 export default function ListPage() {
   return (
-    <div>
-      <H2>My Note List</H2>
-      <div>
+    <>
+      <PageTitle>My Note List</PageTitle>
+      <GridContainer>
+        <ContentWrapper>
         {content.map((item, index) => {
           return <ListCard key={index} item={item}></ListCard>;
         })}
-      </div>
-    </div>
+        </ContentWrapper>
+      </GridContainer>
+    </>
   );
 }

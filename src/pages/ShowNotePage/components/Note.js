@@ -6,18 +6,17 @@ import styled from "styled-components";
 import { StampWrapper } from "../../../components/styles/note.css";
 
 const NoteWrapper = styled.div`
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   height: 100vh;
   padding: 60px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
   box-shadow: 2px 4px 4px 0px #00000040;
-  /* z-index: 9; */
-  /* position: relative; */
   position: absolute;
-    top:260px;
-    left:80px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 60px;
@@ -30,15 +29,9 @@ const NoteWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 80%;
-    position: absolute;
-    top:260px;
-    left:80px;
   }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-     width: 100%;
-    position: absolute;
-    top:260px;
-    left:10px;
+    width: 100%;
     padding: 20px;
     grid-template-columns: 1fr;
     grid-gap: 40px;

@@ -8,6 +8,7 @@ import { TitleLable, FormWrapper, StampWrapper } from "../../../components/style
 
 export default function PaperForm() {
   const noteInitialState = {
+    id:"",
     tag: "",
     keyword: "",
     stressRating: "",

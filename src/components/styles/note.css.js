@@ -48,7 +48,15 @@ export const Line = styled.div`
   img {
     width: 30%;
     margin-bottom: 5px;
+    animation-name: imgAnimation;
+    animation-duration: .5s;
+    
   }
+
+  @keyframes imgAnimation {
+  from {opacity:0;}
+  to {opacity:1;}
+}
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 100px;

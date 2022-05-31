@@ -9,6 +9,7 @@ import LoginPage from "./LoginPage/LoginPage";
 import ListPage from "./ListPage/ListPage";
 import PrivateRoute from "../PrivateRoute";
 import ShowNotePage from "./ShowNotePage/ShowNotePage";
+import ProfilePage from "./ProfilePage/ProfilePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
@@ -68,7 +69,7 @@ export default function App() {
                 <Route path="/Add" element={<CreateNotePage />} />
                 <Route path="/List" element={<ListPage />} />
                 <Route path="/Whale" element={<ShowNotePage />} />
-                <Route path="/User" element={<ShowNotePage />} />
+                <Route path="/User" element={<ProfilePage />} />
 
                 <Route path="*" element={<div>404 Not Found</div>} />
               </Route>

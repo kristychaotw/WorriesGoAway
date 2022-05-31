@@ -10,7 +10,7 @@ import homeActive from "./images/icons/home_active.svg";
 import listActive from "./images/icons/list_active.svg";
 import whaleActive from "./images/icons/whale_active.svg";
 import NavItem from "./NavItem";
-import { NavContainer } from "./nav.css";
+import { NavContainer } from "./styles/nav.css";
 
 export default function Nav() {
   const navIcons = [

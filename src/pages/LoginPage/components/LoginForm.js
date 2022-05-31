@@ -8,6 +8,8 @@ import {
   InputLable,
 } from "../../../components/styles/component.css";
 import { BtnSubmit, P } from "../../../components/styles/component.css";
+import { useDispatch } from "react-redux";
+import { loginr, logoutr } from "../../../reducers/user";
 
 const FormContainer = styled.div`
   width: 30%;
@@ -25,6 +27,7 @@ const FormContainer = styled.div`
 `;
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -55,6 +58,13 @@ export default function LoginForm() {
         alert("Error!");
       }
     setLoading(false);
+    dispatch(
+      loginr({
+        name: "PP",
+        age: passwordRef.current.value,
+        email: emailRef.current.value,
+      })
+    );
   }
 
   async function handleLogout() {
@@ -65,13 +75,14 @@ export default function LoginForm() {
       alert("Error!");
     }
     setLoading(false);
+    dispatch(logoutr());
   }
 
   return (
     <FormContainer>
       {console.log("currentuser:", currentUser)}
       {console.log("form:", loginForm)}
-      
+
       {currentUser ? (
         <>
           <PageTitle>Welcome</PageTitle>

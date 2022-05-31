@@ -4,6 +4,7 @@ import whaleBG from '../../../src/components/images/loginBG.jpg'
 import { WebTitle } from "../../components/styles/component.css";
 import LoginForm from "./components/LoginForm";
 
+
 const BgContainer = styled.div`
   background-image: url(${whaleBG});
   background-repeat: no-repeat;

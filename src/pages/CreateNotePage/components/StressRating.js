@@ -23,7 +23,6 @@ export default function StressRating(props) {
               name="rating"
               value={ratingValue}
               onClick={() => handleRating(ratingValue)}
-              // onClick={()=>props.newRate(ratingValue)}
             />
             <FaCircle
               size={26}

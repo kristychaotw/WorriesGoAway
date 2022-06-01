@@ -6,6 +6,7 @@ export default function NoteTitle(props) {
   return (
     <>
       <TitleBox
+      required
         grid={"title"}
         name="keyword"
         //   onChange={(e) => setKeyword(e.target.value)}

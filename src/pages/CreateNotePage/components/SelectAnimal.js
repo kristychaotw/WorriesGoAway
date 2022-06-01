@@ -5,6 +5,7 @@ import btnRight from "../../../components/images/icons/bt_right.svg";
 import { useDispatch } from "react-redux";
 import { next, prev, pick } from "../../../reducers/stamp";
 import { useSelector } from "react-redux";
+import { updateNote } from "../../../reducers/form";
 
 export const BtnSubmit = styled.button`
   padding: 5px 10px;
@@ -78,6 +79,7 @@ export default function SelectAnimal() {
 
   function pickIcon() {
     dispatch(pick());
+    dispatch(updateNote({animal:animalIcon.animal}))
   }
 
   return (

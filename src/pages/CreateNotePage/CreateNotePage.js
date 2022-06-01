@@ -1,9 +1,10 @@
 import React from "react";
 import SelectAnimal from "./components/SelectAnimal";
-import PaperForm from "./components/PaperForm";
-import { H2, PageTitle } from "../../components/styles/component.css";
+import Form from "./components/Form";
+import { PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
-import SubmitNote from "./components/SubmitNote";
+import { useDispatch,useSelector } from "react-redux";
+import { updateNote, saveNote, failtoSaveNote } from "../../reducers/form";
 
 const GridContainer = styled.div`
   display: grid;
@@ -21,17 +22,50 @@ const GridContainer = styled.div`
   }
 `;
 
+const SendBtn = styled.button`
+  padding: 5px 10px;
+  margin: 10px;
+  margin-bottom: 180px;
+  border: none;
+  border-radius: 10px;
+  background: #5085a5;
+  color: #fcfcfc;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
+  display: inline-block;
+
+  &:hover {
+    background-color: #587b90;
+  }
+
+  &:active {
+    background-color: #afdae3;
+    color: #f0f0f0;
+  }
+`;
+
 export default function CreateNotePage() {
+  const dispatch=useDispatch();
+  const formContent=useSelector((state)=>state.form.value)
+
   return (
     <>
       <PageTitle>Add A New Note </PageTitle>
       <GridContainer>
         <SelectAnimal></SelectAnimal>
-        <PaperForm></PaperForm>
+        <Form></Form>
       </GridContainer>
-      <p>Fill out the questions before you send it  <SubmitNote></SubmitNote></p>
-    
-      {/* <p>Current result is {JSON.stringify(state)}</p> */}
+      <p>Fill out the questions before you send it 
+      <SendBtn
+        onClick={() => {
+          dispatch(saveNote());
+        }}
+      >
+        Send
+      </SendBtn>
+      </p>
+      {console.log("formContent:",formContent)}
     </>
   );
 }

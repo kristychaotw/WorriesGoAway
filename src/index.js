@@ -9,12 +9,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import userReducer from "./reducers/user";
 import stampReducer from "./reducers/stamp";
+import formReducer from "./reducers/form";
+
 
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     stamp:stampReducer,
+    form:formReducer,
   },
 });
 

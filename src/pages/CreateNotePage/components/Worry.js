@@ -7,6 +7,7 @@ export default function Worry(props) {
   return (
     <>
       <TextAreaBox
+      required
        grid={"content"}
         name="worry"
         // onChange={(e) => setWorry(e.target.value)}

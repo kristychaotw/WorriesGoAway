@@ -48,7 +48,7 @@ const theme = {
 
 export default function App() {
   const currentUser = useContext(AuthContext);
-  console.log("my:", currentUser);
+  console.log("currentuserinApp:", currentUser);
 
   return (
     <>

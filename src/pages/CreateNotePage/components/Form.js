@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
 import Tags from "./Tags";
 import StressRating from "./StressRating";
 import NoteTitle from "./NoteTitle";
@@ -12,34 +12,20 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { updateNote, saveNote, failtoSaveNote } from "../../../reducers/form";
 
+import { AuthContext } from "../../../firebase";
+
 export default function Form() {
-
-
-  // function updateNote(object) {
-  //   console.log(
-  //     "object:",
-  //     object,
-  //     "object-key:",
-  //     Object.keys(object)[0],
-  //     "O-value:",
-  //     Object.values(object)[0]
-  //   );
-  // dispatch({
-  //   type: "updateNote",
-  //   key: Object.keys(object)[0],
-  //   value: Object.values(object)[0],
-  // });
-
-  //   dispatch
-  // }
-
+  
+  const currentUser = useContext(AuthContext).currentUser.uid;
+  
   const dispatch = useDispatch();
   const formContent = useSelector((state) => state.form.value);
   console.log("formContent:", formContent);
 
   return (
     <>
-      <FormWrapper>
+      <FormWrapper
+      onLoad={()=>dispatch(updateNote({author:currentUser}))}>
         <StampWrapper top={"90px"} right={"-35px"}>
           <Stamp/>
         </StampWrapper>

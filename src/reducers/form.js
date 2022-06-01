@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const formInitialState = {
   id: "",
   tag: "",
@@ -10,6 +11,7 @@ const formInitialState = {
   createDay: Date(),
   error: "",
   isStored: false,
+  author:"",
 };
 export const formSlice = createSlice({
   name: "form",

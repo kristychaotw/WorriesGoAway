@@ -5,6 +5,7 @@ import { PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
 import { useDispatch,useSelector } from "react-redux";
 import { updateNote, saveNote, failtoSaveNote } from "../../reducers/form";
+import  SaveNote  from "../../utils/db";
 
 const GridContainer = styled.div`
   display: grid;
@@ -58,9 +59,7 @@ export default function CreateNotePage() {
       </GridContainer>
       <p>Fill out the questions before you send it 
       <SendBtn
-        onClick={() => {
-          dispatch(saveNote());
-        }}
+        onClick={()=>SaveNote(formContent)}
       >
         Send
       </SendBtn>

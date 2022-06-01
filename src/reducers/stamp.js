@@ -3,13 +3,13 @@ import whale from "../components/images/icons/whale.svg";
 import cat from "../components/images/icons/cat.svg";
 import rabbit from "../components/images/icons/rabbit.svg";
 
-const animalList=[
-    { id: 1, animal: "whale", path: `${whale}`, picked: false },
-    { id: 2, animal: "cat", path: `${cat}`, picked: false },
-    { id: 3, animal: "rabbit", path: `${rabbit}`, picked: false },
-  ];
+const animalList = [
+  { id: 1, animal: "whale", path: `${whale}`, picked: false },
+  { id: 2, animal: "cat", path: `${cat}`, picked: false },
+  { id: 3, animal: "rabbit", path: `${rabbit}`, picked: false },
+];
 
-const initialState = animalList[0]
+const initialState = animalList[0];
 let newIndex;
 export const stampSlice = createSlice({
   name: "user",
@@ -21,7 +21,7 @@ export const stampSlice = createSlice({
       } else {
         newIndex = 0;
       }
-      state.value=animalList[newIndex];
+      state.value = animalList[newIndex];
     },
     prev: (state) => {
       if (state.value.id <= 1) {
@@ -29,12 +29,14 @@ export const stampSlice = createSlice({
       } else {
         newIndex = state.value.id - 2;
       }
-      state.value=animalList[newIndex];
+      state.value = animalList[newIndex];
+    },
+    pick: (state) => {
+      state.value.picked = true;
     },
   },
 });
 
-
-export const { next, prev } = stampSlice.actions;
+export const { next, prev, pick } = stampSlice.actions;
 
 export default stampSlice.reducer;

@@ -38,7 +38,7 @@ export default function NavItem({ icon, handleIconChanged,iconActive }) {
             ></img>
           </IconWrapper>
 
-          {console.log("icon:", icon.path)}
+          {/* {console.log("icon:", icon.path)} */}
         </NavBtn>
       </Link>
     </>

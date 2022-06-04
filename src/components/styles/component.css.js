@@ -64,6 +64,16 @@ export const StyledGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr); ;
 `;
+
+
+export const StyledCardWrapper=styled.div`
+cursor: pointer;
+
+& :hover{
+    background-color: ${({ theme }) => theme.colors.whiteh80};
+
+  }
+`
 export const StyledCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 0.6fr 0.4fr;
@@ -107,6 +117,7 @@ export const StyledCard = styled.div`
 
 export const H3 = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
+  line-height: ${({ theme }) => theme.fontSize.xl};
   font-weight: 600;
   text-align: start;
   color: #333333;

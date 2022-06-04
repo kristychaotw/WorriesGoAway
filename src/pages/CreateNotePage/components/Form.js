@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateNote, saveNote, failtoSaveNote } from "../../../reducers/form";
 
 import { AuthContext } from "../../../firebase";
+import { nanoid } from 'nanoid'
 
 export default function Form() {
   
@@ -26,17 +27,17 @@ export default function Form() {
     <>
       <FormWrapper
       onLoad={()=>dispatch(updateNote({author:currentUser}))}>
-        <StampWrapper top={"90px"} right={"-35px"}>
+        <StampWrapper top={"90px"} right={"-35px"} onLoad={()=>dispatch(updateNote({id:nanoid()}))}>
           <Stamp/>
         </StampWrapper>
         <TitleLable grid={"trate"}>Rate your stress</TitleLable>
         <StressRating
           grid={"rate"}
-          newRate={(value) => dispatch(updateNote({ stressRating: value }))}
+          newRate={(value) => dispatch(updateNote({ rating: value }))}
         ></StressRating>
         <TitleLable grid={"ttitle"}>Title</TitleLable>
         <NoteTitle
-          newKeyword={(value) => dispatch(updateNote({ keyword: value }))}
+          newKeyword={(value) => dispatch(updateNote({ title: value }))}
         />
         <TitleLable grid={"ttag"}>Tags</TitleLable>
         <Tags newTag={(value) => dispatch(updateNote({ tag: value }))} />

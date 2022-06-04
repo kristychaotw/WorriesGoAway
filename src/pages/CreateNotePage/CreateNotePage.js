@@ -5,7 +5,7 @@ import { PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
 import { useDispatch,useSelector } from "react-redux";
 import { updateNote, saveNote, failtoSaveNote } from "../../reducers/form";
-import  SaveNote  from "../../utils/db";
+import  SaveNote  from "../../../src/reducers/utils/db"
 
 const GridContainer = styled.div`
   display: grid;
@@ -13,6 +13,7 @@ const GridContainer = styled.div`
   grid-gap: 40px;
   grid-template-areas: "picker form form form";
   width: 85%;
+  max-width: 1200px;
   margin: 60px auto;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {

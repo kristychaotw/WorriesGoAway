@@ -10,14 +10,15 @@ import { Provider } from "react-redux";
 import userReducer from "./reducers/user";
 import stampReducer from "./reducers/stamp";
 import formReducer from "./reducers/form";
-
-
+import listReducer from "./reducers/list";
+import thunk from 'redux-thunk'
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    stamp:stampReducer,
-    form:formReducer,
+    stamp: stampReducer,
+    form: formReducer,
+    list: listReducer,
   },
 });
 

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AnimalBG from "./components/AnimalBG";
 import Note from "./components/Note";
 import styled from "styled-components";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import db from "../../firebase";
+
 
 const ShowNoteWrapper = styled.div`
   background-color: aliceblue;
@@ -13,10 +16,26 @@ const ShowNoteWrapper = styled.div`
 `;
 
 export default function ShowNotePage() {
+  const showItemID = localStorage.getItem("showItemID");
+  console.log("showItemID:", showItemID);
+  localStorage.clear();
+  console.log("showItemID2:", showItemID);
+
+  const [note, setNote] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "notes"), where("id", "==", showItemID));
+    getDocs(q).then((querySnapshot) =>
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        setNote(...note, doc.data());
+      })
+    );
+  }, []);
   return (
     <ShowNoteWrapper>
-      <AnimalBG></AnimalBG>
-      <Note></Note>
+      <AnimalBG BG={note.animalName}></AnimalBG>
+      <Note note={note}></Note>
     </ShowNoteWrapper>
   );
 }

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { H3, TagBox, RateBox } from "../../../components/styles/component.css";
 import StaticRating from "../../ListPage/components/StaticRating";
-import Stamp from "../../CreateNotePage/components/Stamp";
 import styled from "styled-components";
 import { StampWrapper } from "../../../components/styles/note.css";
+import { Line } from "../../../components/styles/note.css";
 
 const NoteWrapper = styled.div`
   width: 60%;
+  max-width: 1200px;
   margin: 0 auto;
   height: 100vh;
   padding: 60px;
@@ -26,6 +27,11 @@ const NoteWrapper = styled.div`
     "rate tag"
     "title title"
     "content content";
+
+  img {
+    grid-area: stamp;
+    justify-self: end;
+  }
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 80%;
@@ -54,33 +60,88 @@ const TextWrapper = styled.div`
   text-align: start;
 `;
 
-export default function Note() {
+export default function Note({note}) {
+  
+
+  function timeDistance() {
+    const timeCreated = note.createDate;
+    const timeToday = Date();
+    console.log("cday:", timeCreated);
+    console.log("tday:", timeToday);
+    // const yearEndFromToday=
+    // const yearEndFromCreated=
+    const diffInMs = new Date(timeToday) - new Date(timeCreated);
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    const diffInHours = diffInMs / (1000 * 60 * 60);
+
+    console.log(
+      "diffInMs:",
+      diffInMs,
+      "diffInDays:",
+      diffInDays,
+      "diffInHours:",
+      diffInHours
+    );
+    return diffInHours;
+  }
+
+  function msg(animal) {
+    let AnimalBehavior;
+    if (animal === "cat") {
+      AnimalBehavior = Math.round(timeDistance()*10)/10;
+      return "the cat has been sleeping for " + AnimalBehavior + " hrs";
+    } else if (animal === "whale") {
+      AnimalBehavior =  Math.round(timeDistance() * 40*10)/10;
+      return "the whale has been swimming for " + AnimalBehavior + " km";
+    } else if (animal === "rabbit") {
+      let month = timeDistance() / (24 * 30);
+      if (month >= 1) {
+        AnimalBehavior = month * 5;
+      } else {
+        AnimalBehavior = 0;
+      }
+      return "the rabbit has given birth to "+ AnimalBehavior + " baby rabbits";
+    }
+    else{
+      return "wait...."
+    }
+  }
+
+
   return (
     <>
-      <NoteWrapper>
-        <StampWrapper grid={"stamp"} top={"30px"} right={"-90px"}>
-          <Stamp />
-        </StampWrapper>
-        <H3 grid={"foreword"} padding={"60px"} border={"2px dashed #000"}>
-          ... during the time you are worried,
-          <br />
-          the whale has swimmed for <span>20000 miles</span>
-        </H3>
-        <TagBox grid={"tag"} align={"start"}>
-          tag
-        </TagBox>
-        <img></img>
-        <RateBox grid={"rate"} align={"start"}>
-          <StaticRating></StaticRating>
-        </RateBox>
-        <TextWrapper grid={"title"} fontWeight={600}>
-          title
-        </TextWrapper>
-        <TextWrapper grid={"content"} fontWeight={400}>
-          content
-        </TextWrapper>
-      </NoteWrapper>
-      <p>createDate ‧ Has Been Passed : timePass</p>
+      {note ? (
+        <>
+          {console.log("now note:", note)}
+          <NoteWrapper>
+            <StampWrapper grid={"stamp"} top={"30px"} right={"-90px"}>
+              <Line>
+                <img src={note.animal}></img>
+              </Line>
+            </StampWrapper>
+            <H3 grid={"foreword"} padding={"60px"} border={"2px dashed #000"}>
+              ... during the time you are worried,
+              <br />
+              {msg(note.animalName)}
+            </H3>
+            <TagBox grid={"tag"} align={"start"}>
+              {note.tag}
+            </TagBox>
+            <RateBox grid={"rate"} align={"start"}>
+              <StaticRating rate={note.rating}></StaticRating>
+            </RateBox>
+            <TextWrapper grid={"title"} fontWeight={600}>
+              {note.title}
+            </TextWrapper>
+            <TextWrapper grid={"content"} fontWeight={400}>
+              {note.worry}
+            </TextWrapper>
+          </NoteWrapper>
+          <p>createDate ‧ Has Been Passed : timePass</p>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

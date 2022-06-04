@@ -2,10 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loginr, logoutr } from "../../reducers/user";
+import GetNote from "../../reducers/utils/getNote";
+
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+
   return (
     <>
       <div>ProfilePage</div>
@@ -26,6 +29,7 @@ export default function ProfilePage() {
       >
         Logout
       </button>
+      <GetNote/>
     </>
   );
 }

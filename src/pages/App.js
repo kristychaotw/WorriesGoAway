@@ -13,6 +13,10 @@ import ProfilePage from "./ProfilePage/ProfilePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
+// import whale from "../components/images/icons/whale.svg"
+// import cat from "../components/images/icons/cat.svg";
+// import rabbit from "../components/images/icons/rabbit.svg";
+
 
 const theme = {
   colors: {
@@ -23,6 +27,8 @@ const theme = {
     third: "#5085A5",
     dark: "#656565",
     white: "#FCFCFC",
+    primaryh66:"#8BA6BC66",
+    whiteh80:"#FCFCFC80"
   },
   fontSize: {
     s: "0.8rem",
@@ -44,6 +50,11 @@ const theme = {
     desktop: "1200px",
   },
   maxWidth: "1800px",
+  // animal: {
+  //   whale: `${whale}`,
+  //   cat: `${cat}`,
+  //   rabbit: `${rabbit}`,
+  // },
 };
 
 export default function App() {

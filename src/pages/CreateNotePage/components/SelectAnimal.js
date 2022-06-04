@@ -79,7 +79,9 @@ export default function SelectAnimal() {
 
   function pickIcon() {
     dispatch(pick());
-    dispatch(updateNote({animal:animalIcon.animal}))
+    dispatch(updateNote({animal:animalIcon.path}))
+    dispatch(updateNote({animalName:animalIcon.animal}))
+
   }
 
   return (

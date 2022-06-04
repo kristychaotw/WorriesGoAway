@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const formInitialState = {
-  id: "",
+  id:  "",
   tag: "",
-  keyword: "",
-  stressRating: "",
+  title: "",
+  rating: "",
   worry: "",
   animal: "",
-  createDay: Date(),
+  createDate: Date(),
   error: "",
   isStored: false,
   author:"",

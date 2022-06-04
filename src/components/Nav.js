@@ -24,7 +24,7 @@ export default function Nav() {
   const [iconActive, setIconActive] = useState("Home");
   function handleIconChanged(e) {
     setIconActive(e);
-    console.log("iconActive:", iconActive);
+    // console.log("iconActive:", iconActive);
   }
 
   const NavList = navIcons.map((icon) => (

@@ -37,7 +37,7 @@ const NoteWrapper = styled.div`
     width: 80%;
   }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 100%;
+    width: 90%;
     padding: 20px;
     grid-template-columns: 1fr;
     grid-gap: 40px;

@@ -23,7 +23,7 @@ const BGWrapper = styled.div`
   background-position: center top;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     top: -60px;
-    left: -60px;
+    left: 0px;
   }
 `;
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FormWrapper = styled.div`
   position: relative;
   width: 100%;
-  margin: 0 30px;
+  margin: 0 auto;
   padding: 40px 20px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
@@ -28,8 +28,8 @@ export const StampWrapper = styled.div`
   top: ${({ top }) => top};
   right: ${({ right }) => right};
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-  top:15px;
-  right:-30px;
+  top:35px;
+  right:-15px;
   
   }
 

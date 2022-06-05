@@ -137,7 +137,7 @@ export default function Note({note}) {
               {note.worry}
             </TextWrapper>
           </NoteWrapper>
-          <p>createDate ‧ Has Been Passed : timePass</p>
+          {/* <p>createDate ‧ Has Been Passed : timePass</p> */}
         </>
       ) : (
         <></>

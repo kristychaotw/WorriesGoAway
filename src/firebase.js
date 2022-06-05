@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
-import {getAuth,createUserWithEmailAndPassword,
-  onAuthStateChanged,signOut,signInWithEmailAndPassword,} from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -24,7 +29,6 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 export default getFirestore();
 
-
 export function signup(email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 }
@@ -39,30 +43,22 @@ export function login(email, password) {
 
 // Custom Hook
 
-export function useAuth() {
-  const [currentUser, setCurrentUser] = useState();
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-    });
-    return unsub;
-  }, [currentUser]);
-
-  return currentUser;
-}
-
 export const AuthContext = React.createContext();
+export const AuthUpdateContext = React.createContext();
+
+export function useAuthUser() {
+  return useContext(AuthContext);
+}
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
     return unsub;
   }, []);
+
   return (
     <AuthContext.Provider value={{ currentUser }}>
       {children}

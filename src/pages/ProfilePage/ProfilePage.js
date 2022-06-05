@@ -1,35 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { loginr, logoutr } from "../../reducers/user";
-import GetNote from "../../reducers/utils/getNote";
+import { loginr, logoutr,update } from "../../reducers/user";
+import { BtnSubmit } from "../CreateNotePage/components/SelectAnimal";
+import { useAuthUser, logout } from "../../firebase";
+import styled from "styled-components";
 
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 85%;
+  max-width: 1200px;
+  margin:40px auto;
+`;
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const currentUser = useAuthUser();
 
+  async function handleLogout() {
+    setLoading(true);
+    try {
+      await logout();
+    } catch {
+      alert("Error!");
+    }
+    setLoading(false);
+    dispatch(logoutr());
+  }
   return (
     <>
-      <div>ProfilePage</div>
-      <p>Name:{user.name}</p>
-      <p>Email:{user.email}</p>
-      <p>Password:{user.age}</p>
-      <button
-        onClick={() => {
-          dispatch(loginr({ name: "PP", age: 10, email: "11@gmail.com" }));
-        }}
-      >
-        Login
-      </button>
-      <button
-        onClick={() => {
-          dispatch(logoutr());
-        }}
-      >
-        Logout
-      </button>
-      <GetNote/>
+      <Container >
+        <div>ProfilePage</div>
+        {/* <p>Name : {user.name}</p>
+        <p>Email : {user.email}</p> */}
+        {/* <p>Password:{user.age}</p> */}
+        
+        <BtnSubmit
+          disabled={loading || !currentUser}
+          onClick={() => handleLogout()}
+        >
+          Log Out
+        </BtnSubmit>
+      </Container>
     </>
   );
 }

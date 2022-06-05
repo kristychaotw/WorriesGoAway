@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import ListCard from "./components/ListCard";
 import { PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useAuthUser } from "../../firebase";
 import {
   collection,
   onSnapshot,
@@ -77,10 +77,12 @@ export default function ListPage() {
   // const list = useSelector((state) => state.list.value);
   // console.log("list",list);
   const [notes, setNotes] = useState([]);
+  const currentUser=useAuthUser()
+  console.log("uid:",currentUser,currentUser.currentUser.uid);
 
   useEffect(() => {
     console.log("test");
-    const q = query(collection(db, "notes"), where("author", "!=", null));
+    const q = query(collection(db, "notes"), where("author", "==", currentUser.currentUser.uid));
     const notesDB=[]
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {

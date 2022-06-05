@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { makeRequest, getList, error } from "../list";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,12 +9,18 @@ import {
   getDocs,
 } from "firebase/firestore";
 import db from "../../firebase";
+import { useAuthUser } from "../firebase";
+
 
 export default function GetNote() {
   const dispatch = useDispatch();
   const listcontent = useSelector((state) => state.list.value);
   console.log("listcontent2:", listcontent);
   const notes = [];
+  const currentUser = useAuthUser();
+  console.log("currentuserinApp:", currentUser);
+
+
 
   useEffect(() => {
     console.log("test");

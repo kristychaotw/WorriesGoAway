@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuth, login, signup, logout } from "../../../firebase";
+import { useAuthUser, login, signup, logout } from "../../../firebase";
 import styled from "styled-components";
 import {
   PageTitle,
@@ -31,7 +31,7 @@ export default function LoginForm() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
-  const currentUser = useAuth();
+  const currentUser = useAuthUser().currentUser;
   const [loginForm, setLoginForm] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,7 +60,7 @@ export default function LoginForm() {
     setLoading(false);
     dispatch(
       loginr({
-        name: "PP",
+        name: "",
         age: passwordRef.current.value,
         email: emailRef.current.value,
       })

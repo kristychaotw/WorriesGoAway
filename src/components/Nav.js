@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { AuthContext } from "../firebase";
+import React, { useState} from "react";
+import { useAuthUser } from "../firebase";
 import add from "./images/icons/add.svg";
 import home from "./images/icons/home.svg";
 import list from "./images/icons/list.svg";
@@ -36,7 +36,7 @@ export default function Nav() {
     ></NavItem>
   ));
 
-  const currentUser = useContext(AuthContext);
+  const currentUser = useAuthUser();
 
   return (
     <div>

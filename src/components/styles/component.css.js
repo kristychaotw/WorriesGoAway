@@ -28,7 +28,6 @@ export const PageTitle = styled.div`
   text-align: left;
   margin-top: 90px;
   margin-bottom: 80px;
-
 `;
 
 export const TitleLable = styled.div`
@@ -65,15 +64,13 @@ export const StyledGrid = styled.div`
   grid-template-rows: repeat(2, 1fr); ;
 `;
 
+export const StyledCardWrapper = styled.div`
+  cursor: pointer;
 
-export const StyledCardWrapper=styled.div`
-cursor: pointer;
-
-& :hover{
+  & :hover {
     background-color: ${({ theme }) => theme.colors.whiteh80};
-
   }
-`
+`;
 export const StyledCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 0.6fr 0.4fr;
@@ -178,6 +175,7 @@ export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
   margin: 50px auto;
+  margin-left:${({margin})=>margin} ;
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};
@@ -185,6 +183,7 @@ export const BtnSubmit = styled.button`
   font-weight: bold;
   display: block;
   box-shadow: 2px 2px 4px #000000a1;
+  grid-area: ${({ grid }) => grid};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.third};

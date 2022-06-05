@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthUser } from "../firebase";
 import add from "./images/icons/add.svg";
 import home from "./images/icons/home.svg";
@@ -21,26 +21,49 @@ export default function Nav() {
     { name: "User", url: none, urlActive: none, path: "/User" },
   ];
 
+  const [iconList, setIconList] = useState([]);
+
   const [iconActive, setIconActive] = useState("Home");
   function handleIconChanged(e) {
     setIconActive(e);
-    // console.log("iconActive:", iconActive);
   }
 
-  const NavList = navIcons.map((icon) => (
-    <NavItem
-      key={icon.name}
-      icon={icon}
-      handleIconChanged={handleIconChanged}
-      iconActive={iconActive}
-    ></NavItem>
-  ));
+  const updateNavIcons = (navIcons, oldURL, newURL) => {
+    console.log("oldURL:", oldURL, "new:", newURL);
+    let result=navIcons.map(({ urlActive,url, ...navIcons }) => ({
+      ...navIcons,
+      url: url === oldURL ? newURL : url,
+      urlActive: urlActive === oldURL ? newURL : urlActive,
 
-  const currentUser = useAuthUser();
+    }));
+    return result
+  };
+
+  const currentUser = useAuthUser().currentUser;
+  const [userIcon, setUserIcon] = useState(none);
+  useEffect(() => {
+    if (currentUser) {
+      setUserIcon(...userIcon,currentUser.photoURL);
+      setIconList(updateNavIcons(navIcons, none, currentUser.photoURL));
+    }
+  }, [currentUser]);
+
+  const NavList = iconList ? (
+    iconList.map((icon) => (
+      <NavItem
+        key={icon.name}
+        icon={icon}
+        handleIconChanged={handleIconChanged}
+        iconActive={iconActive}
+      ></NavItem>
+    ))
+  ) : (
+    <></>
+  );
 
   return (
     <div>
-      <NavContainer display={currentUser.currentUser == null ? "none" : "flex"}>
+      <NavContainer display={currentUser == null ? "none" : "flex"}>
         {NavList}
       </NavContainer>
     </div>

@@ -22,6 +22,15 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  img{
+  border-radius: ${({borderR})=>borderR};
+  object-fit: cover;
+  height: ${({wh})=>wh};
+  width: ${({wh})=>wh};
+  border: outset ${({theme})=>theme.colors.primary} ${({border})=>border};
+  
+}
 `;
 
 export default function NavItem({ icon, handleIconChanged,iconActive }) {
@@ -32,13 +41,11 @@ export default function NavItem({ icon, handleIconChanged,iconActive }) {
           space={icon.name === "Add" && "1"}
           onClick={() => handleIconChanged(icon.name)}
         >
-          <IconWrapper>
+          <IconWrapper wh={icon.name==="User"?"100%":"auto"}borderR={icon.name==="User"?"100%":"0%"} border={icon.name==="User"? "2px":"0"}>
             <img
               src={iconActive === icon.name ? `${icon.urlActive}` : `${icon.url}`}
             ></img>
           </IconWrapper>
-
-          {/* {console.log("icon:", icon.path)} */}
         </NavBtn>
       </Link>
     </>

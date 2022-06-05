@@ -77,12 +77,12 @@ export default function ListPage() {
   // const list = useSelector((state) => state.list.value);
   // console.log("list",list);
   const [notes, setNotes] = useState([]);
-  const currentUser=useAuthUser()
-  console.log("uid:",currentUser,currentUser.currentUser.uid);
+  const currentUser=useAuthUser().currentUser
+  console.log("uid:",currentUser,currentUser.uid);
 
   useEffect(() => {
     console.log("test");
-    const q = query(collection(db, "notes"), where("author", "==", currentUser.currentUser.uid));
+    const q = query(collection(db, "notes"), where("author", "==", currentUser.uid));
     const notesDB=[]
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {

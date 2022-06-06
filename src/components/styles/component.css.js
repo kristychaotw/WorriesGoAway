@@ -132,6 +132,7 @@ export const TagBox = styled.div`
   color: #656565;
   grid-area: ${({ grid }) => grid};
   justify-self: ${({ align }) => align || "end"};
+  /* background-color: ${({theme})=>theme.colors.dark}; */
 `;
 
 export const RateBox = styled.div`
@@ -164,18 +165,26 @@ export const TextInput = styled.input`
   color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.white};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.whiteh80};
   outline: none;
   ::placeholder {
     color: ${({ theme }) => theme.colors.white};
   }
+  transition: all 0.3s ease;
+  position: relative;
+
+  :focus {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.white};
+  }
+
+ 
 `;
 
 export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
   margin: 50px auto;
-  margin-left:${({margin})=>margin} ;
+  margin-left: ${({ margin }) => margin};
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};

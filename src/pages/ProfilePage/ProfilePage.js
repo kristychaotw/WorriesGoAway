@@ -27,7 +27,6 @@ export const Container = styled.div`
 `;
 
 
-
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();

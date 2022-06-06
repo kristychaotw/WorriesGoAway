@@ -9,6 +9,7 @@ import {
   query,
   where,
   getDocs,
+  orderBy 
 } from "firebase/firestore";
 import db from "../../firebase";
 
@@ -41,35 +42,7 @@ const ContentWrapper = styled.div`
 //     tag: "life",
 //     animal:`${whaleBG}`,
 //     timePass:'15hr'
-//   },
-//   {
-//     id: 2,
-//     title: "用於定義每一個網格項目的名稱",
-//     rating: "3",
-//     createDate: "2022/05/23",
-//     tag: "life",
-//     animal:`${whaleBG}`,
-//     timePass:'15hr'
-//   },
-//   {
-//     id: 3,
-//     title: "Title3",
-//     rating: "4",
-//     createDate: "2022/05/23",
-//     tag: "life",
-//     animal:`${whaleBG}`,
-//     timePass:'15hr'
-//   },
-//   {
-//     id: 4,
-//     title: "Title4",
-//     rating: "5",
-//     createDate: "2022/05/23",
-//     tag: "life",
-//     animal:`${whaleBG}`,
-//     timePass:'15hr'
-//   },
-// ];
+//   }]
 
 
 
@@ -81,14 +54,14 @@ export default function ListPage() {
   console.log("uid:",currentUser,currentUser.uid);
 
   useEffect(() => {
-    console.log("test");
-    const q = query(collection(db, "notes"), where("author", "==", currentUser.uid));
+    const q = query(collection(db, "notes"),where("author", "==", currentUser.uid), orderBy("createDate","desc"));
     const notesDB=[]
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         notesDB.push(doc.data());
       });
       setNotes(...notes, notesDB);
+      localStorage.setItem("defaultNote:",notesDB[0].id)
     });
     return unsubscribe;
   }, []);

@@ -17,14 +17,32 @@ const ShowNoteWrapper = styled.div`
 
 export default function ShowNotePage() {
   const showItemID = localStorage.getItem("showItemID");
+  const defaultNote=localStorage.getItem("defaultNote");
+  const lastCreated=localStorage.getItem("lastCreated");
+
   console.log("showItemID:", showItemID);
-  localStorage.clear();
-  console.log("showItemID2:", showItemID);
+  // localStorage.clear();
+  // localStorage.removeItem('showItemID');
+  console.log("defaultNote:", defaultNote);
 
   const [note, setNote] = useState([]);
+  
+  let renderNote;
+  function renderNotef(){
+    if(showItemID){
+      renderNote=showItemID
+    }else if (defaultNote){
+      renderNote=defaultNote
+    }else if (lastCreated){
+      renderNote=lastCreated
+    }else{
+      renderNote=renderNote
+    }
+  }
+
 
   useEffect(() => {
-    const q = query(collection(db, "notes"), where("id", "==", showItemID));
+    const q = query(collection(db, "notes"), where("id", "==", renderNote));
     getDocs(q).then((querySnapshot) =>
       querySnapshot.forEach((doc) => {
         console.log(doc.id, " => ", doc.data());
@@ -33,7 +51,7 @@ export default function ShowNotePage() {
     );
   }, []);
   return (
-    <ShowNoteWrapper>
+    <ShowNoteWrapper onLoad={renderNotef()}>
       <AnimalBG BG={note.animalName}></AnimalBG>
       <Note note={note}></Note>
     </ShowNoteWrapper>

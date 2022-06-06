@@ -21,13 +21,14 @@ export default function Form() {
   
   const dispatch = useDispatch();
   const formContent = useSelector((state) => state.form.value);
-  console.log("formContent:", formContent);
-
+  // console.log("formContent:", formContent);
+  const id=nanoid()
+  localStorage.setItem("lastCreated",id)
   return (
     <>
       <FormWrapper
       onLoad={()=>dispatch(updateNote({author:currentUser}))}>
-        <StampWrapper top={"90px"} right={"-35px"} onLoad={()=>dispatch(updateNote({id:nanoid()}))}>
+        <StampWrapper top={"90px"} right={"-35px"} onLoad={()=>dispatch(updateNote({id:id}))}>
           <Stamp/>
         </StampWrapper>
         <TitleLable grid={"trate"}>Rate your stress</TitleLable>

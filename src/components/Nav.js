@@ -42,10 +42,13 @@ export default function Nav() {
   const currentUser = useAuthUser().currentUser;
   const [userIcon, setUserIcon] = useState(none);
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && currentUser.photoURL) {
       setUserIcon(...userIcon,currentUser.photoURL);
       setIconList(updateNavIcons(navIcons, none, currentUser.photoURL));
+    }else{
+      setIconList(navIcons)
     }
+    
   }, [currentUser]);
 
   const NavList = iconList ? (

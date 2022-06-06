@@ -9,10 +9,9 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
-  updateProfile
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getDownloadURL, getStorage,ref,uploadBytes } from "firebase/storage";
+import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD-rzNyg-1KShr9zk_n_DwW2k3aMKFoNpA",
@@ -26,9 +25,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const storage=getStorage(app)
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
+export const storage = getStorage(app);
 export default getFirestore();
 
 export function signup(email, password) {
@@ -59,7 +58,7 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(user);
     });
     return unsub;
-  }, []);
+  }, [currentUser]);
 
   return (
     <AuthContext.Provider value={{ currentUser }}>
@@ -67,16 +66,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-// Storage
-
-export async function upload(file, currentUser,setLoading){
-const fileRef=ref(storage,currentUser.uid+'.png')
-
-setLoading(true);
-const snapshot =await uploadBytes (fileRef,file);
-const photoURL=await getDownloadURL(fileRef)
-updateProfile(currentUser, {photoURL})
-setLoading(false);
-alert("Uploaded file!")
-}

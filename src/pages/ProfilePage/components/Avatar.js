@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useAuthUser, upload } from "../../../firebase";
+import { useAuthUser } from "../../../firebase";
 import styled from "styled-components";
 import avatarsvg from "../../../components/images/icons/avatar.svg";
 import { BtnSubmit } from "../../../components/styles/component.css";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../../firebase";
+import { updateProfile } from "firebase/auth";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -19,22 +22,54 @@ export const StyledAvatar = styled.img`
   border-radius: 50%;
   border: 2px outset #8ba6bc;
   grid-area: avatar;
+  object-fit: cover;
   background-color: #fff;
 `;
 
 export default function Avatar() {
   const currentUser = useAuthUser().currentUser;
   const [photo, setPhoto] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [photoURL, setPhotoURL] = useState(`${avatarsvg}`);
+  const [loading, setLoading] = useState(false);
 
   function handleChange(e) {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
     }
   }
-  function handleClick() {
-    upload(photo, currentUser, setLoading);
+
+  const handleClick = () => {
+    console.log("testclick");
+    const fileRef = ref(storage, currentUser.uid + ".png");
+    setLoading(true);
+    uploadBytes(fileRef, photo)
+      .then(() => {
+        getDownloadURL(fileRef)
+          .then((url) => {
+            setPhotoURL(url);
+            handleAuthPhotoURL(url)
+            alert("success!");
+          })
+          .catch((error) => {
+            console.log(error.message, "error!");
+          });
+      })
+      .catch((error) => {
+        console.log(error.message, "error");
+      });
+      setLoading(false);
+  };
+
+  const handleAuthPhotoURL=(url)=>{
+    setLoading(true);
+    updateProfile(currentUser, { photoURL: url })
+    .then(() => {
+      alert("success update!");
+    })
+    .catch((error) => {
+      console.log(error.message, "error when update");
+    });
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -42,6 +77,8 @@ export default function Avatar() {
       setPhotoURL(currentUser.photoURL);
     }
   }, [currentUser]);
+
+  console.log("photoURL:", photoURL);
 
   return (
     <Wrapper>

@@ -11,6 +11,7 @@ import listActive from "./images/icons/list_active.svg";
 import whaleActive from "./images/icons/whale_active.svg";
 import NavItem from "./NavItem";
 import { NavContainer } from "./styles/nav.css";
+import { useSelector } from "react-redux";
 
 export default function Nav() {
   const navIcons = [
@@ -21,35 +22,32 @@ export default function Nav() {
     { name: "User", url: none, urlActive: none, path: "/User" },
   ];
 
+  const currentUser = useAuthUser().currentUser;
   const [iconList, setIconList] = useState([]);
-
   const [iconActive, setIconActive] = useState("Home");
+
+  const user = useSelector((state) => state.user.value);
+  console.log("userstate:", user);
+  const profilePhoto = user.picture;
+
+
   function handleIconChanged(e) {
     setIconActive(e);
   }
 
-  const updateNavIcons = (navIcons, oldURL, newURL) => {
-    console.log("oldURL:", oldURL, "new:", newURL);
-    let result=navIcons.map(({ urlActive,url, ...navIcons }) => ({
+  let newList;
+  function updateNavIcons(navIcons, oldURL, newURL) {
+    newList = navIcons.map(({ urlActive, url, ...navIcons }) => ({
       ...navIcons,
       url: url === oldURL ? newURL : url,
       urlActive: urlActive === oldURL ? newURL : urlActive,
-
     }));
-    return result
-  };
-
-  const currentUser = useAuthUser().currentUser;
-  const [userIcon, setUserIcon] = useState(none);
-  useEffect(() => {
-    if (currentUser && currentUser.photoURL) {
-      setUserIcon(...userIcon,currentUser.photoURL);
-      setIconList(updateNavIcons(navIcons, none, currentUser.photoURL));
-    }else{
-      setIconList(navIcons)
-    }
-    
-  }, [currentUser]);
+  }
+  
+  
+  useEffect(()=>{
+    setIconList(newList)
+  },[profilePhoto])
 
   const NavList = iconList ? (
     iconList.map((icon) => (
@@ -65,7 +63,7 @@ export default function Nav() {
   );
 
   return (
-    <div>
+    <div onLoad={updateNavIcons(navIcons, none, profilePhoto)}>
       <NavContainer display={currentUser == null ? "none" : "flex"}>
         {NavList}
       </NavContainer>

@@ -6,6 +6,8 @@ import { BtnSubmit } from "../../../components/styles/component.css";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
+import { update } from "../../../reducers/user";
+import { useDispatch} from "react-redux";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -31,6 +33,8 @@ export default function Avatar() {
   const [photo, setPhoto] = useState(null);
   const [photoURL, setPhotoURL] = useState(`${avatarsvg}`);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
 
   function handleChange(e) {
     if (e.target.files[0]) {
@@ -74,11 +78,12 @@ export default function Avatar() {
 
   useEffect(() => {
     if (currentUser?.photoURL) {
+      const newPicture=currentUser.photoURL
       setPhotoURL(currentUser.photoURL);
+      dispatch(update({picture:newPicture}))
     }
-  }, [currentUser]);
+  }, [photoURL]);
 
-  console.log("photoURL:", photoURL);
 
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = { name: "", email: "", picture: "" };
+import avatarSVG from "../components/images/icons/avatar.svg"
+const initialState = { name: "", email: "", picture: `${avatarSVG}` };
 
 export const userSlice = createSlice({
   name: "user",
@@ -13,7 +13,8 @@ export const userSlice = createSlice({
       state.value = initialState;
     },
     update:(state,action)=>{
-      state.value = action.payload;
+      state.value.picture= action.payload.picture;
+      
 
     }
   },

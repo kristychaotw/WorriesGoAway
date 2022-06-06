@@ -16,8 +16,7 @@ import { AuthContext } from "../../../firebase";
 import { nanoid } from 'nanoid'
 
 export default function Form() {
-  
-  const currentUser = useContext(AuthContext).currentUser.uid;
+    const currentUser = useContext(AuthContext).currentUser.uid;
   
   const dispatch = useDispatch();
   const formContent = useSelector((state) => state.form.value);

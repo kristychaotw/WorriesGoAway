@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuthUser, login, signup, logout } from "../../../firebase";
 import styled from "styled-components";
 import {
-  PageTitle,
+  WebTitle,
   TextInput,
   InputLable,
 } from "../../../components/styles/component.css";
@@ -23,6 +23,9 @@ const FormContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 50%;
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 75%;
   }
 `;
 
@@ -85,16 +88,16 @@ export default function LoginForm() {
 
       {currentUser ? (
         <>
-          <PageTitle>Welcome</PageTitle>
+          <WebTitle>Welcome</WebTitle>
+          <BtnSubmit disabled={loading || !currentUser}>
+            {" "}
+            <Link to="/Home">Enter</Link>
+          </BtnSubmit>
           <BtnSubmit
             disabled={loading || !currentUser}
             onClick={() => handleLogout()}
           >
             Log Out
-          </BtnSubmit>
-          <BtnSubmit disabled={loading || !currentUser}>
-            {" "}
-            <Link to="/list">Enter</Link>
           </BtnSubmit>
         </>
       ) : (

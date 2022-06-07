@@ -4,7 +4,7 @@ export const NavContainer = styled.div`
   height: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   padding-top: 100px;
-  display: ${({ display }) => display};
+  display: flex;
   flex-direction: column;
   position: fixed;
   left: 0;

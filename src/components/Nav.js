@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthUser } from "../firebase";
 import add from "./images/icons/add.svg";
 import home from "./images/icons/home.svg";
@@ -14,7 +14,7 @@ import { NavContainer } from "./styles/nav.css";
 import { useSelector } from "react-redux";
 
 export default function Nav() {
-  const navIcons = [
+  const nav = [
     { name: "Add", url: add, urlActive: addActive, path: "/Add" },
     { name: "Home", url: home, urlActive: homeActive, path: "/Home" },
     { name: "List", url: list, urlActive: listActive, path: "/List" },
@@ -23,50 +23,47 @@ export default function Nav() {
   ];
 
   const currentUser = useAuthUser().currentUser;
-  const [iconList, setIconList] = useState([]);
+  const [navIcons, setNavIcons] = useState(nav);
   const [iconActive, setIconActive] = useState("Home");
-
+  console.log("navIcons", navIcons);
   const user = useSelector((state) => state.user.value);
-  console.log("userstate:", user);
-  const profilePhoto = user.picture;
-
-
+  
   function handleIconChanged(e) {
     setIconActive(e);
   }
-
-  let newList;
-  function updateNavIcons(navIcons, oldURL, newURL) {
-    newList = navIcons.map(({ urlActive, url, ...navIcons }) => ({
-      ...navIcons,
-      url: url === oldURL ? newURL : url,
-      urlActive: urlActive === oldURL ? newURL : urlActive,
-    }));
-  }
   
-  
-  useEffect(()=>{
-    setIconList(newList)
-  },[profilePhoto])
+  useEffect(() => {
+    let profilePhoto;
+    let newNavIcons;
+    if (currentUser !== null) {
+      console.log("incurrentuserphoto",currentUser.photoURL);      
+      profilePhoto=currentUser.photoURL
+      newNavIcons = navIcons.map(({ urlActive, url, ...navIcons }) => ({
+        ...navIcons,
+        url: url === none ? profilePhoto : url,
+        urlActive: urlActive === none ? profilePhoto : urlActive,
+      }));
+      console.log("profilePhoto", profilePhoto);
+      console.log("navIcons-new", newNavIcons);
+      setNavIcons(newNavIcons);
+    }
+    console.log("navIcons-final", navIcons);
+  }, [currentUser]);
 
-  const NavList = iconList ? (
-    iconList.map((icon) => (
-      <NavItem
-        key={icon.name}
-        icon={icon}
-        handleIconChanged={handleIconChanged}
-        iconActive={iconActive}
-      ></NavItem>
-    ))
-  ) : (
-    <></>
-  );
-
-  return (
-    <div onLoad={updateNavIcons(navIcons, none, profilePhoto)}>
-      <NavContainer display={currentUser == null ? "none" : "flex"}>
-        {NavList}
+  return currentUser ? (
+    <div>
+      <NavContainer>
+        {navIcons.map((icon) => (
+          <NavItem
+            key={icon.name}
+            icon={icon}
+            handleIconChanged={handleIconChanged}
+            iconActive={iconActive}
+          ></NavItem>
+        ))}
       </NavContainer>
     </div>
+  ) : (
+    <></>
   );
 }

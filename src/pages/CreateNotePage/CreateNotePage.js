@@ -3,9 +3,9 @@ import SelectAnimal from "./components/SelectAnimal";
 import Form from "./components/Form";
 import { PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateNote, saveNote, failtoSaveNote } from "../../reducers/form";
-import  SaveNote  from "../../../src/reducers/utils/db"
+import SaveNote from "../../../src/reducers/utils/db";
 
 const GridContainer = styled.div`
   display: grid;
@@ -15,12 +15,17 @@ const GridContainer = styled.div`
   width: 85%;
   max-width: 1200px;
   margin: 60px auto;
+  margin-right: 90px;
+  margin-top: 230px;
+
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
     grid-template-areas:
       "picker"
       "form";
+    margin-right: auto;
+    margin-top: auto;
   }
 `;
 
@@ -48,8 +53,8 @@ const SendBtn = styled.button`
 `;
 
 export default function CreateNotePage() {
-  const dispatch=useDispatch();
-  const formContent=useSelector((state)=>state.form.value)
+  const dispatch = useDispatch();
+  const formContent = useSelector((state) => state.form.value);
 
   return (
     <>
@@ -58,14 +63,11 @@ export default function CreateNotePage() {
         <SelectAnimal></SelectAnimal>
         <Form></Form>
       </GridContainer>
-      <p>Fill out the questions before you send it 
-      <SendBtn
-        onClick={()=>SaveNote(formContent)}
-      >
-        Send
-      </SendBtn>
+      <p>
+        Fill out the questions before you send it
+        <SendBtn onClick={() => SaveNote(formContent)}>Send</SendBtn>
       </p>
-      {console.log("formContent:",formContent)}
+      {console.log("formContent:", formContent)}
     </>
   );
 }

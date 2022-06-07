@@ -15,7 +15,9 @@ export const WebTitle = styled.div`
   color: #e6e6e6;
   text-align: center;
   /* border-top: 5px solid #8ba6bc; */
-  padding-top: 20px;
+  padding-top: 100px;
+
+
 `;
 
 export const PageTitle = styled.div`
@@ -28,6 +30,13 @@ export const PageTitle = styled.div`
   text-align: left;
   margin-top: 90px;
   margin-bottom: 80px;
+  position: fixed;
+  top:0px;
+  left:0px;
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+position: static;
+  }
+
 `;
 
 export const TitleLable = styled.div`
@@ -203,4 +212,7 @@ export const BtnSubmit = styled.button`
     transform: scale(0.95);
     transition: all 0.1s;
   }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 70%;
+    }
 `;

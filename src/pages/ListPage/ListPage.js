@@ -20,12 +20,16 @@ const GridContainer = styled.div`
   grid-template-areas: ". list list list";
   width: 85%;
   max-width: 1200px;
-
   margin: 60px auto;
+  margin-right:90px;
+  margin-top: 230px;
+
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
     grid-template-areas: "list";
+    margin-right: auto;
+    margin-top: auto;
   }
 `;
 

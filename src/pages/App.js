@@ -10,6 +10,7 @@ import ListPage from "./ListPage/ListPage";
 import PrivateRoute from "../PrivateRoute";
 import ShowNotePage from "./ShowNotePage/ShowNotePage";
 import ProfilePage from "./ProfilePage/ProfilePage";
+import HomePage from "./HomePage/HomePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
@@ -76,7 +77,7 @@ export default function App() {
               <Route path="/test" element={<Test />} />
               <Route path="*" element={<Test />} />
               <Route element={<PrivateRoute />}>
-                <Route path="/Home" element={<CreateNotePage />} />
+                <Route path="/Home" element={<HomePage />} />
                 <Route path="/Add" element={<CreateNotePage />} />
                 <Route path="/List" element={<ListPage />} />
                 <Route path="/Whale" element={<ShowNotePage />} />

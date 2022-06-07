@@ -3,28 +3,10 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loginr, logoutr, update } from "../../reducers/user";
 import { useAuthUser, logout } from "../../firebase";
-import styled from "styled-components";
 import { H3, PageTitle } from "../../components/styles/component.css";
 import { BtnSubmit } from "../CreateNotePage/components/SelectAnimal";
 import Avatar from "./components/avatar";
-
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 60%;
-  max-width: 1200px;
-  margin: 40px auto;
-  text-align: center;
-  grid-template-areas:
-    "email"
-    "logout"
-    "avatar";
-  grid-gap: 40px;
-
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 80%;
-  }
-`;
+import { Container } from "../../components/styles/container.css";
 
 
 export default function ProfilePage() {

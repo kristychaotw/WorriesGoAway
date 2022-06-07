@@ -8,3 +8,26 @@ export const AppContainer = styled.div`
   padding: ${({padding})=>padding||"0px"};
   text-align: center;
 `;
+
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 60%;
+  max-width: 1200px;
+  margin: 40px auto;
+  margin-right: 110px;
+  margin-top: 230px;
+  text-align: center;
+  grid-template-areas:
+    "email"
+    "logout"
+    "avatar";
+  grid-gap: 40px;
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 80%;
+    margin-right: auto;
+    margin-top: auto;
+  }
+`;

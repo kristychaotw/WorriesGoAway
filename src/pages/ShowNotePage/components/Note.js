@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { H3, TagBox, RateBox } from "../../../components/styles/component.css";
 import StaticRating from "../../ListPage/components/StaticRating";
 import styled from "styled-components";
-import { StampWrapper } from "../../../components/styles/note.css";
-import { Line } from "../../../components/styles/note.css";
+import { StampWrapper,Line } from "../../../components/styles/note.css";
 
 const NoteWrapper = styled.div`
   width: 60%;
@@ -116,7 +115,6 @@ export default function Note({ note }) {
     <>
       {note ? (
         <>
-          {console.log("now note:", note)}
           <NoteWrapper>
             <StampWrapper grid={"stamp"} top={"30px"} right={"-90px"}>
               <Line>

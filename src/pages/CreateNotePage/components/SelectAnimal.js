@@ -18,6 +18,7 @@ export const BtnSubmit = styled.button`
   font-size: ${({ theme }) => theme.fontSize.xl};
   box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
   display: block;
+  grid-area: ${({grid})=>grid};
 
   &:hover {
     background-color: #587b90;

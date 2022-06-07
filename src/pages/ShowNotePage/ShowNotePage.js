@@ -4,6 +4,7 @@ import Note from "./components/Note";
 import styled from "styled-components";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import db from "../../firebase";
+import EndBtn from "./components/EndBtn"
 
 
 const ShowNoteWrapper = styled.div`
@@ -54,6 +55,7 @@ export default function ShowNotePage() {
     <ShowNoteWrapper onLoad={renderNotef()}>
       <AnimalBG BG={note.animalName}></AnimalBG>
       <Note note={note}></Note>
+      <EndBtn/>
     </ShowNoteWrapper>
   );
 }

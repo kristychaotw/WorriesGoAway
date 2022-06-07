@@ -27,14 +27,12 @@ export const StampWrapper = styled.div`
   position: absolute;
   top: ${({ top }) => top};
   right: ${({ right }) => right};
+
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-  top:35px;
-  right:-15px;
-  
+    top: 35px;
+    right: -15px;
   }
-
 `;
-
 
 export const Line = styled.div`
   width: 250px;
@@ -44,25 +42,27 @@ export const Line = styled.div`
   display: flex;
   justify-content: center;
   align-items: end;
- 
+  position: relative;
+
   img {
     width: 30%;
     margin-bottom: 5px;
     animation-name: imgAnimation;
-    animation-duration: .5s;
-    
+    animation-duration: 0.5s;
   }
 
   @keyframes imgAnimation {
-  from {opacity:0;}
-  to {opacity:1;}
-}
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 100px;
   }
-
-
 `;
 
 export const TitleLable = styled.div`

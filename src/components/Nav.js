@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthUser } from "../firebase";
 import add from "./images/icons/add.svg";
 import home from "./images/icons/home.svg";

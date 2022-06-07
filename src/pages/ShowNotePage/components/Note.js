@@ -60,9 +60,7 @@ const TextWrapper = styled.div`
   text-align: start;
 `;
 
-export default function Note({note}) {
-  
-
+export default function Note({ note }) {
   function timeDistance() {
     const timeCreated = note.createDate;
     const timeToday = Date();
@@ -88,10 +86,10 @@ export default function Note({note}) {
   function msg(animal) {
     let AnimalBehavior;
     if (animal === "cat") {
-      AnimalBehavior = Math.round(timeDistance()*10)/10;
+      AnimalBehavior = Math.round(timeDistance() * 10) / 10;
       return "the cat has been sleeping for " + AnimalBehavior + " hrs";
     } else if (animal === "whale") {
-      AnimalBehavior =  Math.round(timeDistance() * 40*10)/10;
+      AnimalBehavior = Math.round(timeDistance() * 40 * 10) / 10;
       return "the whale has been swimming for " + AnimalBehavior + " km";
     } else if (animal === "rabbit") {
       let month = timeDistance() / (24 * 30);
@@ -100,13 +98,19 @@ export default function Note({note}) {
       } else {
         AnimalBehavior = 0;
       }
-      return "the rabbit has given birth to "+ AnimalBehavior + " baby rabbits";
-    }
-    else{
-      return "wait...."
+      return (
+        "the rabbit has given birth to " + AnimalBehavior + " baby rabbits"
+      );
+    } else if (animal === "polarbear") {
+      AnimalBehavior = Math.round(timeDistance() * 10 * 10) / 10;
+      return "the polar bear has been swimming for " + AnimalBehavior + " km";
+    } else if (animal === "brownbear") {
+      AnimalBehavior = Math.round(timeDistance() * 1.6 * 10) / 10;
+      return "the grizzly bear has been catching " + AnimalBehavior + " salmons";
+    } else {
+      return "wait....";
     }
   }
-
 
   return (
     <>

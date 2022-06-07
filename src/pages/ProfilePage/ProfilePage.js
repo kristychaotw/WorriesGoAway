@@ -29,11 +29,8 @@ export default function ProfilePage() {
     <>
       <PageTitle>Profile Page</PageTitle>
       <Container>
-        {/* <p>Name : {user.name}</p>*/}
         <H3 grid={"email"}>Hello    {currentUser.email} ,</H3>
-        {/* <p>Password:{user.age}</p> */}
         <Avatar grid={"avatar"}></Avatar>
-
         <BtnSubmit
           grid={"logout"}
           disabled={loading || !currentUser}

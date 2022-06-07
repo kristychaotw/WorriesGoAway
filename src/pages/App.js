@@ -63,7 +63,7 @@ export default function App() {
   console.log("currentuserinApp:", currentUser);
 
   return (
-    <>
+    <div>
       <AuthProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
@@ -89,6 +89,6 @@ export default function App() {
           </AppContainer>
         </ThemeProvider>
       </AuthProvider>
-    </>
+    </div>
   );
 }

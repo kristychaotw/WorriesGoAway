@@ -2,6 +2,8 @@ import React from "react";
 import whaleBG from "../../../components/images/loginBG.jpg";
 import rabbitBG from "../../../components/images/rabbitBG.jpg";
 import catBG from "../../../components/images/catBG.jpg";
+import polarbearBG from "../../../components/images/polarbear2BG.jpg";
+import brownbearBG from "../../../components/images/brownbear3BG.jpg";
 
 import styled from "styled-components";
 
@@ -35,18 +37,20 @@ export default function AnimalBG({BG}) {
       return whaleBG;
     } else if (BG === "rabbit") {
       return rabbitBG;
+    } else if (BG === "polarbear") {
+      return polarbearBG;
+    } else if (BG === "brownbear") {
+      return brownbearBG;
     } else {
       whaleBG;
     }
   }
   
-  let BGsrc=getBG(BG)
-  console.log("BGsrc:",BGsrc);
+  let BGsrc=getBG(BG);
 
 
   return (
     <BGWrapper BGsrc={BGsrc}>
-      {console.log("BGsrc",BGsrc)}
       <DarkLayer></DarkLayer>
     </BGWrapper>
   );

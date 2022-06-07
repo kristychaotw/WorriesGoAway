@@ -87,7 +87,7 @@ export default function LoginForm() {
       {console.log("form:", loginForm)}
 
       {currentUser ? (
-        <>
+        <div>
           <WebTitle>Welcome</WebTitle>
           <BtnSubmit disabled={loading || !currentUser}>
             {" "}
@@ -99,9 +99,9 @@ export default function LoginForm() {
           >
             Log Out
           </BtnSubmit>
-        </>
+        </div>
       ) : (
-        <>
+        <div>
           <form>
             <InputLable primary>User Email</InputLable>
             <TextInput ref={emailRef} type="email" />
@@ -110,7 +110,7 @@ export default function LoginForm() {
           </form>
           <div>
             {loginForm ? (
-              <>
+              <div>
                 <BtnSubmit
                   disabled={loading || currentUser}
                   onClick={() => handleLogin()}
@@ -126,9 +126,9 @@ export default function LoginForm() {
                     Register
                   </span>
                 </P>
-              </>
+              </div>
             ) : (
-              <>
+              <div>
                 <BtnSubmit
                   disabled={loading || currentUser}
                   onClick={() => handleLogin()}
@@ -145,10 +145,10 @@ export default function LoginForm() {
                     Login
                   </span>
                 </P>
-              </>
+              </div>
             )}
           </div>
-        </>
+        </div>
       )}
     </FormContainer>
   );

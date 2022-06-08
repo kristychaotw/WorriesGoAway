@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ListCard from "./components/ListCard";
 import { PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
@@ -9,9 +9,9 @@ import {
   query,
   where,
   getDocs,
-  orderBy 
+  orderBy,
 } from "firebase/firestore";
-import moment from 'moment'
+import moment from "moment";
 
 const GridContainer = styled.div`
   display: grid;
@@ -21,9 +21,8 @@ const GridContainer = styled.div`
   width: 85%;
   max-width: 1200px;
   margin: 60px auto;
-  margin-right:90px;
+  margin-right: 90px;
   margin-top: 230px;
-
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
@@ -52,35 +51,48 @@ const ContentWrapper = styled.div`
 //   "rating": 1
 // }]
 
-
 export default function ListPage() {
   // const list = useSelector((state) => state.list.value);
   // console.log("list",list);
   const [notes, setNotes] = useState([]);
-  const currentUser=useAuthUser().currentUser
-  console.log("uid:",currentUser,currentUser.uid);
+  const currentUser = useAuthUser().currentUser;
+  console.log("uid:", currentUser, currentUser.uid);
 
   useEffect(() => {
-    const q = query(collection(db, "notes"),where("author", "==", currentUser.uid), orderBy("createDate","desc"));
-    const notesDB=[]
+    const q = query(
+      collection(db, "notes"),
+      where("author", "==", currentUser.uid),
+      orderBy("createDate", "desc")
+    );
+    const notesDB = [];
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        notesDB.push(doc.data());
+        // notesDB.push(doc.data());
+        const newdoc = { ...doc.data(), docID: doc.id };
+        notesDB.push(newdoc);
       });
+
       setNotes(...notes, notesDB);
-      localStorage.setItem("defaultNote:",notesDB[0].id)
     });
     return unsubscribe;
   }, []);
 
-  const sortNote=notes.sort((a,b)=>moment(a.createDate)>moment(b.createDate)?-1:1)
+  const sortNote = notes.sort((a, b) =>
+    moment(a.createDate).format() > moment(b.createDate).format() ? -1 : 1
+  );
+
+  // function setDefaultNote() {
+  //   const defaultNoteID=sortNote[0].docID;
+  //   console.log("ddd",defaultNoteID);
+  //   localStorage.setItem("defaultNoteID:", defaultNoteID);
+  // }
 
   return (
     <>
       <PageTitle>My Note List</PageTitle>
       <GridContainer>
         <ContentWrapper>
-           {sortNote.map((item, index) => {
+          {sortNote.map((item, index) => {
             return <ListCard key={index} item={item}></ListCard>;
           })}
         </ContentWrapper>

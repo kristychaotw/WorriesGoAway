@@ -67,7 +67,6 @@ export default function CreateNotePage() {
         Fill out the questions before you send it
         <SendBtn onClick={() => SaveNote(formContent)}>Send</SendBtn>
       </p>
-      {console.log("formContent:", formContent)}
     </>
   );
 }

@@ -8,8 +8,11 @@ import {
   onSnapshot,
   query,
   where,
+  doc, updateDoc
 } from "firebase/firestore";
 import db from "../../firebase";
+import moment from 'moment';
+
 
 // const dispatch = useDispatch();
 export default async function SaveNote(content) {
@@ -27,3 +30,19 @@ export default async function SaveNote(content) {
   alert("successfully saved")
 }
 
+export async function UpdateNoteEndTime(docID){
+console.log("updateendtime");
+const noteRef = doc(db, "notes", docID);
+try {
+  await updateDoc(noteRef, {
+    isComplete: true,
+    endDate:moment().format()
+  });
+  return console.log("success")
+} catch (e) {
+  alert("Error updating document: ", e);
+  return console.log("failed")
+}
+
+
+}

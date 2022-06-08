@@ -8,29 +8,30 @@ import {
 } from "../../../components/styles/component.css";
 import StaticRating from "./StaticRating";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 export default function ListCard({
-  item: { id, title, rating, createDate, tag, animal, timePass },
+  item: { id, title, rating, createDate, tag, animal, timePass,docID },
 }) {
-  let dateFormat;
+  let createDateFormat;
   if (createDate != null) {
-    let cppyCreateDate = createDate;
-    dateFormat = cppyCreateDate.split(" ").slice(1, 4);
+    createDateFormat = moment(createDate).format("MMM Do YY");
   }
 
   function handleClick(e) {
+    console.log("e",e);
     localStorage.setItem("showItemID", e);
   }
 
   return (
-    <StyledCardWrapper onClick={() => handleClick(id)}>
+    <StyledCardWrapper onClick={() => handleClick(docID)}>
       <Link to="/Whale">
         <StyledCard>
           <H3>{title}</H3>
           <TagBox>{tag}</TagBox>
           <img src={animal}></img>
           <p>
-            {dateFormat}
+            {createDateFormat}
             {/* {dateFormat} ‧ Has Been Passed : {timePass} */}
           </p>
           <RateBox>

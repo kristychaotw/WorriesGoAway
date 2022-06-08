@@ -58,7 +58,7 @@ export default function Static() {
     const stressSum = list.reduce((currentTotal, note) => {
       return note.rating + currentTotal;
     }, 0);
-    const stressAvg = stressSum / list.length;
+    const stressAvg = Math.round(stressSum / list.length*100)/100;
     return Object.is(stressAvg,NaN)? 'no note':stressAvg;
   }
   const stressAvgTotal = countStress(notes);

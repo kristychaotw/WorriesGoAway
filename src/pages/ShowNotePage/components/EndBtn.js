@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { UpdateNoteEndTime } from "../../../reducers/utils/db";
 
 const EndBtnStyled = styled.button`
   position: absolute;
@@ -27,17 +28,30 @@ const EndBtnStyled = styled.button`
   }
 `;
 
-export default function EndBtn() {
+
+///// 拿到doc的doc.id 傳進去update動作
+
+export default function EndBtn({noteID}) {
+  console.log("noteID",noteID);
+  const[loading,setLoading]=useState(false);
   const [worryState, setWorryState] = useState({
     "worry": true,
     "endtext": "Free this worry",
   });
+  const endState = { "worry": false, "endtext": "Worry Finished" };
 
   const EndText = () => {
-    let endState = { "worry": false, "endtext": "Worry Finished" };
-    setWorryState(prevState => {
-        return {...prevState, ...endState};
-      });
+    setLoading(true)
+    if (UpdateNoteEndTime(noteID)){
+      setWorryState(prevState => {
+          return {...prevState, ...endState};
+        });
+    }else{
+      console.log("上傳失敗");
+    }
+    setLoading(false)
+    
+    
   };
-  return <EndBtnStyled disabled={!worryState.worry} onClick={EndText}>{worryState.endtext}</EndBtnStyled>;
+  return <EndBtnStyled disabled={loading||!worryState.worry} onClick={EndText}>{worryState.endtext}</EndBtnStyled>;
 }

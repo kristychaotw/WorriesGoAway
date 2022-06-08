@@ -11,6 +11,7 @@ const formInitialState = {
   createDate: moment().format(),
   error: "",
   isComplete: false,
+  endDate:"",
   author:"",
 };
 export const formSlice = createSlice({

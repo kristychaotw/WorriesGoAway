@@ -9,6 +9,8 @@ import Avatar from "./components/avatar";
 import { Container } from "../../components/styles/container.css";
 
 
+
+
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();

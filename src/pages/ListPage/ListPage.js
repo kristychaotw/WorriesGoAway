@@ -70,13 +70,16 @@ export default function ListPage() {
     return unsubscribe;
   }, []);
 
+  const sortNote=notes.sort((a,b)=>a.createDate>b.createDate?-1:1)
+  const filterNote=notes.filter((note)=>note.tag==="Wealth")
   return (
     <>
     {console.log("notes:",notes)}
+    {console.log("filterNote:", filterNote)}
       <PageTitle>My Note List</PageTitle>
       <GridContainer>
         <ContentWrapper>
-          {notes.map((item, index) => {
+           {sortNote.map((item, index) => {
             return <ListCard key={index} item={item}></ListCard>;
           })}
         </ContentWrapper>

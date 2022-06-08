@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TagButton,TagBox } from "../../../components/styles/note.css";
 
 export default function Tags(props) {
-  const tags = ["Life", "Wealth", "Health", "Love", "Relationship", "Others"];
+  const tags = ["Life", "Wealth", "Health", "Love", "Social", "Others"];
   const [tagActive, setTagActive] = useState(tags[0]);
 
   function handleToggle(currentTag) {

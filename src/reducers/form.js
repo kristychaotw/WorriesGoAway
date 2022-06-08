@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import moment from 'moment';
 
 const formInitialState = {
   id:  "",
@@ -8,9 +8,9 @@ const formInitialState = {
   rating: "",
   worry: "",
   animal: "",
-  createDate: Date(),
+  createDate: moment().format(),
   error: "",
-  isStored: false,
+  isComplete: false,
   author:"",
 };
 export const formSlice = createSlice({

@@ -216,3 +216,33 @@ export const BtnSubmit = styled.button`
     width: 70%;
     }
 `;
+
+
+export const StaticStyled=styled.div`
+border-radius: 10px;
+border: 2px solid ${({theme})=>theme.colors.primary};
+position: relative;
+padding:  ${({theme})=>theme.spacing.l};
+grid: ${({grid})=>grid};
+
+h3{
+  position: absolute;
+  top:-${({theme})=>theme.fontSize.m};
+  left:20px;
+  font-size: ${({theme})=>theme.fontSize.m};
+  color: ${({theme})=>theme.colors.primary};
+  background-color: ${({theme})=>theme.colors.body};
+  font-weight: 700;
+  padding:0px 10px;
+  margin-bottom: 20px;
+  
+
+}
+
+h4{
+  font-size: ${({theme})=>theme.fontSize.l};
+  color: ${({theme})=>theme.colors.primary};
+  text-align: left;
+  padding-bottom: ${({theme})=>theme.spacing.xs};
+}
+`

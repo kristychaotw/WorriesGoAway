@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { H3, TagBox, RateBox } from "../../../components/styles/component.css";
 import StaticRating from "../../ListPage/components/StaticRating";
 import styled from "styled-components";
-import { StampWrapper,Line } from "../../../components/styles/note.css";
+import { StampWrapper, Line } from "../../../components/styles/note.css";
+import moment from "moment";
 
 const NoteWrapper = styled.div`
   width: 60%;
@@ -61,25 +62,16 @@ const TextWrapper = styled.div`
 
 export default function Note({ note }) {
   function timeDistance() {
-    const timeCreated = note.createDate;
-    const timeToday = Date();
+    const timeCreated = moment(note.createDate);
+    const timeToday = moment();
     console.log("cday:", timeCreated);
     console.log("tday:", timeToday);
-    // const yearEndFromToday=
-    // const yearEndFromCreated=
-    const diffInMs = new Date(timeToday) - new Date(timeCreated);
-    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-    const diffInHours = diffInMs / (1000 * 60 * 60);
 
-    console.log(
-      "diffInMs:",
-      diffInMs,
-      "diffInDays:",
-      diffInDays,
-      "diffInHours:",
-      diffInHours
-    );
-    return diffInHours;
+    let duration = moment.duration(timeToday.diff(timeCreated));
+    let diffinHours = duration.asHours();
+    console.log("duration:", duration, "diff:", diffinHours);
+
+    return diffinHours
   }
 
   function msg(animal) {
@@ -105,7 +97,9 @@ export default function Note({ note }) {
       return "the polar bear has been swimming for " + AnimalBehavior + " km";
     } else if (animal === "brownbear") {
       AnimalBehavior = Math.round(timeDistance() * 1.6 * 10) / 10;
-      return "the grizzly bear has been catching " + AnimalBehavior + " salmons";
+      return (
+        "the grizzly bear has been catching " + AnimalBehavior + " salmons"
+      );
     } else {
       return "wait....";
     }

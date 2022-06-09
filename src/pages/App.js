@@ -24,6 +24,7 @@ const theme = {
     primary: "#8BA6BC",
     secondary: "#656565",
     third: "#5085A5",
+    forth:"#8ba6bc",
     dark: "#656565",
     white: "#FCFCFC",
     primaryh66:"#8BA6BC66",

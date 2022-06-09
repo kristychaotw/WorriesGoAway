@@ -1,119 +1,104 @@
 import React, { useState, useRef } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuthUser, login, signup, logout } from "../../../firebase";
-import styled from "styled-components";
+import { useAuthUser } from "../../../firebase";
 import {
-  WebTitle,
+  FormContainer,
+  BtnSubmit,
+  P,
+  MsgP,
   TextInput,
   InputLable,
+  FormStyled,
 } from "../../../components/styles/component.css";
-import { BtnSubmit, P } from "../../../components/styles/component.css";
-import { useDispatch } from "react-redux";
-import { loginr, logoutr } from "../../../reducers/user";
-
-const FormContainer = styled.div`
-  width: 30%;
-  margin: 30px auto;
-  padding: 40px 0px;
-  text-align: center;
-  background: #00000040;
-  border: 1px solid rgba(19, 19, 19, 0.053);
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px #000000a1;
-
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    width: 50%;
-  }
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 75%;
-  }
-`;
+import Welcome from "./Welcome";
+import { handleLogin } from "./loginAuth";
 
 export default function LoginForm() {
-  const dispatch = useDispatch();
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
   const currentUser = useAuthUser().currentUser;
   const [loginForm, setLoginForm] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [loginState, setLoginState] = useState("");
 
   function changetoLoginForm() {
+    setLoginState("");
     setLoginForm(true);
   }
 
   function changetoSignupForm() {
+    setLoginState("");
     setLoginForm(false);
   }
-  async function handleLogin() {
-    setLoading(true);
-    if (loginForm === true)
-      try {
-        await login(emailRef.current.value, passwordRef.current.value);
-      } catch {
-        alert("Error!");
-      }
-    else
-      try {
-        await signup(emailRef.current.value, passwordRef.current.value);
-      } catch {
-        alert("Error!");
-      }
-    setLoading(false);
-    dispatch(
-      loginr({
-        name: "",
-        age: passwordRef.current.value,
-        email: emailRef.current.value,
-      })
-    );
+
+  const regexEmail = new RegExp(/^[^@\s]+@[^@\s]+\.[^@\s]+$/);
+  const regexPwd = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,10}$/);
+  const [validationMsg, setValidationMsg] = useState("");
+  let newMsg;
+  function checkFormat(type, value) {
+    setValidationMsg("")
+    setLoginState("");
+    if (type === "email") {
+      newMsg = regexEmail.test(value) ? "" : "Must be Email Format";
+      setValidationMsg(newMsg);
+    } else if (type === "pwd") {
+      newMsg = regexPwd.test(value)
+        ? ""
+        : "Must be 4-10 charactors mixing uppercase and lowercase letters and numbers.";
+      setValidationMsg(newMsg);
+    }
   }
 
-  async function handleLogout() {
+  async function handleClick(email, pwd, type) {
     setLoading(true);
-    try {
-      await logout();
-    } catch {
-      alert("Error!");
-    }
+    const msg = await handleLogin(email, pwd, type);
+    console.log("msg", msg);
+    setLoginState(msg);
     setLoading(false);
-    dispatch(logoutr());
   }
 
   return (
     <FormContainer>
       {console.log("currentuser:", currentUser)}
-      {console.log("form:", loginForm)}
 
       {currentUser ? (
         <div>
-          <WebTitle>Welcome</WebTitle>
-          <BtnSubmit disabled={loading || !currentUser}>
-            {" "}
-            <Link to="/Home">Enter</Link>
-          </BtnSubmit>
-          <BtnSubmit
-            disabled={loading || !currentUser}
-            onClick={() => handleLogout()}
-          >
-            Log Out
-          </BtnSubmit>
+          <Welcome />
         </div>
       ) : (
         <div>
-          <form>
+          <FormStyled>
             <InputLable primary>User Email</InputLable>
-            <TextInput ref={emailRef} type="email" />
+            <TextInput
+              ref={emailRef}
+              type="email"
+              required
+              pattern={regexEmail}
+              onFocus={()=>setValidationMsg("")}
+              onKeyDown={() => checkFormat("email", emailRef.current.value)}
+            />
             <InputLable primary>Password</InputLable>
-            <TextInput ref={passwordRef} type="password" />
-          </form>
+            <TextInput
+              ref={passwordRef}
+              type="password"
+              required
+              pattern={regexPwd}
+              onFocus={()=>setValidationMsg("")}
+              onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
+            />
+          </FormStyled>
           <div>
             {loginForm ? (
               <div>
                 <BtnSubmit
+                  marginbt={"10px"}
                   disabled={loading || currentUser}
-                  onClick={() => handleLogin()}
+                  onClick={() =>
+                    handleClick(
+                      emailRef.current.value,
+                      passwordRef.current.value,
+                      "login"
+                    )
+                  }
                 >
                   Log In
                 </BtnSubmit>
@@ -126,12 +111,20 @@ export default function LoginForm() {
                     Register
                   </span>
                 </P>
+                <MsgP>{loginState || validationMsg}</MsgP>
               </div>
             ) : (
               <div>
                 <BtnSubmit
+                  marginbt={"10px"}
                   disabled={loading || currentUser}
-                  onClick={() => handleLogin()}
+                  onClick={() =>
+                    handleClick(
+                      emailRef.current.value,
+                      passwordRef.current.value,
+                      "signup"
+                    )
+                  }
                 >
                   Sign Up
                 </BtnSubmit>
@@ -145,6 +138,7 @@ export default function LoginForm() {
                     Login
                   </span>
                 </P>
+                <MsgP>{loginState || validationMsg}</MsgP>
               </div>
             )}
           </div>

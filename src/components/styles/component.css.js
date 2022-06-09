@@ -16,8 +16,6 @@ export const WebTitle = styled.div`
   text-align: center;
   /* border-top: 5px solid #8ba6bc; */
   padding-top: 100px;
-
-
 `;
 
 export const PageTitle = styled.div`
@@ -31,12 +29,11 @@ export const PageTitle = styled.div`
   margin-top: 90px;
   margin-bottom: 80px;
   position: fixed;
-  top:0px;
-  left:0px;
+  top: 0px;
+  left: 0px;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
-position: static;
+    position: static;
   }
-
 `;
 
 export const TitleLable = styled.div`
@@ -51,6 +48,18 @@ export const TitleLable = styled.div`
 export const P = styled.p`
   padding: 10px;
   color: #e6e6e6;
+  font-weight: 500;
+
+`;
+
+export const MsgP = styled.p`
+  margin: 0 25%;
+  padding: 10px;
+  color: #e6e6e6;
+  margin-top: 20px;
+  font-weight: 500;
+  border-top: 4px solid ${({ theme }) => theme.colors.forth};
+  border-bottom: 4px solid ${({ theme }) => theme.colors.forth};
 `;
 
 export const H2 = styled.h2`
@@ -141,7 +150,7 @@ export const TagBox = styled.div`
   color: #656565;
   grid-area: ${({ grid }) => grid};
   justify-self: ${({ align }) => align || "end"};
-  /* background-color: ${({theme})=>theme.colors.dark}; */
+  /* background-color: ${({ theme }) => theme.colors.dark}; */
 `;
 
 export const RateBox = styled.div`
@@ -185,14 +194,19 @@ export const TextInput = styled.input`
   :focus {
     border-bottom: 2px solid ${({ theme }) => theme.colors.white};
   }
-
- 
+  /* :valid {
+    border-bottom: 2px solid ${({ theme }) => theme.colors.white};
+  }
+  :invalid {
+    border-bottom: 2px solid  ${({ theme }) => theme.colors.secondary};
+  } */
 `;
 
 export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
   margin: 50px auto;
+  margin-bottom: ${({marginbt})=>marginbt};
   margin-left: ${({ margin }) => margin};
   padding: 10px;
   border-radius: 40px;
@@ -214,35 +228,62 @@ export const BtnSubmit = styled.button`
   }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 70%;
-    }
+  }
 `;
 
+export const StaticStyled = styled.div`
+  border-radius: 10px;
+  border: 2px solid ${({ theme }) => theme.colors.primary};
+  position: relative;
+  padding: ${({ theme }) => theme.spacing.l};
+  grid: ${({ grid }) => grid};
 
-export const StaticStyled=styled.div`
-border-radius: 10px;
-border: 2px solid ${({theme})=>theme.colors.primary};
-position: relative;
-padding:  ${({theme})=>theme.spacing.l};
-grid: ${({grid})=>grid};
+  h3 {
+    position: absolute;
+    top: -${({ theme }) => theme.fontSize.m};
+    left: 20px;
+    font-size: ${({ theme }) => theme.fontSize.m};
+    color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.body};
+    font-weight: 700;
+    padding: 0px 10px;
+    margin-bottom: 20px;
+  }
 
-h3{
-  position: absolute;
-  top:-${({theme})=>theme.fontSize.m};
-  left:20px;
-  font-size: ${({theme})=>theme.fontSize.m};
-  color: ${({theme})=>theme.colors.primary};
-  background-color: ${({theme})=>theme.colors.body};
-  font-weight: 700;
-  padding:0px 10px;
-  margin-bottom: 20px;
-  
+  h4 {
+    font-size: ${({ theme }) => theme.fontSize.l};
+    color: ${({ theme }) => theme.colors.primary};
+    text-align: left;
+    padding-bottom: ${({ theme }) => theme.spacing.xs};
+  }
+`;
 
-}
+export const FormContainer = styled.div`
+  width: 30%;
+  margin: 30px auto;
+  padding: 40px 0px;
+  text-align: center;
+  background: #00000040;
+  border: 1px solid rgba(19, 19, 19, 0.053);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #000000a1;
 
-h4{
-  font-size: ${({theme})=>theme.fontSize.l};
-  color: ${({theme})=>theme.colors.primary};
-  text-align: left;
-  padding-bottom: ${({theme})=>theme.spacing.xs};
-}
-`
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    width: 50%;
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 75%;
+  }
+`;
+
+export const FormStyled = styled.form`
+  /* padding: 40px 40px 60px 40px; */
+
+  p {
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: left;
+    color: ${({ theme }) => theme.colors.body};
+  }
+`;

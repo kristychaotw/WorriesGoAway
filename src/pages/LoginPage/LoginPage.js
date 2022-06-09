@@ -15,7 +15,7 @@ const BgContainer = styled.div`
 export default function LoginPage() {
   return (
     <BgContainer>
-      <WebTitle>Worries Go Away</WebTitle>
+      <WebTitle>Worry Note</WebTitle>
       <LoginForm></LoginForm>
     </BgContainer>
   );

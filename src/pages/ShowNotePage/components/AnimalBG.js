@@ -10,12 +10,12 @@ import styled from "styled-components";
 const DarkLayer = styled.div`
   background-color: #00000044;
   width: 100%;
-  height: 100%;
+  height: 120vh;
 `;
 const BGWrapper = styled.div`
 z-index: 8;
   width: 100%;
-  height: 100%;
+  height: 120vh;
   position: absolute;
   background-image: url(${({ BGsrc }) => BGsrc});
   background-size: contain;

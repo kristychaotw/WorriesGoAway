@@ -8,6 +8,7 @@ import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
 import { update } from "../../../reducers/user";
 import { useDispatch} from "react-redux";
+import Modal from "../../../components/Modal";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -34,7 +35,7 @@ export default function Avatar() {
   const [photoURL, setPhotoURL] = useState(`${avatarsvg}`);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-
+  const [isOpen,setIsOpen]=useState(false)
 
   function handleChange(e) {
     if (e.target.files[0]) {
@@ -43,7 +44,6 @@ export default function Avatar() {
   }
 
   const handleClick = () => {
-    console.log("testclick");
     const fileRef = ref(storage, currentUser.uid + ".png");
     setLoading(true);
     uploadBytes(fileRef, photo)
@@ -52,14 +52,20 @@ export default function Avatar() {
           .then((url) => {
             setPhotoURL(url);
             handleAuthPhotoURL(url)
-            alert("success!");
+            setIsOpen(true)
+            handleModal("success","success to add an photo")
+            // alert("success!");
           })
           .catch((error) => {
             console.log(error.message, "error!");
+            handleModal("oops",error.message)
+
           });
       })
       .catch((error) => {
         console.log(error.message, "error");
+        handleModal("oops",error.message)
+
       });
       setLoading(false);
   };
@@ -68,10 +74,15 @@ export default function Avatar() {
     setLoading(true);
     updateProfile(currentUser, { photoURL: url })
     .then(() => {
-      alert("success update!");
+      // alert("success update!");
+      setIsOpen(true)
+      handleModal("success","success to add an photo")
+
     })
     .catch((error) => {
       console.log(error.message, "error when update");
+      handleModal("oops",error.message)
+
     });
     setLoading(false);
   }
@@ -84,6 +95,18 @@ export default function Avatar() {
     }
   }, [photoURL]);
 
+  let type;
+  let msg;
+
+  const handleModal=(typepassin,msgpassin)=>{
+    type=typepassin;
+    msg=msgpassin;
+    console.log("type & msg",type,msg);
+
+  }
+
+
+  console.log("type & msg",type,msg);
 
   return (
     <Wrapper>
@@ -97,6 +120,7 @@ export default function Avatar() {
         Upload
       </BtnSubmit>
       <StyledAvatar src={photoURL} />
+      {isOpen?<Modal type={type} msg={msg} setIsOpen={setIsOpen}></Modal>:<></>}
     </Wrapper>
   );
 }

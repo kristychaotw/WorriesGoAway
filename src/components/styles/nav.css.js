@@ -10,7 +10,7 @@ export const NavContainer = styled.div`
   left: 0;
   bottom: 0;
   border-right: 1px solid #e4e5e9;
-  z-index: 9;
+  z-index: 99;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     padding-top: 0;

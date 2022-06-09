@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
@@ -14,10 +14,8 @@ import HomePage from "./HomePage/HomePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
-// import whale from "../components/images/icons/whale.svg"
-// import cat from "../components/images/icons/cat.svg";
-// import rabbit from "../components/images/icons/rabbit.svg";
-
+import Modal from "../components/Modal";
+import LoginForm from "./LoginPage/components/LoginForm";
 
 const theme = {
   colors: {
@@ -29,7 +27,8 @@ const theme = {
     dark: "#656565",
     white: "#FCFCFC",
     primaryh66:"#8BA6BC66",
-    whiteh80:"#FCFCFC80"
+    whiteh80:"#FCFCFC80",
+    dark80: "#65656580",
   },
   fontSize: {
     s: "0.8rem",

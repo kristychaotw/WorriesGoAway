@@ -9,27 +9,22 @@ import styled from "styled-components";
 
 const DarkLayer = styled.div`
   background-color: #00000044;
-  width: 100vw;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 `;
 const BGWrapper = styled.div`
-  width: 100vw;
-  height: 500px;
+z-index: 8;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: -60px;
-  /* left: -120px; */
-  background-image: url(${({BGsrc})=>BGsrc});
+  background-image: url(${({ BGsrc }) => BGsrc});
   background-size: contain;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center top;
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    top: -60px;
-    left: 0px;
-  }
+  background-position: left top;
 `;
 
-export default function AnimalBG({BG}) {
+export default function AnimalBG({ BG }) {
   function getBG(BG) {
     if (BG === "cat") {
       return catBG;
@@ -45,12 +40,11 @@ export default function AnimalBG({BG}) {
       whaleBG;
     }
   }
-  
-  let BGsrc=getBG(BG);
 
+  let BGsrc = getBG(BG);
 
   return (
-    <BGWrapper BGsrc={BGsrc}>
+    <BGWrapper grid={"animalBG"} BGsrc={BGsrc}>
       <DarkLayer></DarkLayer>
     </BGWrapper>
   );

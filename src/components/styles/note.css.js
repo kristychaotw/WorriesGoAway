@@ -22,16 +22,61 @@ export const FormWrapper = styled.div`
     "content content content";
 `;
 
+export const NoteWrapper = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  /* height: 100vh; */
+  padding: 60px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 0 10px 10px 10px;
+  box-shadow: 2px 4px 4px 0px #00000040;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+  grid-template-areas:
+    ". stamp"
+    "foreword foreword"
+    "rate tag"
+    "title title"
+    "content content";
+
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "stamp"
+      "foreword"
+      "rate"
+      "tag"
+      "title"
+      "content";
+  }
+`;
+
+export const TextWrapper = styled.div`
+  border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
+  grid-area: ${({ grid }) => grid};
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  margin-top: 20px;
+  font-weight: ${({ fontWeight }) => fontWeight};
+  text-align: start;
+`;
+
+
 export const StampWrapper = styled.div`
   grid-area: ${({ grid }) => grid};
+  justify-items: end;
+  align-items: start;
   position: absolute;
-  top: ${({ top }) => top};
-  right: ${({ right }) => right};
+  top: 90px;
+  right: -35px;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     top: 35px;
-    right: -15px;
+    right: -10px;
   }
+  
 `;
 
 export const Line = styled.div`
@@ -42,6 +87,7 @@ export const Line = styled.div`
   display: flex;
   justify-content: center;
   align-items: end;
+  grid-area: ${({ grid }) => grid};
   position: relative;
 
   img {
@@ -49,6 +95,13 @@ export const Line = styled.div`
     margin-bottom: 5px;
     animation-name: imgAnimation;
     animation-duration: 0.5s;
+    position: absolute;
+    right: 88px;
+    top: -80px;
+    @media (max-width: ${({ theme }) => theme.device.mobile}) {
+      right: 30px;
+      top: -35px;
+    }
   }
 
   @keyframes imgAnimation {

@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { UpdateNoteEndTime } from "../../../reducers/utils/db";
 
+const BtnWrapper = styled.div`
+  display: flex;
+`;
+
 const EndBtnStyled = styled.button`
-  position: absolute;
-  top: 600px;
-  left: 60px;
+  margin-right: 0;
+  justify-content: end;
+  height: 60px;
   padding: 5px 10px;
-  margin: 10px;
+  margin: 10px 0px;
   border: none;
   border-radius: 10px;
   background: #5085a5;
@@ -15,8 +19,6 @@ const EndBtnStyled = styled.button`
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.xl};
   box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
-  display: block;
-  grid-area: ${({ grid }) => grid};
 
   &:hover {
     background-color: #587b90;
@@ -28,30 +30,33 @@ const EndBtnStyled = styled.button`
   }
 `;
 
-
 ///// 拿到doc的doc.id 傳進去update動作
 
-export default function EndBtn({noteID}) {
-  console.log("noteID",noteID);
-  const[loading,setLoading]=useState(false);
+export default function EndBtn({ noteID }) {
+  console.log("noteID", noteID);
+  const [loading, setLoading] = useState(false);
   const [worryState, setWorryState] = useState({
-    "worry": true,
-    "endtext": "Free this worry",
+    worry: true,
+    endtext: "Free this worry",
   });
-  const endState = { "worry": false, "endtext": "Worry Finished" };
+  const endState = { worry: false, endtext: "Worry Finished" };
 
   const EndText = () => {
-    setLoading(true)
-    if (UpdateNoteEndTime(noteID)){
-      setWorryState(prevState => {
-          return {...prevState, ...endState};
-        });
-    }else{
+    setLoading(true);
+    if (UpdateNoteEndTime(noteID)) {
+      setWorryState((prevState) => {
+        return { ...prevState, ...endState };
+      });
+    } else {
       console.log("上傳失敗");
     }
-    setLoading(false)
-    
-    
+    setLoading(false);
   };
-  return <EndBtnStyled disabled={loading||!worryState.worry} onClick={EndText}>{worryState.endtext}</EndBtnStyled>;
+  return (
+    <BtnWrapper>
+      <EndBtnStyled disabled={loading || !worryState.worry} onClick={EndText}>
+        {worryState.endtext}
+      </EndBtnStyled>
+    </BtnWrapper>
+  );
 }

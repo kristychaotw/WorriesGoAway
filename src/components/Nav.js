@@ -22,36 +22,43 @@ export default function Nav() {
     { name: "User", url: none, urlActive: none, path: "/User" },
   ];
 
-  const currentUser = useAuthUser().currentUser;
-  const [navIcons, setNavIcons] = useState(nav);
   const [iconActive, setIconActive] = useState("Home");
   console.log("navIcons", navIcons);
-  const user = useSelector((state) => state.user.value);
-  
+
   function handleIconChanged(e) {
     setIconActive(e);
   }
-  
+
+  const user = useSelector((state) => state.user.value);
+  const currentUser = useAuthUser().currentUser;
+  const [navIcons, setNavIcons] = useState(nav);
+
+  const updateList = (newPhoto) => {
+    const newlist = navIcons.map((icon) =>
+      icon.name === "User"
+        ? { ...icon, url: newPhoto, urlActive: newPhoto }
+        : icon
+    );
+
+    setNavIcons(newlist);
+
+    console.log("navIcons", navIcons);
+    console.log("newlist", newlist);
+    console.log("navIcons2", navIcons);
+  };
+
   useEffect(() => {
-    let profilePhoto;
-    let newNavIcons;
-    if (currentUser !== null) {
-      console.log("incurrentuserphoto",currentUser.photoURL);      
-      profilePhoto=currentUser.photoURL
-      newNavIcons = navIcons.map(({ urlActive, url, ...navIcons }) => ({
-        ...navIcons,
-        url: url === none ? profilePhoto : url,
-        urlActive: urlActive === none ? profilePhoto : urlActive,
-      }));
-      console.log("profilePhoto", profilePhoto);
-      console.log("navIcons-new", newNavIcons);
-      setNavIcons(newNavIcons);
+    {
+      if (currentUser) {
+        updateList(currentUser.photoURL);
+        console.log("navIcons3", navIcons);
+      }
     }
-    console.log("navIcons-final", navIcons);
   }, [currentUser]);
 
   return currentUser ? (
     <div>
+      {console.log("navIcons4", navIcons)}
       <NavContainer>
         {navIcons.map((icon) => (
           <NavItem

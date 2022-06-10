@@ -92,8 +92,8 @@ export default function ListPage() {
       <PageTitle>My Note List</PageTitle>
       <GridContainer>
         <ContentWrapper>
-          {sortNote.map((item, index) => {
-            return <ListCard key={index} item={item}></ListCard>;
+          {sortNote.map((note, index) => {
+            return <ListCard key={index} note={note}></ListCard>;
           })}
         </ContentWrapper>
       </GridContainer>

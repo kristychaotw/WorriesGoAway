@@ -11,11 +11,17 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default function ListCard({
-  item: { id, title, rating, createDate, tag, animal, timePass,docID },
+  note: { id, title, rating, createDate, tag, animal ,docID, endDate },
 }) {
+  console.log("createDate:",createDate,"endDate",endDate);
   let createDateFormat;
-  if (createDate != null) {
+  if (createDate) {
     createDateFormat = moment(createDate).format("MMM Do YY");
+  }
+
+  let endDateFormat;
+  if (endDate) {
+    endDateFormat = moment(endDate).format("MMM Do YY");
   }
 
   function handleClick(e) {
@@ -31,8 +37,7 @@ export default function ListCard({
           <TagBox>{tag}</TagBox>
           <img src={animal}></img>
           <p>
-            {createDateFormat}
-            {/* {dateFormat} ‧ Has Been Passed : {timePass} */}
+            {createDateFormat} {"  >>>  "} {endDateFormat}
           </p>
           <RateBox>
             <StaticRating rate={rating}></StaticRating>

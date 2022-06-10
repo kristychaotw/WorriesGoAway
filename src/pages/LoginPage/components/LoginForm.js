@@ -19,6 +19,12 @@ export default function LoginForm() {
   const currentUser = useAuthUser().currentUser;
   const [loginForm, setLoginForm] = useState(true);
   const [loginState, setLoginState] = useState("");
+  const [testAccount,setTestAccount]= useState({"testEmail":"","testPwd":""})
+
+  function getTestAccount(){
+    const testAccount={"testEmail":"test@gmail.com","testPwd":"Test2022"}
+    setTestAccount(testAccount)
+  }
 
   function changetoLoginForm() {
     setLoginState("");
@@ -70,6 +76,7 @@ export default function LoginForm() {
             <InputLable primary>User Email</InputLable>
             <TextInput
               ref={emailRef}
+              defaultValue={testAccount.testEmail}
               type="email"
               required
               pattern={regexEmail}
@@ -79,6 +86,7 @@ export default function LoginForm() {
             <InputLable primary>Password</InputLable>
             <TextInput
               ref={passwordRef}
+              defaultValue={testAccount.testPwd}
               type="password"
               required
               pattern={regexPwd}
@@ -111,7 +119,6 @@ export default function LoginForm() {
                     Register
                   </span>
                 </P>
-                <MsgP>{loginState || validationMsg}</MsgP>
               </div>
             ) : (
               <div>
@@ -138,9 +145,10 @@ export default function LoginForm() {
                     Login
                   </span>
                 </P>
-                <MsgP>{loginState || validationMsg}</MsgP>
               </div>
             )}
+            <BtnSubmit onClick={()=>getTestAccount()}>Get Test Account</BtnSubmit>
+            <MsgP>{loginState || validationMsg}</MsgP>
           </div>
         </div>
       )}

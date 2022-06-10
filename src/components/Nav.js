@@ -36,7 +36,9 @@ export default function Nav() {
   const updateList = (newPhoto) => {
     const newlist = navIcons.map((icon) =>
       icon.name === "User"
-        ? { ...icon, url: newPhoto, urlActive: newPhoto }
+        ? { ...icon, 
+          url: newPhoto?newPhoto: none, 
+          urlActive: newPhoto? newPhoto:none }
         : icon
     );
 

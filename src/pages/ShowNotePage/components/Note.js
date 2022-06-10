@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { H3, TagBox, RateBox } from "../../../components/styles/component.css";
+import {
+  H3,
+  TagBox,
+  RateBox,
+  P,
+} from "../../../components/styles/component.css";
 import StaticRating from "../../ListPage/components/StaticRating";
-import { StampWrapper, Line, NoteWrapper, TextWrapper } from "../../../components/styles/note.css";
+import {
+  StampWrapper,
+  Line,
+  NoteWrapper,
+  TextWrapper,
+} from "../../../components/styles/note.css";
 import moment from "moment";
 
-
 export default function Note({ note }) {
-  function timeDistance() {
-    const timeCreated = moment(note.createDate);
-    const timeToday = moment();
-    console.log("cday:", timeCreated);
-    console.log("tday:", timeToday);
+  const timeCreated = moment(note.createDate);
+  const timeToday = moment();
+  const timeEnd = moment(note.endDate);
 
-    let duration = moment.duration(timeToday.diff(timeCreated));
+  function timeDistance() {
+    let duration;
+    if(timeEnd.isValid()){
+      duration = moment.duration(timeEnd.diff(timeCreated));
+    }else{
+      duration = moment.duration(timeToday.diff(timeCreated));
+    }
     let diffinHours = duration.asHours();
     console.log("duration:", duration, "diff:", diffinHours);
 
@@ -77,8 +90,8 @@ export default function Note({ note }) {
             <TextWrapper grid={"content"} fontWeight={400}>
               {note.worry}
             </TextWrapper>
+            { timeEnd.isValid() && <P grid={"enddate"}>End Date: {timeEnd.format("MMM Do YY")}</P>}
           </NoteWrapper>
-          {/* <p>createDate ‧ Has Been Passed : timePass</p> */}
         </>
       ) : (
         <></>

@@ -39,7 +39,8 @@ export const NoteWrapper = styled.div`
     "foreword foreword"
     "rate tag"
     "title title"
-    "content content";
+    "content content"
+    "enddate enddate";
 
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
@@ -50,7 +51,8 @@ export const NoteWrapper = styled.div`
       "rate"
       "tag"
       "title"
-      "content";
+      "content"
+      "enddate";
   }
 `;
 

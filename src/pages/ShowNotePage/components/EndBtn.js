@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import { UpdateNoteEndTime } from "../../../reducers/utils/db";
 
@@ -41,12 +41,14 @@ export default function EndBtn({ noteID }) {
   });
   const endState = { worry: false, endtext: "Worry Finished" };
 
-  const EndText = () => {
+  const clickEndBtn = () => {
     setLoading(true);
     if (UpdateNoteEndTime(noteID)) {
-      setWorryState((prevState) => {
-        return { ...prevState, ...endState };
-      });
+      const newState = (worryState) => {
+        return { ...worryState, ...endState };
+      };
+      setWorryState(newState);
+      console.log("worryState", worryState);
     } else {
       console.log("上傳失敗");
     }
@@ -54,7 +56,10 @@ export default function EndBtn({ noteID }) {
   };
   return (
     <BtnWrapper>
-      <EndBtnStyled disabled={loading || !worryState.worry} onClick={EndText}>
+      <EndBtnStyled
+        disabled={loading || !worryState.worry}
+        onClick={clickEndBtn}
+      >
         {worryState.endtext}
       </EndBtnStyled>
     </BtnWrapper>

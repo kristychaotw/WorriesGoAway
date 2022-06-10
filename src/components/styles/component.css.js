@@ -49,6 +49,7 @@ export const P = styled.p`
   padding: 10px;
   color: #e6e6e6;
   font-weight: 500;
+  grid-area:${({grid})=>grid}
 
 `;
 

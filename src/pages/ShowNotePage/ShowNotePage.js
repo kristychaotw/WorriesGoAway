@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import AnimalBG from "./components/AnimalBG";
 import Note from "./components/Note";
 import styled from "styled-components";
@@ -9,6 +9,7 @@ import {
   getDocs,
   doc,
   getDoc,
+  onSnapshot,
 } from "firebase/firestore";
 import db from "../../firebase";
 import EndBtn from "./components/EndBtn";
@@ -33,7 +34,7 @@ const ContentWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -40%);
-  } ;
+  }
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 80%;
@@ -50,21 +51,19 @@ export default function ShowNotePage() {
 
   useEffect(() => {
     const docRef = doc(db, "notes", selectedNoteID);
-    getDoc(docRef)
-      .then((docSnap) => {
-        console.log("Document data:", docSnap.data());
-        setNote(...note, docSnap.data());
-      })
-      .catch(() => {
-        console.log("No such document!");
-      });
+    const unsub=onSnapshot(docRef, (q) => {
+      console.log("Document data:", q.data());
+      setNote(...note, q.data());
+    });
+  
+    return unsub
   }, []);
 
   return (
     <ShowNoteWrapper>
       <ContentWrapper>
         <Note note={note}></Note>
-        <EndBtn noteID={selectedNoteID} />
+        {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
       </ContentWrapper>
       <AnimalBG BG={note.animalName}></AnimalBG>
     </ShowNoteWrapper>

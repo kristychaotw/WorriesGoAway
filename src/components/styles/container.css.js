@@ -21,8 +21,8 @@ export const Container = styled.div`
   text-align: center;
   grid-template-areas:
     "email"
-    "logout"
-    "avatar";
+    "avatar"
+    "logout";
   grid-gap: 40px;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {

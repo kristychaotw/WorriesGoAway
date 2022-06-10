@@ -22,7 +22,6 @@ export default function Tags(props) {
             </TagButton>
           );
         })}
-      {/* <p>Tag you chosed: {tagActive}</p> */}
       </TagBox>
   );
 }

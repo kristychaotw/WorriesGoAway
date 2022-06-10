@@ -34,7 +34,6 @@ export default function StressRating(props) {
         );
       })}
       </StyledRating>
-       {/* <p>The rating is {rating}.</p> */}
     </>
   );
 }

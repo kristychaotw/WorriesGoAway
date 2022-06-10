@@ -4,7 +4,7 @@ export const FormWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 60px 50px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
   box-shadow: 2px 4px 4px 0px #00000040;
@@ -42,7 +42,6 @@ export const NoteWrapper = styled.div`
     "content content"
     "enddate enddate";
 
-
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -65,7 +64,6 @@ export const TextWrapper = styled.div`
   text-align: start;
 `;
 
-
 export const StampWrapper = styled.div`
   grid-area: ${({ grid }) => grid};
   justify-items: end;
@@ -78,7 +76,6 @@ export const StampWrapper = styled.div`
     top: 35px;
     right: -10px;
   }
-  
 `;
 
 export const Line = styled.div`
@@ -123,7 +120,7 @@ export const Line = styled.div`
 export const TitleLable = styled.div`
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.xl};
-  padding: 20px 10px;
+  padding: 30px 0px 5px 0px;
   color: ${({ theme }) => theme.colors.primary};
   text-align: left;
   grid-area: ${({ grid }) => grid};
@@ -131,29 +128,33 @@ export const TitleLable = styled.div`
 
 export const StyledRating = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 180px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
   grid-area: ${({ grid }) => grid};
 `;
 
-export const Button = styled.button`
-  padding: 10px;
-  margin: 10px;
-  background: #fcfcfc;
-  border: none;
-  border-radius: 3px;
-  color: ${({ theme }) => theme.colors.third};
+// export const Button = styled.button`
+//   padding: 10px;
+//   margin: 10px;
+//   background: #fcfcfc;
+//   border: none;
+//   border-radius: 3px;
+//   color: ${({ theme }) => theme.colors.third};
 
-  &:hover {
-    background-color: #e4e5e9;
-    color: #5185a6;
-  }
+//   &:hover {
+//     background-color: #e4e5e9;
+//     color: #5185a6;
+//   }
 
-  &:active {
-    background-color: ${({ theme }) => theme.colors.third};
-    color: #f0f0f0;
-  }
-`;
+//   &:active {
+//     background-color: ${({ theme }) => theme.colors.third};
+//     color: #f0f0f0;
+//     transition: all 0.1s;
+
+//   }
+// `;
 
 export const TagBox = styled.div`
   grid-area: ${({ grid }) => grid};
@@ -161,20 +162,20 @@ export const TagBox = styled.div`
 `;
 
 export const TagButton = styled.button`
-  margin: 10px;
+  margin-right: 20px;
+  margin-bottom: 10px;
   padding: 5px 10px;
-  color: ${({ theme }) => theme.colors.third};
-  border: none;
   border-radius: 10px;
-  background-color: #fcfcfc;
+  background-color: ${({ theme }) => theme.colors.lightpurple};
+  color: ${({ theme }) => theme.colors.white};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.third};
+    background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.white};
   }
 
-  &:active {
-    background-color: ${({ theme }) => theme.colors.third};
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.white};
   }
 `;
@@ -182,7 +183,7 @@ export const TagButton = styled.button`
 export const TitleBox = styled.input`
   font-size: 1em;
   padding: 10px;
-  margin: 10px;
+  /* margin: 10px; */
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
@@ -200,7 +201,7 @@ export const TitleBox = styled.input`
 export const TextAreaBox = styled.textarea`
   font-size: 1em;
   padding: 10px;
-  margin: 10px;
+  /* margin: 10px; */
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
@@ -214,4 +215,56 @@ export const TextAreaBox = styled.textarea`
   }
 
   caret-color: #8ba6bc;
+`;
+
+export const SendBtn = styled.button`
+  padding: 5px 10px;
+  margin-bottom: 180px;
+  border: none;
+  border-radius: 10px;
+  background: #5085a5;
+  color: #fcfcfc;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
+  display: inline-block;
+  grid-area: ${({grid})=>grid};
+
+  &:hover {
+    background-color: #587b90;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition: all 0.1s;
+  }
+`;
+
+// ShowNote Page
+export const BtnWrapper = styled.div`
+  display: flex;
+`;
+
+export const EndBtnStyled = styled.button`
+  margin-right: 0;
+  justify-content: end;
+  height: 60px;
+  padding: 5px 10px;
+  margin: 10px 0px;
+  border: none;
+  border-radius: 10px;
+  background: #5085a5;
+  color: #fcfcfc;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
+
+  &:hover {
+    background-color: #587b90;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition: all 0.1s;
+  }
 `;

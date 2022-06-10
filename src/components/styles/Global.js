@@ -1,3 +1,4 @@
+import { ThemeConsumer } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
@@ -11,7 +12,9 @@ const GlobalStyles = createGlobalStyle`
 body{
     font-family: 'Raleway', sans-serif;
     background-color: #F2F2F2;
+    color:#656565;
 }
+
 
 `
 

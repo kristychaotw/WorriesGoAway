@@ -7,7 +7,7 @@ import { next, prev, pick } from "../../../reducers/stamp";
 import { useSelector } from "react-redux";
 import { updateNote } from "../../../reducers/form";
 
-export const BtnSubmit = styled.button`
+export const BtnPick = styled.button`
   padding: 5px 10px;
   margin: 10px;
   border: none;
@@ -92,7 +92,7 @@ export default function SelectAnimal() {
         <BtnArrow onClick={() => swipeLeft()}>
           <img src={`${btnLeft}`}></img>
         </BtnArrow>
-        <BtnSubmit onClick={() => pickIcon()}>Pick</BtnSubmit>
+        <BtnPick onClick={() => pickIcon()}>Pick</BtnPick>
         <BtnArrow onClick={() => swipeRight()}>
           <img src={`${btnRight}`}></img>
         </BtnArrow>

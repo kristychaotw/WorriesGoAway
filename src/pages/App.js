@@ -30,6 +30,7 @@ const theme = {
     primaryh66:"#8BA6BC66",
     whiteh80:"#FCFCFC80",
     dark80: "#65656580",
+    lightpurple:"#e4e5e9",
   },
   fontSize: {
     s: "0.8rem",

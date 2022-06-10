@@ -49,7 +49,7 @@ export const P = styled.p`
   padding: 10px;
   color: #e6e6e6;
   font-weight: 500;
-  grid-area:${({grid})=>grid}
+  grid-area: ${({grid})=>grid};
 
 `;
 
@@ -212,7 +212,7 @@ export const BtnSubmit = styled.button`
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};
-  background: #8ba6bc;
+  background:${({ theme }) => theme.colors.forth};
   font-weight: bold;
   display: block;
   box-shadow: 2px 2px 4px #000000a1;
@@ -223,7 +223,6 @@ export const BtnSubmit = styled.button`
   }
 
   &:active {
-    color: #f0f0f0;
     transform: scale(0.95);
     transition: all 0.1s;
   }

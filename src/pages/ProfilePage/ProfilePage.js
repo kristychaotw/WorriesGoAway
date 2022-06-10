@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { loginr, logoutr, update } from "../../reducers/user";
 import { useAuthUser, logout } from "../../firebase";
 import { H3, PageTitle } from "../../components/styles/component.css";
-import { BtnSubmit } from "../CreateNotePage/components/SelectAnimal";
 import Avatar from "./components/avatar";
 import { Container } from "../../components/styles/container.css";
+import { SendBtn } from "../../components/styles/note.css";
 
 
 
@@ -33,13 +33,13 @@ export default function ProfilePage() {
       <Container>
         <H3 grid={"email"}>Hello    {currentUser.email} ,</H3>
         <Avatar grid={"avatar"}></Avatar>
-        <BtnSubmit
+        <SendBtn
           grid={"logout"}
           disabled={loading || !currentUser}
           onClick={() => handleLogout()}
           >
           Log Out
-        </BtnSubmit>
+        </SendBtn>
       </Container>
     </>
   );

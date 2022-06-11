@@ -37,7 +37,7 @@ export default function ListCard({
           <H3title grid={"gtitle"}>{title}</H3title>
           <TagBox grid={"gtag"} align={"start"}>{tag}</TagBox>
           <img src={animal}></img>
-          <PStyled>
+          <PStyled grid={"gtime"}>
             {createDateFormat} {"  >>>  "} {endDateFormat}
           </PStyled>
           <RateBox grid={"grate"}>

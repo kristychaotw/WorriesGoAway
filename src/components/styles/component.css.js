@@ -47,10 +47,9 @@ export const TitleLable = styled.div`
 
 export const P = styled.p`
   padding: 10px;
-  color: #e6e6e6;
+  color: "#e6e6e6";
   font-weight: 500;
-  grid-area: ${({grid})=>grid};
-
+  grid-area: ${({ grid }) => grid};
 `;
 
 export const MsgP = styled.p`
@@ -106,7 +105,6 @@ export const StyledCard = styled.div`
   border-bottom: 1px solid #5085a5;
   padding: 40px 0px 20px 0px;
 
-
   img {
     grid-area: ganimal;
     justify-self: end;
@@ -126,22 +124,23 @@ export const StyledCard = styled.div`
 
 export const H3title = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
-  line-height: ${({ theme }) => theme.fontSize.xl};
+  line-height: ${({ theme }) => theme.fontSize.xxl};
   font-weight: 600;
   text-align: start;
-  color:  ${({ theme }) => theme.colors.word};
+  color: ${({ theme }) => theme.colors.word};
   grid-area: ${({ grid }) => grid};
   border-bottom: ${({ border }) => border};
+  padding-bottom: 40px;
 `;
 
-export const PStyled=styled.p`
-   font-size: ${({ theme }) => theme.fontSize.s};
-    font-weight: 300;
-    color: #656565;
-    grid-area: gtime;
-    justify-self: end;
-    text-align: end;
-`
+export const PStyled = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 300;
+  color: #656565;
+  grid-area: ${({ grid }) => grid};
+  justify-self: end;
+  text-align: ${({ align }) => align || "end"};
+`;
 
 export const H3 = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
@@ -219,12 +218,12 @@ export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
   margin: 50px auto;
-  margin-bottom: ${({marginbt})=>marginbt};
+  margin-bottom: ${({ marginbt }) => marginbt};
   margin-left: ${({ margin }) => margin};
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};
-  background:${({ theme }) => theme.colors.forth};
+  background: ${({ theme }) => theme.colors.forth};
   font-weight: bold;
   display: block;
   box-shadow: 2px 2px 4px #000000a1;

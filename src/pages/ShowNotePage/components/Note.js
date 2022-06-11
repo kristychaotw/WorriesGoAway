@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
-  H3,
+  H3title,
   TagBox,
   RateBox,
-  P,
+  PStyled,
 } from "../../../components/styles/component.css";
 import StaticRating from "../../ListPage/components/StaticRating";
 import {
@@ -73,11 +73,11 @@ export default function Note({ note }) {
                 <img src={note.animal}></img>
               </Line>
             </StampWrapper>
-            <H3 grid={"foreword"} padding={"60px"} border={"2px dashed #000"}>
+            <H3title grid={"foreword"} padding={"60px"} border={"2px dashed #000"}>
               ... during the time you are worried,
               <br />
               {msg(note.animalName)}
-            </H3>
+            </H3title>
             <TagBox grid={"tag"} align={"start"}>
               {note.tag}
             </TagBox>
@@ -90,7 +90,7 @@ export default function Note({ note }) {
             <TextWrapper grid={"content"} fontWeight={400}>
               {note.worry}
             </TextWrapper>
-            { timeEnd.isValid() && <P grid={"enddate"}>End Date: {timeEnd.format("MMM Do YY")}</P>}
+            { timeEnd.isValid() && <PStyled align={"left"} grid={"enddate"}>End Date: {timeEnd.format("MMM Do YY")}</PStyled>}
           </NoteWrapper>
         </>
       ) : (

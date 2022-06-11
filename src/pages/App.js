@@ -53,11 +53,6 @@ const theme = {
     desktop: "1200px",
   },
   maxWidth: "1800px",
-  // animal: {
-  //   whale: `${whale}`,
-  //   cat: `${cat}`,
-  //   rabbit: `${rabbit}`,
-  // },
 };
 
 export default function App() {

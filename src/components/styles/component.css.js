@@ -12,9 +12,11 @@ h4{
 }
 h5{
   grid-area: "note";
+  color: ${({theme})=>theme.colors.primary}
 }
 p{
   grid-area: "stress";
+  color: ${({theme})=>theme.colors.primary}
 }
 `
 
@@ -65,7 +67,7 @@ export const TitleLable = styled.div`
 
 export const P = styled.p`
   padding: 10px;
-  color: "#e6e6e6";
+  color: #f0f0f0;
   font-weight: 500;
   grid-area: ${({ grid }) => grid};
 `;
@@ -76,8 +78,8 @@ export const MsgP = styled.p`
   color: #e6e6e6;
   margin-top: 20px;
   font-weight: 500;
-  border-top: 4px solid ${({ theme }) => theme.colors.forth};
-  border-bottom: 4px solid ${({ theme }) => theme.colors.forth};
+  border-left: 4px solid ${({ theme }) => theme.colors.forth};
+  border-right: 4px solid ${({ theme }) => theme.colors.forth};
 `;
 
 export const H2 = styled.h2`
@@ -290,6 +292,7 @@ export const StaticStyled = styled.div`
 export const FormContainer = styled.div`
   width: 30%;
   margin: 30px auto;
+  margin-bottom: 80px;
   padding: 40px 0px;
   text-align: center;
   background: #00000040;
@@ -306,12 +309,12 @@ export const FormContainer = styled.div`
 `;
 
 export const FormStyled = styled.form`
-  /* padding: 40px 40px 60px 40px; */
-
+ 
   p {
     text-align: left;
     margin-left: 25%;
     margin-right: 25%;
+ 
     text-align: left;
     color: ${({ theme }) => theme.colors.body};
   }

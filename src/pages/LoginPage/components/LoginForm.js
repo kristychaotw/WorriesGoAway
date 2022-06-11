@@ -64,7 +64,6 @@ export default function LoginForm() {
 
   return (
     <FormContainer>
-      {console.log("currentuser:", currentUser)}
 
       {currentUser ? (
         <div>

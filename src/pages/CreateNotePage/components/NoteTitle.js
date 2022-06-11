@@ -9,12 +9,10 @@ export default function NoteTitle(props) {
       required
         grid={"title"}
         name="keyword"
-        //   onChange={(e) => setKeyword(e.target.value)}
         onChange={(e) => props.newKeyword(e.target.value)}
         placeholder="Write a title"
         type="text"
       ></TitleBox>
-      {/* <p>your kw is {keyword}</p> */}
     </>
   );
 }

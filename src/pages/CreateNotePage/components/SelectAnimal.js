@@ -25,7 +25,7 @@ export const BtnPick = styled.button`
   }
 
   &:active {
-    background-color: #afdae3;
+    background-color: "#8BA6BC";
     color: #f0f0f0;
   }
 `;

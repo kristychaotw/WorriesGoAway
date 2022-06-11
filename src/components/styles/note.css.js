@@ -4,7 +4,7 @@ export const FormWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 60px 50px;
+  padding: 60px 80px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
   box-shadow: 2px 4px 4px 0px #00000040;
@@ -13,11 +13,11 @@ export const FormWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
     "trate rate rate"
-    "ttitle . ."
-    "title title title"
     "ttag . ."
     "tag tag tag"
     "tag tag tag"
+    "ttitle . ."
+    "title title title"
     "tcontent . ."
     "content content content";
 `;
@@ -166,17 +166,11 @@ export const TagButton = styled.button`
   margin-bottom: 10px;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.lightpurple};
+  background-color: ${({ bgColor }) => bgColor};
   color: ${({ theme }) => theme.colors.white};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.white};
-  }
-
-  &:focus {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.white};
   }
 `;
 

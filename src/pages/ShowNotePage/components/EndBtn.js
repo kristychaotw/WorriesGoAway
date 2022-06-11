@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
-import styled from "styled-components";
-import { UpdateNoteEndTime } from "../../../reducers/utils/db";
+import { UpdateNoteEndTime } from "../../../reducers/utils/dbNote";
 import {BtnWrapper,EndBtnStyled} from "../../../components/styles/note.css"
 
 

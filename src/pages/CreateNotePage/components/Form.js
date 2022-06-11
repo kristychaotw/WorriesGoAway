@@ -29,7 +29,7 @@ export default function Form() {
         <StampWrapper top={"90px"} right={"-35px"} onLoad={()=>dispatch(updateNote({id:id}))}>
           <Stamp/>
         </StampWrapper>
-        <TitleLable grid={"trate"}>Rate your stress</TitleLable>
+        <TitleLable grid={"trate"}>Stress Level</TitleLable>
         <StressRating
           grid={"rate"}
           newRate={(value) => dispatch(updateNote({ rating: value }))}

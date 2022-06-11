@@ -6,11 +6,11 @@ display: grid;
 grid-template-columns: repeat(3,1fr);
 grid-template-areas: "tag note stress";
 
-h3{
+h4{
   grid-area: "tag";
   color: ${({theme})=>theme.colors.primary};
 }
-h4{
+h5{
   grid-area: "note";
 }
 p{

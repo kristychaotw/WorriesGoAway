@@ -7,22 +7,34 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
 import { update } from "../../../reducers/user";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import Modal from "../../../components/Modal";
 
 export const Wrapper = styled.div`
+  text-align: start;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 30px;
   grid-template-areas:
-    "avatar input"
-    "avatar uploadbtn";
+    "avatar avatar "
+    "input uploadbtn";
+
+  justify-items: center;
+
+  button {
+    grid-area: uploadbtn;
+    border: 1px solid ${({ theme }) => theme.colors.dark};
+    border-radius: 3px;
+    padding: 0px 10px;
+    color: #000;
+  }
 `;
 
 export const StyledAvatar = styled.img`
   vertical-align: middle;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
   border: 2px outset #8ba6bc;
   grid-area: avatar;
   object-fit: cover;
@@ -35,7 +47,7 @@ export default function Avatar() {
   const [photoURL, setPhotoURL] = useState(`${avatarsvg}`);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const [isOpen,setIsOpen]=useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleChange(e) {
     if (e.target.files[0]) {
@@ -51,76 +63,77 @@ export default function Avatar() {
         getDownloadURL(fileRef)
           .then((url) => {
             setPhotoURL(url);
-            handleAuthPhotoURL(url)
-            setIsOpen(true)
-            handleModal("success","success to add an photo")
+            handleAuthPhotoURL(url);
+            setIsOpen(true);
+            handleModal("success", "success to add an photo");
             // alert("success!");
           })
           .catch((error) => {
             console.log(error.message, "error!");
-            handleModal("oops",error.message)
-
+            handleModal("oops", error.message);
           });
       })
       .catch((error) => {
         console.log(error.message, "error");
-        handleModal("oops",error.message)
-
+        handleModal("oops", error.message);
       });
-      setLoading(false);
+    setLoading(false);
   };
 
-  const handleAuthPhotoURL=(url)=>{
+  const handleAuthPhotoURL = (url) => {
     setLoading(true);
     updateProfile(currentUser, { photoURL: url })
-    .then(() => {
-      // alert("success update!");
-      setIsOpen(true)
-      handleModal("success","success to add an photo")
-
-    })
-    .catch((error) => {
-      console.log(error.message, "error when update");
-      handleModal("oops",error.message)
-
-    });
+      .then(() => {
+        // alert("success update!");
+        setIsOpen(true);
+        handleModal("success", "success to add an photo");
+      })
+      .catch((error) => {
+        console.log(error.message, "error when update");
+        handleModal("oops", error.message);
+      });
     setLoading(false);
-  }
+  };
 
   useEffect(() => {
     if (currentUser?.photoURL) {
-      const newPicture=currentUser.photoURL
+      const newPicture = currentUser.photoURL;
       setPhotoURL(currentUser.photoURL);
-      dispatch(update({picture:newPicture}))
+      dispatch(update({ picture: newPicture }));
     }
   }, [photoURL]);
 
   let type;
   let msg;
 
-  const handleModal=(typepassin,msgpassin)=>{
-    type=typepassin;
-    msg=msgpassin;
-    console.log("type & msg",type,msg);
+  const handleModal = (typepassin, msgpassin) => {
+    type = typepassin;
+    msg = msgpassin;
+    console.log("type & msg", type, msg);
+  };
 
-  }
-
-
-  console.log("type & msg",type,msg);
+  console.log("type & msg", type, msg);
 
   return (
     <Wrapper>
-      <input type="file" onChange={handleChange}></input>
-      <BtnSubmit
-        margin={0}
-        grid={"uploadbtn"}
-        disabled={loading || !photo}
-        onClick={handleClick}
-      >
+      <div grid={"input"}>
+        <label htmlFor="myfile"></label>
+        <input
+          type="file"
+          id="myfile"
+          name="myfile"
+          onChange={(e) => handleChange(e)}
+        ></input>
+      </div>
+      <button disabled={loading || !photo} onClick={handleClick}>
         Upload
-      </BtnSubmit>
+      </button>
       <StyledAvatar src={photoURL} />
-      {isOpen?<Modal type={type} msg={msg} setIsOpen={setIsOpen}></Modal>:<></>}
+      {isOpen ? (
+        <Modal type={type} msg={msg} setIsOpen={setIsOpen}></Modal>
+      ) : (
+        <></>
+      )}
     </Wrapper>
   );
 }

@@ -223,6 +223,7 @@ export const SendBtn = styled.button`
   box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
   display: inline-block;
   grid-area: ${({grid})=>grid};
+  max-width: 300px;
 
   &:hover {
     background-color: #587b90;

@@ -2,9 +2,10 @@ import React from "react";
 import {
   StyledCardWrapper,
   StyledCard,
-  H3,
   TagBox,
   RateBox,
+  H3title,
+  PStyled,
 } from "../../../components/styles/component.css";
 import StaticRating from "./StaticRating";
 import { Link } from "react-router-dom";
@@ -33,13 +34,13 @@ export default function ListCard({
     <StyledCardWrapper onClick={() => handleClick(docID)}>
       <Link to="/Whale">
         <StyledCard>
-          <H3>{title}</H3>
-          <TagBox>{tag}</TagBox>
+          <H3title grid={"gtitle"}>{title}</H3title>
+          <TagBox grid={"gtag"} align={"start"}>{tag}</TagBox>
           <img src={animal}></img>
-          <p>
+          <PStyled>
             {createDateFormat} {"  >>>  "} {endDateFormat}
-          </p>
-          <RateBox>
+          </PStyled>
+          <RateBox grid={"grate"}>
             <StaticRating rate={rating}></StaticRating>
           </RateBox>
         </StyledCard>

@@ -106,14 +106,7 @@ export const StyledCard = styled.div`
   border-bottom: 1px solid #5085a5;
   padding: 40px 0px 20px 0px;
 
-  p {
-    font-size: ${({ theme }) => theme.fontSize.s};
-    font-weight: 300;
-    color: #656565;
-    grid-area: gtime;
-    justify-self: end;
-    text-align: end;
-  }
+
   img {
     grid-area: ganimal;
     justify-self: end;
@@ -122,14 +115,33 @@ export const StyledCard = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     margin: auto;
     width: 85%;
-    grid-template-columns: 30px 1fr;
-    grid-column-gap: 5px;
+    grid-template-columns: 1fr 120px 30px;
+    grid-column-gap: 10px;
     grid-template-areas:
-      "gtitle gtitle"
-      "grate ganimal"
-      "gtag  gtime";
+      "gtitle gtitle ganimal"
+      "gtitle gtitle gtag"
+      "grate  gtime  gtime";
   }
 `;
+
+export const H3title = styled.div`
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  line-height: ${({ theme }) => theme.fontSize.xl};
+  font-weight: 600;
+  text-align: start;
+  color:  ${({ theme }) => theme.colors.word};
+  grid-area: ${({ grid }) => grid};
+  border-bottom: ${({ border }) => border};
+`;
+
+export const PStyled=styled.p`
+   font-size: ${({ theme }) => theme.fontSize.s};
+    font-weight: 300;
+    color: #656565;
+    grid-area: gtime;
+    justify-self: end;
+    text-align: end;
+`
 
 export const H3 = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};

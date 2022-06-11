@@ -31,6 +31,7 @@ const theme = {
     whiteh80:"#FCFCFC80",
     dark80: "#65656580",
     lightpurple:"#e4e5e9",
+    word:"#4A4A4A"
   },
   fontSize: {
     s: "0.8rem",

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { StaticStyled } from "../../../components/styles/component.css";
+import {
+  GridBox,
+  StaticStyled,
+} from "../../../components/styles/component.css";
 import PieChart from "./PieChart";
 import ColumnChart from "./ColumnChart";
 import db, { useAuthUser } from "../../../firebase";
@@ -58,8 +61,8 @@ export default function Static() {
     const stressSum = list.reduce((currentTotal, note) => {
       return note.rating + currentTotal;
     }, 0);
-    const stressAvg = Math.round(stressSum / list.length*100)/100;
-    return Object.is(stressAvg,NaN)? 'no note':stressAvg;
+    const stressAvg = Math.round((stressSum / list.length) * 100) / 100;
+    return Object.is(stressAvg, NaN) ? "no note" : stressAvg;
   }
   const stressAvgTotal = countStress(notes);
   const stressAvgLife = countStress(listLife);
@@ -83,28 +86,45 @@ export default function Static() {
       </StaticStyled>
       <StaticStyled>
         <h3>Tags</h3>
-        <h4>
-          Life : {listLife.length} StressAvg : {stressAvgLife}
-        </h4>
-        <h4>
-          Wealth : {listWealth.length} StressAvg : {stressAvgWealth}
-        </h4>
-        <h4>
-          Health : {listHealth.length} StressAvg : {stressAvgHealth}
-        </h4>
-        <h4>
-          Love : {listLove.length} StressAvg : {stressAvgLove}
-        </h4>
-        <h4>
-          Social : {listSocial.length} StressAvg : {" "}
-          {stressAvgSocial}
-        </h4>
-        <h4>
-          Others :{listOthers.length} StressAvg : {stressAvgOthers}
-        </h4>
+        <GridBox>
+          <h4></h4>
+          <h5>Notes</h5>
+          <p>Stress.Avg</p>
+        </GridBox>
+        <GridBox>
+          <h4>Life : </h4>
+          <h5>{listLife.length} </h5>
+          <p> {stressAvgLife}</p>
+        </GridBox>
+        <GridBox>
+          <h4>Wealth : </h4>
+          <h5>{listWealth.length} </h5>
+          <p> {stressAvgWealth}</p>
+        </GridBox>
+        <GridBox>
+          <h4>Health : </h4>
+          <h5>{listHealth.length} </h5>
+          <p> {stressAvgHealth}</p>
+        </GridBox>
+        <GridBox>
+          {" "}
+          <h4>Love : </h4>
+          <h5>{listLove.length} </h5>
+          <p> {stressAvgLove}</p>
+        </GridBox>
+        <GridBox>
+          <h4>Social : </h4>
+          <h5>{listSocial.length} </h5>
+          <p> {stressAvgSocial}</p>
+        </GridBox>
+        <GridBox>
+          <h4>Others :</h4>
+          <h5>{listOthers.length} </h5>
+          <p> {stressAvgOthers}</p>
+        </GridBox>
       </StaticStyled>
-      <PieChart />
-      <ColumnChart />
+      {/* <PieChart /> */}
+      {/* <ColumnChart /> */}
     </>
   );
 }

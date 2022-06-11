@@ -1,5 +1,23 @@
 import styled from "styled-components";
 
+
+export const GridBox=styled.div`
+display: grid;
+grid-template-columns: repeat(3,1fr);
+grid-template-areas: "tag note stress";
+
+h3{
+  grid-area: "tag";
+  color: ${({theme})=>theme.colors.primary};
+}
+h4{
+  grid-area: "note";
+}
+p{
+  grid-area: "stress";
+}
+`
+
 export const FlexBox = styled.div`
   display: flex;
   justify-content: center;

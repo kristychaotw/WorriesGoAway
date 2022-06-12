@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from "react";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore} from "firebase/firestore"
-
-
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD-rzNyg-1KShr9zk_n_DwW2k3aMKFoNpA",
@@ -20,8 +24,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
+export const auth = getAuth(app);
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+export const storage = getStorage(app);
 export default getFirestore();
 
 export function signup(email, password) {
@@ -38,9 +44,15 @@ export function login(email, password) {
 
 // Custom Hook
 
-export function useAuth() {
-  const [currentUser, setCurrentUser] = useState();
+export const AuthContext = React.createContext();
+export const AuthUpdateContext = React.createContext();
 
+export function useAuthUser() {
+  return useContext(AuthContext);
+}
+
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
@@ -48,5 +60,9 @@ export function useAuth() {
     return unsub;
   }, [currentUser]);
 
-  return currentUser;
-}
+  return (
+    <AuthContext.Provider value={{ currentUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

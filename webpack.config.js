@@ -15,6 +15,9 @@ module.exports = {
     },
     compress: true,
     port: 9000,
+    // historyApiFallback: true,
+    // hot: true,
+    // contentBase: './',
   },
   module: {
     rules: [
@@ -33,6 +36,16 @@ module.exports = {
             loader: "url-loader",
             options: {
               limit: 8192,
+            },
+          },
+        ],
+      },{
+        test: /\.svg$/,
+        use: ['@svgr/webpack',
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
             },
           },
         ],

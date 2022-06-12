@@ -5,8 +5,15 @@ import { PageTitle } from "../../components/styles/component.css";
 import { SendBtn } from "../../components/styles/note.css";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { updateNote, saveNote, failtoSaveNote,clearUpNote } from "../../reducers/form";
+import {
+  updateNote,
+  saveNote,
+  failtoSaveNote,
+  clearUpNote,
+} from "../../reducers/form";
 import SaveNote from "../../reducers/utils/dbNote";
+import Modal from "../../components/Modal";
+import { openModal } from "../../reducers/modal";
 
 const GridContainer = styled.div`
   display: grid;
@@ -20,6 +27,7 @@ const GridContainer = styled.div`
   margin: 60px auto;
   margin-right: 90px;
   margin-top: 230px;
+  z-index: 11;
 
   p {
     grid-area: msg;
@@ -41,25 +49,33 @@ const GridContainer = styled.div`
 export default function CreateNotePage() {
   const dispatch = useDispatch();
   const formContent = useSelector((state) => state.form.value);
-
+  const modalState = useSelector((state) => state.modal.value);
   const [hint, setHint] = useState("ALL FIELDS");
+  const [loading, setLoading] = useState(false);
 
   function handleSendBtn(e) {
     console.log(e);
 
     if (e.animal === "") {
       handleHint("ANIMAIL");
-    }  else if (e.rating === "") {
+    } else if (e.rating === "") {
       handleHint("RATING");
     } else if (e.tag === "") {
       handleHint("TAG");
-    }else if (e.title === "") {
+    } else if (e.title === "") {
       handleHint("TITLE");
     } else if (e.worry === "") {
       handleHint("CONTENT");
     } else {
+      setLoading(true);
       SaveNote(formContent)
-      // dispatch(clearUpNote())
+        .then((e) =>
+          dispatch(openModal({ show: true, headlines: "Success", msg: e }))
+        )
+        .catch((e) =>
+          dispatch(openModal({ show: true, headlines: "Failed", msg: e }))
+        );
+      setLoading(false);
     }
   }
 
@@ -69,6 +85,7 @@ export default function CreateNotePage() {
 
   return (
     <>
+      {modalState.show && <Modal />}
       <PageTitle>Add A New Note </PageTitle>
       <GridContainer>
         <SelectAnimal></SelectAnimal>

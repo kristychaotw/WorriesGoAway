@@ -5,10 +5,9 @@ export const AppContainer = styled.div`
   max-width: ${({ maxWidth }) => maxWidth || "1200px"};
   height: 100vh;
   margin: 0px auto;
-  padding: ${({padding})=>padding||"0px"};
+  padding: ${({ padding }) => padding || "0px"};
   text-align: center;
 `;
-
 
 export const Container = styled.div`
   display: grid;

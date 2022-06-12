@@ -8,9 +8,6 @@ import Avatar from "./components/avatar";
 import { Container } from "../../components/styles/container.css";
 import { SendBtn } from "../../components/styles/note.css";
 
-
-
-
 export default function ProfilePage() {
   const user = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
@@ -31,13 +28,13 @@ export default function ProfilePage() {
     <>
       <PageTitle>Profile Page</PageTitle>
       <Container>
-        <H3 grid={"email"}>Hello    {currentUser.email} ,</H3>
+        <H3 grid={"email"}>Hello {currentUser.email} ,</H3>
         <Avatar grid={"avatar"}></Avatar>
         <SendBtn
           grid={"logout"}
           disabled={loading || !currentUser}
           onClick={() => handleLogout()}
-          >
+        >
           Log Out
         </SendBtn>
       </Container>

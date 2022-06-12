@@ -135,27 +135,6 @@ export const StyledRating = styled.div`
   grid-area: ${({ grid }) => grid};
 `;
 
-// export const Button = styled.button`
-//   padding: 10px;
-//   margin: 10px;
-//   background: #fcfcfc;
-//   border: none;
-//   border-radius: 3px;
-//   color: ${({ theme }) => theme.colors.third};
-
-//   &:hover {
-//     background-color: #e4e5e9;
-//     color: #5185a6;
-//   }
-
-//   &:active {
-//     background-color: ${({ theme }) => theme.colors.third};
-//     color: #f0f0f0;
-//     transition: all 0.1s;
-
-//   }
-// `;
-
 export const TagBox = styled.div`
   grid-area: ${({ grid }) => grid};
   justify-self: start;
@@ -177,7 +156,6 @@ export const TagButton = styled.button`
 export const TitleBox = styled.input`
   font-size: 1em;
   padding: 10px;
-  /* margin: 10px; */
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
@@ -195,7 +173,6 @@ export const TitleBox = styled.input`
 export const TextAreaBox = styled.textarea`
   font-size: 1em;
   padding: 10px;
-  /* margin: 10px; */
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
@@ -222,7 +199,7 @@ export const SendBtn = styled.button`
   font-size: ${({ theme }) => theme.fontSize.xl};
   box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
   display: inline-block;
-  grid-area: ${({grid})=>grid};
+  grid-area: ${({ grid }) => grid};
   max-width: 300px;
 
   &:hover {

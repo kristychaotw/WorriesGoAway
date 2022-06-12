@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
   background-color: #fff;
+  z-index: 99;
 `;
 
 export const Overlay = styled.div`
@@ -13,6 +14,7 @@ export const Overlay = styled.div`
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.dark80};
+  z-index: 99;
 `;
 
 export const ModalContent = styled.div`
@@ -26,7 +28,8 @@ export const ModalContent = styled.div`
   text-align: center;
   padding-bottom: ${({ theme }) => theme.spacing.l};
   overflow: hidden;
-  animation: popupEaseIn .3s;
+  animation: popupEaseIn 0.3s;
+  z-index: 99;
 
   @keyframes popupEaseIn {
     0% {
@@ -37,14 +40,9 @@ export const ModalContent = styled.div`
     }
   }
 
-  div {
-    background-color: ${({ theme }) => theme.colors.body};
-    height: 300px;
-  }
-
   h2,
   p {
-    color: ${({ theme }) => theme.colors.socondary};
+    color: ${({ theme }) => theme.colors.dark};
   }
 
   h2 {
@@ -56,13 +54,16 @@ export const ModalContent = styled.div`
   p {
     margin-top: 5px;
   }
+`;
 
-  button {
-    margin-top: ${({ theme }) => theme.spacing.l};
-    text-align: center;
-    background-color: ${({ theme }) => theme.colors.third};
-    border-radius: 50px;
-    padding: 15px 30px;
-    color: ${({ theme }) => theme.colors.white};
-  }
+export const ModalBtn = styled.div`
+  background-color: ${({ theme }) => theme.colors.third};
+  border-radius: 50px;
+  border: none;
+  margin: 0 auto;
+  margin-top: ${({ theme }) => theme.spacing.l};
+  padding: 10px 20px;
+  width: 100px;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.white};
 `;

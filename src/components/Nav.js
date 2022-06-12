@@ -42,7 +42,7 @@ export default function Nav() {
         : icon
     );
 
-    setNavIcons(newlist);
+    // setNavIcons(newlist);
 
     console.log("navIcons", navIcons);
     console.log("newlist", newlist);
@@ -53,14 +53,12 @@ export default function Nav() {
     {
       if (currentUser) {
         updateList(currentUser.photoURL);
-        console.log("navIcons3", navIcons);
       }
     }
   }, [currentUser]);
 
   return currentUser ? (
     <div>
-      {console.log("navIcons4", navIcons)}
       <NavContainer>
         {navIcons.map((icon) => (
           <NavItem

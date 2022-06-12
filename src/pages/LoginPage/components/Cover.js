@@ -73,17 +73,17 @@ export default function Cover() {
       <FeatureBox>
         <p>1</p>
         <h4>Unique Animal Timer</h4>
-        <h5>5 animals including whale, cat, rabbit, polar bear, brown bear</h5>
+        <h5>5 animals timer including whale, cat, rabbit, polar bear, brown bear</h5>
       </FeatureBox>
       <FeatureBox>
         <p>2</p>
         <h4>Catch your thought with note</h4>
-        <h5>stress rating, catogory tags, duration of worry</h5>
+        <h5>Write down what you are worried about with simple use note</h5>
       </FeatureBox>
       <FeatureBox>
         <p>3</p>
         <h4>Personal Overview Report</h4>
-        <h5>rack and analyze overall stress level</h5>
+        <h5>Track and analyze your overall stress level.</h5>
       </FeatureBox>
 
       <TitleLable>GUIDE</TitleLable>

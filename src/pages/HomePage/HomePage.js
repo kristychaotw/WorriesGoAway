@@ -9,8 +9,8 @@ export default function HomePage() {
     <>
       <PageTitle>Home Page</PageTitle>
       <Container>
-        <Foreword/>
-        <Static/>
+        <Foreword />
+        <Static />
       </Container>
     </>
   );

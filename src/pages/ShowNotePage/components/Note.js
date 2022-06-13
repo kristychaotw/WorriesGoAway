@@ -21,13 +21,12 @@ export default function Note({ note }) {
 
   function timeDistance() {
     let duration;
-    if(timeEnd.isValid()){
+    if (timeEnd.isValid()) {
       duration = moment.duration(timeEnd.diff(timeCreated));
-    }else{
+    } else {
       duration = moment.duration(timeToday.diff(timeCreated));
     }
     let diffinHours = duration.asHours();
-    console.log("duration:", duration, "diff:", diffinHours);
 
     return diffinHours;
   }
@@ -73,7 +72,11 @@ export default function Note({ note }) {
                 <img src={note.animal}></img>
               </Line>
             </StampWrapper>
-            <H3title grid={"foreword"} padding={"60px"} border={"2px dashed #000"}>
+            <H3title
+              grid={"foreword"}
+              padding={"60px"}
+              border={"2px dashed #000"}
+            >
               ... during the time you are worried,
               <br />
               {msg(note.animalName)}
@@ -90,7 +93,11 @@ export default function Note({ note }) {
             <TextWrapper grid={"content"} fontWeight={400}>
               {note.worry}
             </TextWrapper>
-            { timeEnd.isValid() && <PStyled align={"left"} grid={"enddate"}>End Date: {timeEnd.format("MMM Do YY")}</PStyled>}
+            {timeEnd.isValid() && (
+              <PStyled align={"left"} grid={"enddate"}>
+                End Date: {timeEnd.format("MMM Do YY")}
+              </PStyled>
+            )}
           </NoteWrapper>
         </>
       ) : (

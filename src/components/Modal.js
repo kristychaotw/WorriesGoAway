@@ -1,31 +1,22 @@
-import React, { useState } from "react";
-import { Overlay, ModalContent, ModalWrapper } from "./modal.css";
+import React from "react";
+import { Overlay, ModalContent, ModalWrapper, ModalBtn } from "./modal.css";
+import { closeModal } from "../reducers/modal";
+import { useDispatch, useSelector } from "react-redux";
 
-
-export default function Modal({type,msg,setIsOpen}) {
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal(!modal);
-    setIsOpen(false)
-  };
-
+export default function Modal() {
+  const dispatch = useDispatch();
+  const modalState = useSelector((state) => state.modal.value);
 
   return (
-    <div>
-      {/* <button onClick={toggleModal}>Open</button> */}
-      {modal && (
-        <ModalWrapper>
-          <Overlay onClick={toggleModal}>
-            <ModalContent>
-              {/* <div><img /></div> */}
-              <h2>Hello Modal{type}</h2>
-              <p>msg{msg}</p>
-              <button onClick={toggleModal}>Close</button>
-            </ModalContent>
-          </Overlay>
-        </ModalWrapper>
-      )}
-    </div>
+    <ModalWrapper>
+      <Overlay onClick={() => dispatch(closeModal())}>
+        <ModalContent>
+          {/* <div><img /></div> */}
+          <h2>{modalState.headlines}</h2>
+          <p>{modalState.msg}</p>
+          <ModalBtn onClick={() => dispatch(closeModal())}>Close</ModalBtn>
+        </ModalContent>
+      </Overlay>
+    </ModalWrapper>
   );
 }

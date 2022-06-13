@@ -24,22 +24,31 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
 export const storage = getStorage(app);
+const db = getFirestore(app);
 export default getFirestore();
+export const auth = getAuth(app);
 
 export function signup(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+  let signUpResult;
+  // firebase.auth().createUserWithEmailAndPassword(email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
+  createUserWithEmailAndPassword(auth, email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
+  return signUpResult;
 }
 
 export function logout() {
-  return signOut(auth);
+  let logoutResult;
+  // firebase.auth().signOut(auth).then((e)=>console.log("logout",e)).catch((e)=>logoutResult=e.message)
+  signOut(auth).then((e)=>console.log("logout",e)).catch((e)=>logoutResult=e.message)
+  return logoutResult;
 }
 
 export function login(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
+  let signInResult;
+  // firebase.auth().signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.message);
+  signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.message);
+  return signInResult
 }
 
 // Custom Hook

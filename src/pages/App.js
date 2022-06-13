@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
@@ -14,8 +14,6 @@ import HomePage from "./HomePage/HomePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
-import Modal from "../components/Modal";
-import LoginForm from "./LoginPage/components/LoginForm";
 
 const theme = {
   colors: {
@@ -24,14 +22,14 @@ const theme = {
     primary: "#8BA6BC",
     secondary: "#656565",
     third: "#5085A5",
-    forth:"#8ba6bc",
+    forth: "#8ba6bc",
     dark: "#656565",
     white: "#FCFCFC",
-    primaryh66:"#8BA6BC66",
-    whiteh80:"#FCFCFC80",
+    primaryh66: "#8BA6BC66",
+    whiteh80: "#FCFCFC80",
     dark80: "#65656580",
-    lightpurple:"#e4e5e9",
-    word:"#4A4A4A"
+    lightpurple: "#e4e5e9",
+    word: "#4A4A4A",
   },
   fontSize: {
     s: "0.8rem",

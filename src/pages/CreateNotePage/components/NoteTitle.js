@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { TitleBox } from "../../../components/styles/note.css";
 
 export default function NoteTitle(props) {
-  const [keyword, setKeyword] = useState();
   return (
     <>
       <TitleBox
-      required
+        required
         grid={"title"}
         name="keyword"
         onChange={(e) => props.newKeyword(e.target.value)}

@@ -7,16 +7,14 @@ const StyledCircle = styled.div`
 `;
 
 export const StyledRating = styled.div`
-display: flex;
-justify-content: flex-start;
-`
-
+  display: flex;
+  justify-content: flex-start;
+`;
 
 export default function StaticRating({ rate }) {
   return (
     <StyledRating>
       {[...Array(5)].map((circle, index) => {
-        
         return (
           <StyledCircle key={index}>
             <div>

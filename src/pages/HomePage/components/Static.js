@@ -17,7 +17,6 @@ import {
 export default function Static() {
   const [notes, setNotes] = useState([]);
   const currentUser = useAuthUser().currentUser;
-  console.log("uid:", currentUser, currentUser.uid);
 
   useEffect(() => {
     const q = query(
@@ -34,12 +33,10 @@ export default function Static() {
     });
     return unsubscribe;
   }, []);
-  console.log("notes:", notes);
 
   function countNote(notes) {
     noteTotal = notes.length;
     const newNoteList = notes.filter((note) => note.isComplete === true);
-    console.log("newNoteList:", newNoteList);
     noteComplete = newNoteList.length;
     noteOngoing = noteTotal - noteComplete;
     return [noteTotal, noteOngoing, noteComplete];

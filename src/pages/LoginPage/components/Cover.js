@@ -77,19 +77,19 @@ export default function Cover() {
       </FeatureBox>
       <FeatureBox>
         <p>2</p>
-        <h4>Catch your thought with note</h4>
-        <h5>Write down what you are worried about with simple use note</h5>
+        <h4>Catch your thought with a note</h4>
+        <h5>Write down what you are worried about with a simple use note</h5>
       </FeatureBox>
       <FeatureBox>
         <p>3</p>
         <h4>Personal Overview Report</h4>
-        <h5>Track and analyze your overall stress level.</h5>
+        <h5>Track and analyze your overall stress level</h5>
       </FeatureBox>
 
       <TitleLable>GUIDE</TitleLable>
       <H3>1. Add notes</H3>
       <H3>2. Show note list</H3>
-      <H3>3. Get Overview report</H3>
+      <H3>3. Get the Overview report</H3>
       <TitleLable>DEVELOP BY</TitleLable>
       <H3>Kristy Chao</H3>
     </Container>

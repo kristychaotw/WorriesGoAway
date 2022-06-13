@@ -11,7 +11,8 @@ import userReducer from "./reducers/user";
 import stampReducer from "./reducers/stamp";
 import formReducer from "./reducers/form";
 import listReducer from "./reducers/list";
-import thunk from 'redux-thunk'
+import modalReducer from "./reducers/modal";
+import thunk from "redux-thunk";
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     stamp: stampReducer,
     form: formReducer,
     list: listReducer,
+    modal: modalReducer,
   },
 });
 

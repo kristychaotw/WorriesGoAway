@@ -18,16 +18,18 @@ import moment from 'moment';
 export default async function SaveNote(content) {
   //   const formContent = useSelector((state) => state.form.value);
   console.log("content:", content);
+  let msg;
   try {
     const docRef = await addDoc(collection(db, "notes"), content);
     console.log("Document written with ID: ", docRef.id);
+    msg="successfully saved";
     // dispatch(saveNote());
   } catch (e) {
     console.error("Error adding document: ", e);
     // dispatch(failtoSaveNote());
+    msg=e;
   }
-
-  alert("successfully saved")
+  return msg;
 }
 
 export async function UpdateNoteEndTime(docID){

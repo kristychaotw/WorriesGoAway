@@ -57,7 +57,6 @@ export default function LoginForm() {
   async function handleClick(email, pwd, type) {
     setLoading(true);
     const msg = await handleLogin(email, pwd, type);
-    console.log("msg", msg);
     setLoginState(msg);
     setLoading(false);
   }

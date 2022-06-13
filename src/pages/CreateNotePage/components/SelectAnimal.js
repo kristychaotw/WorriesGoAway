@@ -18,7 +18,7 @@ export const BtnPick = styled.button`
   font-size: ${({ theme }) => theme.fontSize.xl};
   box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
   display: block;
-  grid-area: ${({grid})=>grid};
+  grid-area: ${({ grid }) => grid};
 
   &:hover {
     background-color: #587b90;
@@ -80,9 +80,8 @@ export default function SelectAnimal() {
 
   function pickIcon() {
     dispatch(pick());
-    dispatch(updateNote({animal:animalIcon.path}))
-    dispatch(updateNote({animalName:animalIcon.animal}))
-
+    dispatch(updateNote({ animal: animalIcon.path }));
+    dispatch(updateNote({ animalName: animalIcon.animal }));
   }
 
   return (

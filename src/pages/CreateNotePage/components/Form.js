@@ -13,21 +13,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateNote, saveNote, failtoSaveNote } from "../../../reducers/form";
 
 import { AuthContext } from "../../../firebase";
-import { nanoid } from 'nanoid'
+import { nanoid } from "nanoid";
 
 export default function Form() {
-    const currentUser = useContext(AuthContext).currentUser.uid;
-  
   const dispatch = useDispatch();
+  const currentUser = useContext(AuthContext).currentUser.uid;
   const formContent = useSelector((state) => state.form.value);
-  const id=nanoid()
-  localStorage.setItem("lastCreated",id)
+  const id = nanoid();
+  localStorage.setItem("lastCreated", id);
   return (
     <>
-      <FormWrapper
-      onLoad={()=>dispatch(updateNote({author:currentUser}))}>
-        <StampWrapper top={"90px"} right={"-35px"} onLoad={()=>dispatch(updateNote({id:id}))}>
-          <Stamp/>
+      <FormWrapper onLoad={() => dispatch(updateNote({ author: currentUser }))}>
+        <StampWrapper
+          top={"90px"}
+          right={"-35px"}
+          onLoad={() => dispatch(updateNote({ id: id }))}
+        >
+          <Stamp />
         </StampWrapper>
         <TitleLable grid={"trate"}>Stress Level</TitleLable>
         <StressRating

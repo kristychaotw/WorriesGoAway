@@ -23,7 +23,6 @@ export default function Nav() {
   ];
 
   const [iconActive, setIconActive] = useState("Home");
-  console.log("navIcons", navIcons);
 
   function handleIconChanged(e) {
     setIconActive(e);
@@ -36,17 +35,13 @@ export default function Nav() {
   const updateList = (newPhoto) => {
     const newlist = navIcons.map((icon) =>
       icon.name === "User"
-        ? { ...icon, 
-          url: newPhoto?newPhoto: none, 
-          urlActive: newPhoto? newPhoto:none }
+        ? {
+            ...icon,
+            url: newPhoto ? newPhoto : none,
+            urlActive: newPhoto ? newPhoto : none,
+          }
         : icon
     );
-
-    // setNavIcons(newlist);
-
-    console.log("navIcons", navIcons);
-    console.log("newlist", newlist);
-    console.log("navIcons2", navIcons);
   };
 
   useEffect(() => {

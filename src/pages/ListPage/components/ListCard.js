@@ -12,9 +12,8 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default function ListCard({
-  note: { id, title, rating, createDate, tag, animal ,docID, endDate },
+  note: { id, title, rating, createDate, tag, animal, docID, endDate },
 }) {
-  console.log("createDate:",createDate,"endDate",endDate);
   let createDateFormat;
   if (createDate) {
     createDateFormat = moment(createDate).format("MMM Do YY");
@@ -26,7 +25,6 @@ export default function ListCard({
   }
 
   function handleClick(e) {
-    console.log("e",e);
     localStorage.setItem("showItemID", e);
   }
 
@@ -35,7 +33,9 @@ export default function ListCard({
       <Link to="/Whale">
         <StyledCard>
           <H3title grid={"gtitle"}>{title}</H3title>
-          <TagBox grid={"gtag"} align={"start"}>{tag}</TagBox>
+          <TagBox grid={"gtag"} align={"start"}>
+            {tag}
+          </TagBox>
           <img src={animal}></img>
           <PStyled grid={"gtime"}>
             {createDateFormat} {"  >>>  "} {endDateFormat}

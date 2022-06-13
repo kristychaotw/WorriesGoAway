@@ -29,7 +29,6 @@ const IconWrapper = styled.div`
   height: ${({wh})=>wh};
   width: ${({wh})=>wh};
   border: outset ${({theme})=>theme.colors.primary} ${({border})=>border};
-  
 }
 `;
 

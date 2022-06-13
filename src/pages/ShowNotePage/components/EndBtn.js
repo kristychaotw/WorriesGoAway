@@ -1,12 +1,8 @@
 import React, { useState, useMemo } from "react";
 import { UpdateNoteEndTime } from "../../../reducers/utils/dbNote";
-import {BtnWrapper,EndBtnStyled} from "../../../components/styles/note.css"
-
-
-///// 拿到doc的doc.id 傳進去update動作
+import { BtnWrapper, EndBtnStyled } from "../../../components/styles/note.css";
 
 export default function EndBtn({ noteID }) {
-  console.log("noteID", noteID);
   const [loading, setLoading] = useState(false);
   const [worryState, setWorryState] = useState({
     worry: true,
@@ -21,9 +17,7 @@ export default function EndBtn({ noteID }) {
         return { ...worryState, ...endState };
       };
       setWorryState(newState);
-      console.log("worryState", worryState);
     } else {
-      console.log("上傳失敗");
     }
     setLoading(false);
   };

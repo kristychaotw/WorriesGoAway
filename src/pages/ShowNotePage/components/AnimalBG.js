@@ -13,7 +13,7 @@ const DarkLayer = styled.div`
   height: 120vh;
 `;
 const BGWrapper = styled.div`
-z-index: 8;
+  z-index: 8;
   width: 100%;
   height: 120vh;
   position: absolute;

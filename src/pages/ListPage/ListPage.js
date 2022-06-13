@@ -12,6 +12,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import moment from "moment";
+import { nanoid } from "@reduxjs/toolkit";
 
 const GridContainer = styled.div`
   display: grid;
@@ -37,11 +38,8 @@ const ContentWrapper = styled.div`
 `;
 
 export default function ListPage() {
-  // const list = useSelector((state) => state.list.value);
-  // console.log("list",list);
   const [notes, setNotes] = useState([]);
   const currentUser = useAuthUser().currentUser;
-  console.log("uid:", currentUser, currentUser.uid);
 
   useEffect(() => {
     const q = query(
@@ -52,7 +50,6 @@ export default function ListPage() {
     const notesDB = [];
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        // notesDB.push(doc.data());
         const newdoc = { ...doc.data(), docID: doc.id };
         notesDB.push(newdoc);
       });
@@ -66,19 +63,13 @@ export default function ListPage() {
     moment(a.createDate).format() > moment(b.createDate).format() ? -1 : 1
   );
 
-  // function setDefaultNote() {
-  //   const defaultNoteID=sortNote[0].docID;
-  //   console.log("ddd",defaultNoteID);
-  //   localStorage.setItem("defaultNoteID:", defaultNoteID);
-  // }
-
   return (
     <>
       <PageTitle>My Note List</PageTitle>
       <GridContainer>
         <ContentWrapper>
-          {sortNote.map((note, index) => {
-            return <ListCard key={index} note={note}></ListCard>;
+          {sortNote.map((note) => {
+            return <ListCard key={nanoid()} note={note}></ListCard>;
           })}
         </ContentWrapper>
       </GridContainer>

@@ -90,7 +90,7 @@ export default function CreateNotePage() {
       <GridContainer>
         <SelectAnimal></SelectAnimal>
         <Form></Form>
-        <SendBtn grid={"send"} onClick={() => handleSendBtn(formContent)}>
+        <SendBtn disabled={loading} grid={"send"} onClick={() => handleSendBtn(formContent)}>
           Send
         </SendBtn>
         <p>Fill out {hint} before you send it</p>

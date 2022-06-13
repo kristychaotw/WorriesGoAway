@@ -13,9 +13,10 @@ import {
 } from "firebase/firestore";
 import db from "../../firebase";
 import EndBtn from "./components/EndBtn";
+import { PageTitle } from "../../components/styles/component.css";
 
 const ShowNoteWrapper = styled.div`
-  background-color: aliceblue;
+  background-color: ${({ theme }) => theme.colors.body};
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -43,29 +44,31 @@ const ContentWrapper = styled.div`
 
 export default function ShowNotePage() {
   const selectedNoteID = localStorage.getItem("showItemID");
-  const lastCreated = localStorage.getItem("lastCreated");
-
-  console.log("selectedNoteID:", selectedNoteID);
-
   const [note, setNote] = useState([]);
 
   useEffect(() => {
     const docRef = doc(db, "notes", selectedNoteID);
-    const unsub=onSnapshot(docRef, (q) => {
-      console.log("Document data:", q.data());
+    const unsub = onSnapshot(docRef, (q) => {
       setNote(...note, q.data());
     });
-  
-    return unsub
+
+    return unsub;
   }, []);
 
   return (
     <ShowNoteWrapper>
-      <ContentWrapper>
-        <Note note={note}></Note>
-        {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
-      </ContentWrapper>
-      <AnimalBG BG={note.animalName}></AnimalBG>
+      <PageTitle>Selecet a note in the list to view its result.</PageTitle>
+      {note ? (
+        <>
+          <ContentWrapper>
+            <Note note={note}></Note>
+            {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
+          </ContentWrapper>
+          <AnimalBG BG={note.animalName}></AnimalBG>
+        </>
+      ) : (
+        <></>
+      )}
     </ShowNoteWrapper>
   );
 }

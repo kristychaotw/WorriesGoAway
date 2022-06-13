@@ -5,11 +5,9 @@ import avatarsvg from "../../../components/images/icons/avatar.svg";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
-import { update } from "../../../reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../../components/Modal";
 import { openModal } from "../../../reducers/modal";
-import { errorPrefix } from "@firebase/util";
 
 export const Wrapper = styled.div`
   text-align: start;
@@ -114,9 +112,10 @@ export default function Avatar() {
   useEffect(() => {
     if (currentUser?.photoURL) {
       const newPhoto = currentUser.photoURL;
+      console.log("newPhoto",newPhoto);
       setPhotoURL(newPhoto);
     }
-  }, [currentUser]);
+  }, [currentUser.photoURL]);
 
   return (
     <Wrapper>

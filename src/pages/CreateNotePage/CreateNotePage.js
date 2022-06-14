@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SaveNote from "../../reducers/utils/dbNote";
 import Modal from "../../components/Modal";
 import { openModal } from "../../reducers/modal";
+import { clearUpNote } from "../../reducers/form";
 
 const GridContainer = styled.div`
   display: grid;
@@ -22,6 +23,7 @@ const GridContainer = styled.div`
   margin-right: 90px;
   margin-top: 230px;
   z-index: 11;
+  padding-bottom: 120px;
 
   p {
     grid-area: msg;
@@ -29,12 +31,11 @@ const GridContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-      "picker"
-      "form"
-      "send"
-      "msg";
+      "picker picker"
+      "form form"
+      "send msg";
     margin-right: auto;
     margin-top: auto;
   }
@@ -44,37 +45,43 @@ export default function CreateNotePage() {
   const dispatch = useDispatch();
   const formContent = useSelector((state) => state.form.value);
   const modalState = useSelector((state) => state.modal.value);
-  const [hint, setHint] = useState("ALL FIELDS");
+  const [hint, setHint] = useState("All Fields");
   const [loading, setLoading] = useState(false);
+  const [sendBtn, setSendBtn] = useState(false);
 
   function handleSendBtn(e) {
-    console.log(e);
-
+    console.log("e", e);
+    setSendBtn(false);
     if (e.animal === "") {
-      handleHint("ANIMAIL field by clicking PICK");
+      setHint("ANIMAIL STAMP by clicking PICK");
     } else if (e.rating === "") {
-      handleHint("RATING");
+      setHint("RATING");
     } else if (e.tag === "") {
-      handleHint("TAG");
+      setHint("TAG");
     } else if (e.title === "") {
-      handleHint("TITLE");
+      setHint("TITLE");
     } else if (e.worry === "") {
-      handleHint("CONTENT");
+      setHint("CONTENT");
     } else {
-      setLoading(true);
-      SaveNote(formContent)
-        .then((e) =>
-          dispatch(openModal({ show: true, headlines: "Success", msg: e }))
-        )
-        .catch((e) =>
-          dispatch(openModal({ show: true, headlines: "Failed", msg: e }))
-        );
-      setLoading(false);
+      setHint("All Done, ready to send");
+      setSendBtn(true);
+      sendFormContent()
     }
   }
 
-  function handleHint(hint) {
-    setHint(hint);
+  function sendFormContent() {
+    setLoading(true);
+    SaveNote(formContent)
+      .then((e) =>
+        dispatch(openModal({ show: true, headlines: "Success", msg: e }))
+      )
+      .catch((e) =>
+        dispatch(openModal({ show: true, headlines: "Failed", msg: e }))
+      );
+    setLoading(false);
+    setSendBtn(false);
+    dispatch(clearUpNote())
+    setHint("All Fields");
   }
 
   return (
@@ -85,13 +92,13 @@ export default function CreateNotePage() {
         <SelectAnimal></SelectAnimal>
         <Form></Form>
         <SendBtn
-          disabled={loading}
+          disabled={loading || sendBtn}
           grid={"send"}
           onClick={() => handleSendBtn(formContent)}
         >
           Send
         </SendBtn>
-        <p>Fill out {hint} before you send it</p>
+        <p>Fill out {hint}</p>
       </GridContainer>
     </>
   );

@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ListCard from "./components/ListCard";
-import { PageTitle } from "../../components/styles/component.css";
+import { PStyled, PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
 import db, { useAuthUser } from "../../firebase";
-import {
-  collection,
-  onSnapshot,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import moment from "moment";
 import { nanoid } from "@reduxjs/toolkit";
 
@@ -16,7 +11,7 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
-  grid-template-areas: ". list list list";
+  grid-template-areas: ". nlist nlist nlist";
   width: 85%;
   max-width: 1200px;
   margin: 60px auto;
@@ -26,14 +21,14 @@ const GridContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
-    grid-template-areas: "list";
+    grid-template-areas: "nlist";
     margin-right: auto;
     margin-top: auto;
   }
 `;
 
 const ContentWrapper = styled.div`
-  grid-area: list;
+  grid-area: nlist;
 `;
 
 export default function ListPage() {
@@ -69,6 +64,7 @@ export default function ListPage() {
           {sortNote.map((note) => {
             return <ListCard key={nanoid()} note={note}></ListCard>;
           })}
+          {!notes.length && <PStyled>There is no note. Go to add one!</PStyled>}
         </ContentWrapper>
       </GridContainer>
     </>

@@ -71,11 +71,11 @@ export default function App() {
               <Route path="/test" element={<Test />} />
               <Route path="*" element={<Test />} />
               <Route element={<PrivateRoute />}>
-                <Route path="/Home" element={<HomePage />} />
-                <Route path="/Add" element={<CreateNotePage />} />
-                <Route path="/List" element={<ListPage />} />
-                <Route path="/Whale" element={<ShowNotePage />} />
-                <Route path="/User" element={<ProfilePage />} />
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/add" element={<CreateNotePage />} />
+                <Route path="/list" element={<ListPage />} />
+                <Route path="/note" element={<ShowNotePage />} />
+                <Route path="/user" element={<ProfilePage />} />
 
                 <Route path="*" element={<div>404 Not Found</div>} />
               </Route>

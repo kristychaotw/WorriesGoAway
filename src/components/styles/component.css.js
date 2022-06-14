@@ -140,12 +140,19 @@ export const StyledCard = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     margin: auto;
     width: 85%;
-    grid-template-columns: 1fr 120px 30px;
-    grid-column-gap: 10px;
+    grid-template-columns: 1fr 110px 35px;
+    grid-column-gap: 15px;
     grid-template-areas:
       "gtitle gtitle ganimal"
       "gtitle gtitle gtag"
       "grate  gtime  gtime";
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    grid-template-columns: 1fr 90px 35px;
+    grid-template-areas:
+      "gtitle gtitle gtitle"
+      "grate gtag ganimal"
+      "gtime  gtime  gtime";
   }
 `;
 
@@ -188,8 +195,11 @@ export const TagBox = styled.div`
   font-weight: 300;
   color: #656565;
   grid-area: ${({ grid }) => grid};
-  justify-self: ${({ align }) => align || "end"};
-  /* background-color: ${({ theme }) => theme.colors.dark}; */
+  justify-self: start;
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    justify-self: end;
+  }
 `;
 
 export const RateBox = styled.div`
@@ -244,7 +254,7 @@ export const BtnSubmit = styled.button`
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({color})=>color||"#8ba6bc"};
+  background: ${({ color }) => color || "#8ba6bc"};
   font-weight: bold;
   display: block;
   box-shadow: 2px 2px 4px #000000a1;

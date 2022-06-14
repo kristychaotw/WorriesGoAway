@@ -66,4 +66,5 @@ export const ModalBtn = styled.div`
   width: 100px;
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
 `;

@@ -33,7 +33,7 @@ export default function ListCard({
       <Link to="/Whale">
         <StyledCard>
           <H3title grid={"gtitle"}>{title}</H3title>
-          <TagBox grid={"gtag"} align={"start"}>
+          <TagBox grid={"gtag"}>
             {tag}
           </TagBox>
           <img src={animal}></img>

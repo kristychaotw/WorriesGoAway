@@ -8,7 +8,7 @@ export default function Foreword() {
   return (
     <>
       <H3 grid={"email"}>Hello {currentUser.email} ,</H3>
-      <H3title>Your recent activities : </H3title>
+      <H3>Your recent activities : </H3>
 
     </>
   );

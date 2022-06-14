@@ -261,6 +261,7 @@ export const StaticStyled = styled.div`
   position: relative;
   padding: ${({ theme }) => theme.spacing.l};
   grid: ${({ grid }) => grid};
+  margin-top: 40px;
 
   h3 {
     position: absolute;

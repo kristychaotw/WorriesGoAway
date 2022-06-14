@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useAuthUser, logout } from "../../firebase";
 import { H3, PageTitle } from "../../components/styles/component.css";
 import Avatar from "./components/avatar";
-import { ContainerShowPage } from "../../components/styles/container.css";
+import { PageContainer } from "../../components/styles/container.css";
 import { SendBtn } from "../../components/styles/note.css";
 
 export default function ProfilePage() {
@@ -18,7 +18,7 @@ export default function ProfilePage() {
   return (
     <>
       <PageTitle>Profile Page</PageTitle>
-      <ContainerShowPage>
+      <PageContainer>
         <H3>Hello {currentUser.email} ,</H3>
         <Avatar></Avatar>
         <SendBtn
@@ -27,7 +27,7 @@ export default function ProfilePage() {
         >
           Log Out
         </SendBtn>
-      </ContainerShowPage>
+      </PageContainer>
     </>
   );
 }

@@ -47,8 +47,9 @@ export const PageContainer = styled.div`
     "logout";
   grid-gap: 60px;
   padding-bottom: 120px;
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
     display: block;
+    margin-top: 20px;
     margin: auto;
     width: 80%;
   }

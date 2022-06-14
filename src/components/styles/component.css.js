@@ -81,6 +81,14 @@ export const MsgP = styled.p`
   border-right: 4px solid ${({ theme }) => theme.colors.forth};
 `;
 
+export const MsgLogin = styled.p`
+  margin: 0 25%;
+  padding: 10px;
+  color: #f2bbbb;
+  font-weight: 500;
+  text-align: left;
+`;
+
 export const H2 = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.xxl};
   margin-left: 10%;
@@ -236,7 +244,7 @@ export const BtnSubmit = styled.button`
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.forth};
+  background: ${({color})=>color||"#8ba6bc"};
   font-weight: bold;
   display: block;
   box-shadow: 2px 2px 4px #000000a1;

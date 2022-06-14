@@ -4,7 +4,7 @@ import {
   FormContainer,
   BtnSubmit,
   P,
-  MsgP,
+  MsgLogin,
   TextInput,
   InputLable,
   FormStyled,
@@ -52,7 +52,7 @@ export default function LoginForm() {
     } else if (type === "pwd") {
       newMsg = regexPwd.test(value)
         ? ""
-        : "Must be 4-10 charactors mixing uppercase and lowercase letters and numbers.";
+        : "Must be 4-10 char with numbers and mixed-case letters.";
       setValidationMsg(newMsg);
     }
   }
@@ -96,6 +96,7 @@ export default function LoginForm() {
               onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
             />
           </FormStyled>
+          <MsgLogin>{loginState || validationMsg}</MsgLogin>
           <div>
             {loginForm ? (
               <div>
@@ -149,10 +150,9 @@ export default function LoginForm() {
                 </P>
               </div>
             )}
-            <BtnSubmit onClick={() => getTestAccount()}>
+            <BtnSubmit color={"#27567d"}onClick={() => getTestAccount()}>
               Get Test Account
             </BtnSubmit>
-            <MsgP>{loginState || validationMsg}</MsgP>
           </div>
         </div>
       )}

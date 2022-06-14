@@ -41,16 +41,15 @@ export default function ShowNotePage() {
   const [note, setNote] = useState([]);
   const currentUser = useAuthUser().currentUser;
 
-
   useEffect(() => {
+    if (selectedNoteID) {
+      const docRef = doc(db, "notes", selectedNoteID);
+      const unsub = onSnapshot(docRef, (q) => {
+        if (q.data().author === currentUser.uid) setNote(...note, q.data());
+      });
 
-    const docRef = doc(db, "notes", selectedNoteID);
-    const unsub = onSnapshot(docRef, (q) => {
-      if (q.data().author===currentUser.uid)
-      setNote(...note, q.data());
-    });
-
-    return unsub;
+      return unsub;
+    }
   }, []);
 
   return (
@@ -68,7 +67,10 @@ export default function ShowNotePage() {
           <PageTitle>My Note</PageTitle>
           <GridContainer>
             <ContentWrapper>
-              <PStyled>Oops! You didn't select any note. Go list page and select a note.</PStyled>
+              <PStyled>
+                Oops! You didn't select any note. Go list page and select a
+                note.
+              </PStyled>
             </ContentWrapper>
           </GridContainer>
         </>

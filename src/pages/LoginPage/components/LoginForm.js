@@ -68,7 +68,7 @@ export default function LoginForm() {
     else msgLogin = await signup(email, pwd);
     if (msgLogin !== "signIn")
       dispatch(openModal({ show: true, headlines: msgLogin, msg: "" }));
-
+    else nav("/home")
     setLoading(false);
   }
 

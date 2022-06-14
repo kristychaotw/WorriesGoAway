@@ -27,6 +27,8 @@ export default function LoginForm() {
   function getTestAccount() {
     const testAccount = { testEmail: "test@gmail.com", testPwd: "Test2022" };
     setTestAccount(testAccount);
+    emailRef.current.value = testAccount.testEmail;
+    passwordRef.current.value = testAccount.testPwd;
   }
 
   function changetoLoginForm() {
@@ -60,8 +62,9 @@ export default function LoginForm() {
   async function handleClick(email, pwd, type) {
     let msg = "";
     setLoading(true);
-    if (type === "login") msg = login(email, pwd);
+    if (type === "login") msg = await login(email, pwd);
     else msg = signup(email, pwd);
+    console.log("msg", msg);
     setLoginState(msg);
     setLoading(false);
   }
@@ -78,7 +81,6 @@ export default function LoginForm() {
             <InputLable primary>User Email</InputLable>
             <TextInput
               ref={emailRef}
-              defaultValue={testAccount.testEmail}
               type="email"
               required
               pattern={regexEmail}
@@ -88,7 +90,6 @@ export default function LoginForm() {
             <InputLable primary>Password</InputLable>
             <TextInput
               ref={passwordRef}
-              defaultValue={testAccount.testPwd}
               type="password"
               required
               pattern={regexPwd}
@@ -150,7 +151,7 @@ export default function LoginForm() {
                 </P>
               </div>
             )}
-            <BtnSubmit color={"#27567d"}onClick={() => getTestAccount()}>
+            <BtnSubmit color={"#27567d"} onClick={() => getTestAccount()}>
               Get Test Account
             </BtnSubmit>
           </div>

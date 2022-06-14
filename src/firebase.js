@@ -30,22 +30,21 @@ const db = getFirestore(app);
 export default getFirestore();
 export const auth = getAuth(app);
 
-export function signup(email, password) {
-  let signUpResult;
-  // firebase.auth().createUserWithEmailAndPassword(email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
-  createUserWithEmailAndPassword(auth, email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
+export async function signup(email, password) {
+  let signUpResult=await createUserWithEmailAndPassword(auth, email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
+  console.log("msgfire:",signUpResult);
   return signUpResult;
 }
 
-export function logout() {
-  let logoutResult;
-  signOut(auth).then((e)=>logoutResult=e).catch((e)=>logoutResult=e.message)
+export async function logout() {
+  let logoutResult=await signOut(auth).then((e)=>logoutResult=e).catch((e)=>logoutResult=e.message)
+  console.log("msgfire:",logoutResult);
   return logoutResult;
 }
 
-export function login(email, password) {
-  let signInResult;
-  signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.message);
+export async function login(email, password) {
+  let signInResult=await signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.code);
+  console.log("msgfire:",signInResult);
   return signInResult
 }
 

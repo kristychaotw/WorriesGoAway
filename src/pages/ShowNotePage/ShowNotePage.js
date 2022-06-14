@@ -12,7 +12,7 @@ const ShowNoteWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  height: 100vh;
+  height: 130vh;
 `;
 
 const ContentWrapper = styled.div`
@@ -21,12 +21,13 @@ const ContentWrapper = styled.div`
   top: 160px;
   width: 50%;
   z-index: 10;
+  padding-bottom: 100px;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 70%;
-    top: 50%;
+    top: 100px;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, 0%);
   }
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {

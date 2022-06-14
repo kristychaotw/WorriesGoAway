@@ -5,12 +5,6 @@ import { PageTitle } from "../../components/styles/component.css";
 import { SendBtn } from "../../components/styles/note.css";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  updateNote,
-  saveNote,
-  failtoSaveNote,
-  clearUpNote,
-} from "../../reducers/form";
 import SaveNote from "../../reducers/utils/dbNote";
 import Modal from "../../components/Modal";
 import { openModal } from "../../reducers/modal";
@@ -90,7 +84,11 @@ export default function CreateNotePage() {
       <GridContainer>
         <SelectAnimal></SelectAnimal>
         <Form></Form>
-        <SendBtn disabled={loading} grid={"send"} onClick={() => handleSendBtn(formContent)}>
+        <SendBtn
+          disabled={loading}
+          grid={"send"}
+          onClick={() => handleSendBtn(formContent)}
+        >
           Send
         </SendBtn>
         <p>Fill out {hint} before you send it</p>

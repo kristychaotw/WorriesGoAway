@@ -45,7 +45,6 @@ export default function ListPage() {
     const q = query(
       collection(db, "notes"),
       where("author", "==", currentUser.uid),
-      orderBy("createDate", "desc")
     );
     const notesDB = [];
     const unsubscribe = onSnapshot(q, (querySnapshot) => {

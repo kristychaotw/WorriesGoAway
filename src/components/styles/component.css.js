@@ -84,7 +84,7 @@ export const MsgP = styled.p`
 export const MsgLogin = styled.p`
   margin: 0 25%;
   padding: 10px;
-  color: #f2bbbb;
+  color: #ffd166;
   font-weight: 500;
   text-align: left;
 `;
@@ -238,7 +238,7 @@ export const TextInput = styled.input`
 export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
-  margin: 50px auto;
+  margin: 30px auto;
   margin-bottom: ${({ marginbt }) => marginbt};
   margin-left: ${({ margin }) => margin};
   padding: 10px;

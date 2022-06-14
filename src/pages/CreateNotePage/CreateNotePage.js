@@ -51,7 +51,7 @@ export default function CreateNotePage() {
     console.log(e);
 
     if (e.animal === "") {
-      handleHint("ANIMAIL");
+      handleHint("ANIMAIL field by clicking PICK");
     } else if (e.rating === "") {
       handleHint("RATING");
     } else if (e.tag === "") {

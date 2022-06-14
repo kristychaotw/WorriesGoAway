@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import whale from "../components/images/icons/whale.svg";
 import cat from "../components/images/icons/cat.svg";
-import rabbit from "../components/images/icons/rabbit2.svg";
+import rabbit from "../components/images/icons/rabbit.svg";
 import polarbear from "../components/images/icons/polarbear.svg";
 import brownbear from "../components/images/icons/brownbear.svg";
 

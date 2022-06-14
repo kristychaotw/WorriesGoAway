@@ -11,7 +11,6 @@ import {
   onSnapshot,
   query,
   where,
-  orderBy,
 } from "firebase/firestore";
 
 export default function Static() {
@@ -22,7 +21,6 @@ export default function Static() {
     const q = query(
       collection(db, "notes"),
       where("author", "==", currentUser.uid),
-      orderBy("createDate", "desc")
     );
     const notesDB = [];
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -48,10 +46,11 @@ export default function Static() {
     return notes.filter((note) => note.tag === tag);
   }
   const listLife = countTags("Life");
-  const listHealth = countTags("Health");
-  const listWealth = countTags("Wealth");
+  const listWork = countTags("Work");
+  const listSelf = countTags("Self");
   const listLove = countTags("Love");
   const listSocial = countTags("Social");
+  const listMoney = countTags("Money");
   const listOthers = countTags("Others");
 
   function countStress(list) {
@@ -63,10 +62,11 @@ export default function Static() {
   }
   const stressAvgTotal = countStress(notes);
   const stressAvgLife = countStress(listLife);
-  const stressAvgHealth = countStress(listHealth);
-  const stressAvgWealth = countStress(listWealth);
+  const stressAvgWork = countStress(listWork);
+  const stressAvgSelf = countStress(listSelf);
   const stressAvgLove = countStress(listLove);
   const stressAvgSocial = countStress(listSocial);
+  const stressAvgMoney = countStress(listMoney);
   const stressAvgOthers = countStress(listOthers);
 
   return (
@@ -94,14 +94,14 @@ export default function Static() {
           <p> {stressAvgLife}</p>
         </GridBox>
         <GridBox>
-          <h4>Wealth : </h4>
-          <h5>{listWealth.length} </h5>
-          <p> {stressAvgWealth}</p>
+          <h4>Work : </h4>
+          <h5>{listWork.length} </h5>
+          <p> {stressAvgWork}</p>
         </GridBox>
         <GridBox>
-          <h4>Health : </h4>
-          <h5>{listHealth.length} </h5>
-          <p> {stressAvgHealth}</p>
+          <h4>Self : </h4>
+          <h5>{listSelf.length} </h5>
+          <p> {stressAvgSelf}</p>
         </GridBox>
         <GridBox>
           {" "}
@@ -113,6 +113,11 @@ export default function Static() {
           <h4>Social : </h4>
           <h5>{listSocial.length} </h5>
           <p> {stressAvgSocial}</p>
+        </GridBox>
+        <GridBox>
+          <h4>Money : </h4>
+          <h5>{listMoney.length} </h5>
+          <p> {stressAvgMoney}</p>
         </GridBox>
         <GridBox>
           <h4>Others :</h4>

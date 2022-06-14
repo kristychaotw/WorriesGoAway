@@ -23,6 +23,7 @@ export const Container = styled.div`
     "avatar"
     "logout";
   grid-gap: 60px;
+  padding-bottom: 120px;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 80%;

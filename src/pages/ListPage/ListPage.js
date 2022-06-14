@@ -8,8 +8,6 @@ import {
   onSnapshot,
   query,
   where,
-  getDocs,
-  orderBy,
 } from "firebase/firestore";
 import moment from "moment";
 import { nanoid } from "@reduxjs/toolkit";
@@ -24,6 +22,7 @@ const GridContainer = styled.div`
   margin: 60px auto;
   margin-right: 90px;
   margin-top: 230px;
+  padding-bottom: 120px;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
@@ -44,7 +43,7 @@ export default function ListPage() {
   useEffect(() => {
     const q = query(
       collection(db, "notes"),
-      where("author", "==", currentUser.uid),
+      where("author", "==", currentUser.uid)
     );
     const notesDB = [];
     const unsubscribe = onSnapshot(q, (querySnapshot) => {

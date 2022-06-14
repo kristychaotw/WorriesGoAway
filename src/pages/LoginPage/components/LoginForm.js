@@ -11,6 +11,9 @@ import {
 } from "../../../components/styles/component.css";
 import { login, signup } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Modal from "../../../components/Modal";
+import { openModal } from "../../../reducers/modal";
 
 export default function LoginForm() {
   const emailRef = useRef();
@@ -24,6 +27,8 @@ export default function LoginForm() {
     testPwd: "",
   });
   const nav = useNavigate();
+  const dispatch = useDispatch();
+  const modalState = useSelector((state) => state.modal.value);
 
   function getTestAccount() {
     const testAccount = { testEmail: "test@gmail.com", testPwd: "Test2022" };
@@ -57,23 +62,26 @@ export default function LoginForm() {
   }
 
   async function handleClick(email, pwd, type) {
-    let msg = "";
+    let msgLogin = "";
     setLoading(true);
-    if (type === "login") msg = await login(email, pwd);
-    else msg = signup(email, pwd);
-    console.log("msg", msg);
-    setValidationMsg(msg);
+    if (type === "login") msgLogin = await login(email, pwd);
+    else msgLogin = await signup(email, pwd);
+    if (msgLogin !== "signIn")
+      dispatch(openModal({ show: true, headlines: msgLogin, msg: "" }));
+
     setLoading(false);
   }
 
   useEffect(() => {
-    if (currentUser) nav("/home");
-    else nav("/");
+    if (currentUser) {
+      nav("/home");
+    }
   }, [currentUser]);
 
   return (
     <FormContainer>
       <div>
+        {modalState.show && <Modal />}
         <FormStyled>
           <InputLable primary>User Email</InputLable>
           <TextInput

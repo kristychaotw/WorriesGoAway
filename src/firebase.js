@@ -29,23 +29,27 @@ export const storage = getStorage(app);
 const db = getFirestore(app);
 export default getFirestore();
 export const auth = getAuth(app);
+let authResult;
 
 export async function signup(email, password) {
-  let signUpResult=await createUserWithEmailAndPassword(auth, email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
-  console.log("msgfire:",signUpResult);
-  return signUpResult;
-}
-
-export async function logout() {
-  let logoutResult=await signOut(auth).then((e)=>logoutResult=e).catch((e)=>logoutResult=e.message)
-  console.log("msgfire:",logoutResult);
-  return logoutResult;
+  authResult = await createUserWithEmailAndPassword(auth, email, password)
+    .then((e) => (authResult = e.operationType))
+    .catch((e) => (authResult =e.code));
+  return authResult;
 }
 
 export async function login(email, password) {
-  let signInResult=await signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.code);
-  console.log("msgfire:",signInResult);
-  return signInResult
+  authResult = await signInWithEmailAndPassword(auth, email, password)
+    .then((e) => (authResult = e.operationType))
+    .catch((e) => (authResult = e.code));
+  return authResult;
+}
+
+export async function logout() {
+  authResult = await signOut(auth)
+    .then((e) => (authResult = e))
+    .catch((e) => (authResult = e.code));
+  return authResult;
 }
 
 // Custom Hook

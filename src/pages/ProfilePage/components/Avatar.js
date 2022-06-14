@@ -10,16 +10,19 @@ import Modal from "../../../components/Modal";
 import { openModal } from "../../../reducers/modal";
 
 export const Wrapper = styled.div`
-  text-align: start;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-row-gap: 30px;
   grid-template-areas:
-    "avatar avatar "
-    "input uploadbtn";
+    "avatar"
+    "input"
+    "uploadbtn";
+  justify-items: left;
+  margin: 60px 0 40px 0;
 
-  justify-items: center;
-
+  input{
+    grid-area: input;
+  }
   button {
     grid-area: uploadbtn;
     border: 1px solid ${({ theme }) => theme.colors.dark};
@@ -38,6 +41,7 @@ export const StyledAvatar = styled.img`
   grid-area: avatar;
   object-fit: cover;
   background-color: #fff;
+  justify-self: center;
 `;
 
 export default function Avatar() {

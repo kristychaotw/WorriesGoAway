@@ -27,7 +27,29 @@ export const Container = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 80%;
-    margin-right: auto;
-    margin-top: auto;
+    margin: auto;
+    justify-items: left;
+  }
+`;
+
+export const ContainerShowPage = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 60%;
+  max-width: 1200px;
+  margin: 40px auto;
+  margin-right: 110px;
+  margin-top: 230px;
+  text-align: center;
+  grid-template-areas:
+    "email"
+    "avatar"
+    "logout";
+  grid-gap: 60px;
+  padding-bottom: 120px;
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    display: block;
+    margin: auto;
+    width: 80%;
   }
 `;

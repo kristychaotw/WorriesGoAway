@@ -69,11 +69,11 @@ export const StampWrapper = styled.div`
   justify-items: end;
   align-items: start;
   position: absolute;
-  top: ${({top})=>top||"240px"};
+  top: ${({top})=>top||240}px;
   right: -35px;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    top: 190px;
+    top: ${({top})=>( top-50)||190}px;
     right: -10px;
   }
 `;

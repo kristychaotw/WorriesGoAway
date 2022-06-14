@@ -25,8 +25,7 @@ export default function Form() {
     <>
       <FormWrapper onLoad={() => dispatch(updateNote({ author: currentUser }))}>
         <StampWrapper
-          top={"90px"}
-          right={"-35px"}
+          top={90}
           onLoad={() => dispatch(updateNote({ id: id }))}
         >
           <Stamp />

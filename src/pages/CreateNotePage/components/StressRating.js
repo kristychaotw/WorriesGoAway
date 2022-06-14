@@ -19,6 +19,7 @@ export default function StressRating(props) {
           return (
             <label key={"circle" + ratingValue}>
               <input
+              style={{display:'none'}}
                 type="radio"
                 name="rating"
                 value={ratingValue}

@@ -112,7 +112,6 @@ export default function Avatar() {
   useEffect(() => {
     if (currentUser?.photoURL) {
       const newPhoto = currentUser.photoURL;
-      console.log("newPhoto",newPhoto);
       setPhotoURL(newPhoto);
     }
   }, [currentUser.photoURL]);

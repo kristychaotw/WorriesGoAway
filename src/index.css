@@ -2,13 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='radio']{
-    display: none;
-}
 
-.rateCircle{
-    cursor: pointer;
-    transition:color .3s;
-    margin: 5px 10px;
-}
 

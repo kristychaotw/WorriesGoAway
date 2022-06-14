@@ -1,27 +1,18 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { WebTitle } from "../../../components/styles/component.css";
-import { useDispatch } from "react-redux";
 import { useAuthUser, logout } from "../../../firebase";
 import { BtnSubmit } from "../../../components/styles/component.css";
 
 export default function Welcome() {
+  const [loading, setLoading] = useState(false);
+  const currentUser = useAuthUser().currentUser;
 
-    const dispatch = useDispatch();
-    const [loading, setLoading] = useState(false);
-    const currentUser = useAuthUser().currentUser;
-
-
-    async function handleLogout() {
-        setLoading(true);
-        try {
-          await logout();
-        } catch {
-          alert("Error!");
-        }
-        setLoading(false);
-        dispatch(logoutr());
-      }
+  async function handleLogout() {
+    setLoading(true);
+    logout();
+    setLoading(false);
+  }
   return (
     <div>
       <WebTitle>Welcome</WebTitle>

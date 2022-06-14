@@ -11,7 +11,6 @@ import listActive from "./images/icons/list_active.svg";
 import whaleActive from "./images/icons/whale_active.svg";
 import NavItem from "./NavItem";
 import { NavContainer } from "./styles/nav.css";
-import { useSelector } from "react-redux";
 
 export default function Nav() {
   const nav = [
@@ -28,7 +27,6 @@ export default function Nav() {
     setIconActive(e);
   }
 
-  const user = useSelector((state) => state.user.value);
   const currentUser = useAuthUser().currentUser;
   const [navIcons, setNavIcons] = useState(nav);
 

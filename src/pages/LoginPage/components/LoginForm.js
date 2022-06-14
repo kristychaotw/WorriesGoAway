@@ -10,7 +10,7 @@ import {
   FormStyled,
 } from "../../../components/styles/component.css";
 import Welcome from "./Welcome";
-import { handleLogin } from "./loginAuth";
+import { login, signup } from "../../../firebase";
 
 export default function LoginForm() {
   const emailRef = useRef();
@@ -19,11 +19,14 @@ export default function LoginForm() {
   const currentUser = useAuthUser().currentUser;
   const [loginForm, setLoginForm] = useState(true);
   const [loginState, setLoginState] = useState("");
-  const [testAccount,setTestAccount]= useState({"testEmail":"","testPwd":""})
+  const [testAccount, setTestAccount] = useState({
+    testEmail: "",
+    testPwd: "",
+  });
 
-  function getTestAccount(){
-    const testAccount={"testEmail":"test@gmail.com","testPwd":"Test2022"}
-    setTestAccount(testAccount)
+  function getTestAccount() {
+    const testAccount = { testEmail: "test@gmail.com", testPwd: "Test2022" };
+    setTestAccount(testAccount);
   }
 
   function changetoLoginForm() {
@@ -41,7 +44,7 @@ export default function LoginForm() {
   const [validationMsg, setValidationMsg] = useState("");
   let newMsg;
   function checkFormat(type, value) {
-    setValidationMsg("")
+    setValidationMsg("");
     setLoginState("");
     if (type === "email") {
       newMsg = regexEmail.test(value) ? "" : "Must be Email Format";
@@ -55,15 +58,16 @@ export default function LoginForm() {
   }
 
   async function handleClick(email, pwd, type) {
+    let msg = "";
     setLoading(true);
-    const msg = await handleLogin(email, pwd, type);
+    if (type === "login") msg = login(email, pwd);
+    else msg = signup(email, pwd);
     setLoginState(msg);
     setLoading(false);
   }
 
   return (
     <FormContainer>
-
       {currentUser ? (
         <div>
           <Welcome />
@@ -78,7 +82,7 @@ export default function LoginForm() {
               type="email"
               required
               pattern={regexEmail}
-              onFocus={()=>setValidationMsg("")}
+              onFocus={() => setValidationMsg("")}
               onKeyDown={() => checkFormat("email", emailRef.current.value)}
             />
             <InputLable primary>Password</InputLable>
@@ -88,7 +92,7 @@ export default function LoginForm() {
               type="password"
               required
               pattern={regexPwd}
-              onFocus={()=>setValidationMsg("")}
+              onFocus={() => setValidationMsg("")}
               onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
             />
           </FormStyled>
@@ -145,7 +149,9 @@ export default function LoginForm() {
                 </P>
               </div>
             )}
-            <BtnSubmit onClick={()=>getTestAccount()}>Get Test Account</BtnSubmit>
+            <BtnSubmit onClick={() => getTestAccount()}>
+              Get Test Account
+            </BtnSubmit>
             <MsgP>{loginState || validationMsg}</MsgP>
           </div>
         </div>

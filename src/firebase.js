@@ -39,14 +39,12 @@ export function signup(email, password) {
 
 export function logout() {
   let logoutResult;
-  // firebase.auth().signOut(auth).then((e)=>console.log("logout",e)).catch((e)=>logoutResult=e.message)
-  signOut(auth).then((e)=>console.log("logout",e)).catch((e)=>logoutResult=e.message)
+  signOut(auth).then((e)=>logoutResult=e).catch((e)=>logoutResult=e.message)
   return logoutResult;
 }
 
 export function login(email, password) {
   let signInResult;
-  // firebase.auth().signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.message);
   signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.message);
   return signInResult
 }

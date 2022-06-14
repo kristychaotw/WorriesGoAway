@@ -7,7 +7,6 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import userReducer from "./reducers/user";
 import stampReducer from "./reducers/stamp";
 import formReducer from "./reducers/form";
 import listReducer from "./reducers/list";
@@ -16,7 +15,6 @@ import thunk from "redux-thunk";
 
 const store = configureStore({
   reducer: {
-    user: userReducer,
     stamp: stampReducer,
     form: formReducer,
     list: listReducer,
@@ -26,6 +24,7 @@ const store = configureStore({
 
 const container = document.querySelector("#root");
 const root = createRoot(container);
+
 
 root.render(
   <BrowserRouter>

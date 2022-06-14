@@ -2,15 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import AnimalBG from "./components/AnimalBG";
 import Note from "./components/Note";
 import styled from "styled-components";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  getDoc,
-  onSnapshot,
-} from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import db from "../../firebase";
 import EndBtn from "./components/EndBtn";
 import { PageTitle } from "../../components/styles/component.css";
@@ -57,7 +49,6 @@ export default function ShowNotePage() {
 
   return (
     <ShowNoteWrapper>
-      <PageTitle>Selecet a note in the list to view its result.</PageTitle>
       {note ? (
         <>
           <ContentWrapper>
@@ -67,7 +58,7 @@ export default function ShowNotePage() {
           <AnimalBG BG={note.animalName}></AnimalBG>
         </>
       ) : (
-        <></>
+        <PageTitle>Selecet a note in the list to view its result.</PageTitle>
       )}
     </ShowNoteWrapper>
   );

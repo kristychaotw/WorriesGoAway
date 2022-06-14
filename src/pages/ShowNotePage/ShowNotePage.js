@@ -3,10 +3,11 @@ import AnimalBG from "./components/AnimalBG";
 import Note from "./components/Note";
 import styled from "styled-components";
 import { doc, onSnapshot } from "firebase/firestore";
-import db from "../../firebase";
 import EndBtn from "./components/EndBtn";
 import { PageTitle, PStyled } from "../../components/styles/component.css";
 import { ContentWrapper, GridContainer } from "../ListPage/ListPage";
+import db, { useAuthUser } from "../../firebase";
+
 const ShowNoteWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.body};
   position: relative;
@@ -38,10 +39,14 @@ const ContentWrapperShow = styled.div`
 export default function ShowNotePage() {
   const selectedNoteID = localStorage.getItem("showItemID");
   const [note, setNote] = useState([]);
+  const currentUser = useAuthUser().currentUser;
+
 
   useEffect(() => {
+
     const docRef = doc(db, "notes", selectedNoteID);
     const unsub = onSnapshot(docRef, (q) => {
+      if (q.data().author===currentUser.uid)
       setNote(...note, q.data());
     });
 

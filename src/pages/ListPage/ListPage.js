@@ -7,7 +7,7 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 import moment from "moment";
 import { nanoid } from "@reduxjs/toolkit";
 
-const GridContainer = styled.div`
+export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
@@ -27,7 +27,7 @@ const GridContainer = styled.div`
   }
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   grid-area: nlist;
 `;
 
@@ -64,7 +64,7 @@ export default function ListPage() {
           {sortNote.map((note) => {
             return <ListCard key={nanoid()} note={note}></ListCard>;
           })}
-          {!notes.length && <PStyled>There is no note. Go to add one!</PStyled>}
+          {!notes.length && <PStyled>Oops! Your list is empty. Go add at least one note.</PStyled>}
         </ContentWrapper>
       </GridContainer>
     </>

@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { doc, onSnapshot } from "firebase/firestore";
 import db from "../../firebase";
 import EndBtn from "./components/EndBtn";
-import { PageTitle } from "../../components/styles/component.css";
-
+import { PageTitle, PStyled } from "../../components/styles/component.css";
+import { ContentWrapper, GridContainer } from "../ListPage/ListPage";
 const ShowNoteWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.body};
   position: relative;
@@ -15,7 +15,7 @@ const ShowNoteWrapper = styled.div`
   height: 130vh;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapperShow = styled.div`
   position: absolute;
   right: 60px;
   top: 160px;
@@ -25,7 +25,7 @@ const ContentWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 70%;
-    top: 100px;
+    top: 150px;
     left: 50%;
     transform: translate(-50%, 0%);
   }
@@ -50,16 +50,23 @@ export default function ShowNotePage() {
 
   return (
     <ShowNoteWrapper>
-      {note ? (
+      {note.length !== 0 ? (
         <>
-          <ContentWrapper>
+          <ContentWrapperShow>
             <Note note={note}></Note>
             {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
-          </ContentWrapper>
+          </ContentWrapperShow>
           <AnimalBG BG={note.animalName}></AnimalBG>
         </>
       ) : (
-        <PageTitle>Selecet a note in the list to view its result.</PageTitle>
+        <>
+          <PageTitle>My Note</PageTitle>
+          <GridContainer>
+            <ContentWrapper>
+              <PStyled>Oops! You didn't select any note. Go list page and select a note.</PStyled>
+            </ContentWrapper>
+          </GridContainer>
+        </>
       )}
     </ShowNoteWrapper>
   );

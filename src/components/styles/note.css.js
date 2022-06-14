@@ -25,8 +25,7 @@ export const FormWrapper = styled.div`
 export const NoteWrapper = styled.div`
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
-  /* height: 100vh; */
+  margin: 20px auto;
   padding: 60px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
@@ -42,7 +41,8 @@ export const NoteWrapper = styled.div`
     "content content"
     "enddate enddate";
 
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    margin-top: 150px;
     grid-template-columns: 1fr;
     grid-template-areas:
       "stamp"
@@ -69,11 +69,11 @@ export const StampWrapper = styled.div`
   justify-items: end;
   align-items: start;
   position: absolute;
-  top: 90px;
+  top: ${({top})=>top||"240px"};
   right: -35px;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    top: 35px;
+    top: 190px;
     right: -10px;
   }
 `;

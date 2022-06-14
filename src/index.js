@@ -27,8 +27,6 @@ const store = configureStore({
 const container = document.querySelector("#root");
 const root = createRoot(container);
 
-console.log("test");
-
 root.render(
   <BrowserRouter>
     <Provider store={store}>

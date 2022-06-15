@@ -39,6 +39,7 @@ const GridContainer = styled.div`
     margin-right: auto;
     margin-top: auto;
   }
+  
 `;
 
 export default function CreateNotePage() {

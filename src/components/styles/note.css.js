@@ -20,6 +20,11 @@ export const FormWrapper = styled.div`
     "title title title"
     "tcontent . ."
     "content content content";
+
+    @media (max-width: ${({ theme }) => theme.device.mobile}) {
+      padding: 60px 20px;
+
+    }
 `;
 
 export const NoteWrapper = styled.div`
@@ -69,16 +74,16 @@ export const StampWrapper = styled.div`
   justify-items: end;
   align-items: start;
   position: absolute;
-  top: ${({top})=>top||110}px;
+  top: ${({ top }) => top || 110}px;
   right: -35px;
 
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {  
-  top: ${({top})=>top||240}px;
-  right: -35px;
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    top: ${({ top }) => top || 240}px;
+    right: -35px;
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    top: ${({top})=>( top-50)||190}px;
+    top: ${({ top }) => top - 50 || 190}px;
     right: -10px;
   }
 `;
@@ -164,11 +169,12 @@ export const TitleBox = styled.input`
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
+  grid-area: ${({ grid }) => grid};
+  outline: 2px solid #8ba6bc;
+  width: 100%;
   ::placeholder {
     color: #8ba6bc;
   }
-  grid-area: ${({ grid }) => grid};
-  outline: 2px solid #8ba6bc;
   :focus {
     outline: 3px solid #8ba6bc;
   }
@@ -181,11 +187,13 @@ export const TextAreaBox = styled.textarea`
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
+  outline: 2px solid #8ba6bc;
+  width: 100%;
+
   ::placeholder {
     color: #8ba6bc;
   }
   grid-area: ${({ grid }) => grid};
-  outline: 2px solid #8ba6bc;
   :focus {
     outline: 3px solid #8ba6bc;
   }

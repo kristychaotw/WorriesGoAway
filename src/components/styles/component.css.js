@@ -71,15 +71,6 @@ export const P = styled.p`
   grid-area: ${({ grid }) => grid};
 `;
 
-export const MsgP = styled.p`
-  margin: 0 25%;
-  padding: 10px;
-  color: #e6e6e6;
-  margin-top: 20px;
-  font-weight: 500;
-  border-left: 4px solid ${({ theme }) => theme.colors.forth};
-  border-right: 4px solid ${({ theme }) => theme.colors.forth};
-`;
 
 export const MsgLogin = styled.p`
   margin: 0 25%;
@@ -87,6 +78,25 @@ export const MsgLogin = styled.p`
   color: #ffd166;
   font-weight: 500;
   text-align: left;
+  grid-area: ${({ grid }) => grid};
+
+`;
+
+export const MsgHint = styled.p`
+  color: #ffd166;
+  font-weight: 500;
+  text-align: left;
+  grid-area: ${({ grid }) => grid};
+
+`;
+
+export const PStyled = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 300;
+  color: #656565;
+  grid-area: ${({ grid }) => grid};
+  justify-self: end;
+  text-align: ${({ align }) => align || "end"};
 `;
 
 export const H2 = styled.h2`
@@ -167,14 +177,7 @@ export const H3title = styled.div`
   padding-bottom: 40px;
 `;
 
-export const PStyled = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 300;
-  color: #656565;
-  grid-area: ${({ grid }) => grid};
-  justify-self: end;
-  text-align: ${({ align }) => align || "end"};
-`;
+
 
 export const H3 = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};

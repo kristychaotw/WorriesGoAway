@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import SelectAnimal from "./components/SelectAnimal";
 import Form from "./components/Form";
-import { PageTitle } from "../../components/styles/component.css";
+import { MsgHint, PageTitle } from "../../components/styles/component.css";
 import { SendBtn } from "../../components/styles/note.css";
 import { useDispatch, useSelector } from "react-redux";
 import SaveNote from "../../reducers/utils/dbNote";
@@ -27,10 +27,6 @@ const GridContainer = styled.div`
   z-index: 11;
   padding-bottom: 120px;
 
-  p {
-    grid-area: msg;
-    text-align: left;
-  }
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: repeat(2, 1fr);
@@ -113,7 +109,7 @@ export default function CreateNotePage() {
         >
           Send
         </SendBtn>
-        <p>{hint}</p>
+        <MsgHint grid={"msg"}>{hint}</MsgHint>
       </GridContainer>
     </div>
   );

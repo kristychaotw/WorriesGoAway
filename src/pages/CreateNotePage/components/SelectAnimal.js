@@ -1,10 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import btnLeft from "../../../components/images/icons/bt_left.svg";
 import btnRight from "../../../components/images/icons/bt_right.svg";
-import { useDispatch } from "react-redux";
-import { next, prev, pick } from "../../../reducers/stamp";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { next, prev, pick, unPick } from "../../../reducers/stamp";
 import { updateNote } from "../../../reducers/form";
 
 export const BtnPick = styled.button`
@@ -69,6 +68,7 @@ export const BtnArrow = styled.button`
 export default function SelectAnimal() {
   const dispatch = useDispatch();
   const animalIcon = useSelector((state) => state.stamp.value);
+  const formContent = useSelector((state) => state.form.value);
 
   function swipeRight() {
     dispatch(next());
@@ -83,6 +83,11 @@ export default function SelectAnimal() {
     dispatch(updateNote({ animal: animalIcon.path }));
     dispatch(updateNote({ animalName: animalIcon.animal }));
   }
+
+  useEffect(() => {
+    dispatch(updateNote({ animal: "" }));
+    dispatch(updateNote({ animalName: "" }));
+  }, [formContent.isComplete]);
 
   return (
     <AnimalSelector>

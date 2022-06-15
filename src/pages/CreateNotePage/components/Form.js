@@ -15,7 +15,7 @@ import { updateNote, saveNote, failtoSaveNote } from "../../../reducers/form";
 import { AuthContext } from "../../../firebase";
 import { nanoid } from "nanoid";
 
-export default function Form() {
+export default function Form({ upload }) {
   const dispatch = useDispatch();
   const currentUser = useContext(AuthContext).currentUser.uid;
   const formContent = useSelector((state) => state.form.value);
@@ -24,10 +24,7 @@ export default function Form() {
   return (
     <>
       <FormWrapper onLoad={() => dispatch(updateNote({ author: currentUser }))}>
-        <StampWrapper
-          top={90}
-          onLoad={() => dispatch(updateNote({ id: id }))}
-        >
+        <StampWrapper top={90} onLoad={() => dispatch(updateNote({ id: id }))}>
           <Stamp />
         </StampWrapper>
         <TitleLable grid={"trate"}>Stress Level</TitleLable>

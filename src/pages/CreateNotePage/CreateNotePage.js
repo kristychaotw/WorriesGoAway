@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import SelectAnimal from "./components/SelectAnimal";
 import Form from "./components/Form";
 import { PageTitle } from "../../components/styles/component.css";
 import { SendBtn } from "../../components/styles/note.css";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import SaveNote from "../../reducers/utils/dbNote";
 import Modal from "../../components/Modal";
 import { openModal } from "../../reducers/modal";
-import { clearUpNote } from "../../reducers/form";
+import { clearUpNote, saveNote, updateNote } from "../../reducers/form";
+import { useEffect } from "react";
+import moment from "moment";
 
 const GridContainer = styled.div`
   display: grid;
@@ -39,54 +41,66 @@ const GridContainer = styled.div`
     margin-right: auto;
     margin-top: auto;
   }
-  
 `;
 
 export default function CreateNotePage() {
   const dispatch = useDispatch();
-  const formContent = useSelector((state) => state.form.value);
   const modalState = useSelector((state) => state.modal.value);
-  const [hint, setHint] = useState("All Fields");
+  const formContent = useSelector((state) => state.form.value);
+  const [hint, setHint] = useState("");
   const [loading, setLoading] = useState(false);
   const [sendBtn, setSendBtn] = useState(false);
+  let time = moment().format()
 
   function handleSendBtn(e) {
-    console.log("e", e);
     setSendBtn(false);
     if (e.animal === "") {
-      setHint("ANIMAIL STAMP by clicking PICK");
+      setHint("Fill out ANIMAIL STAMP by clicking PICK");
     } else if (e.rating === "") {
-      setHint("RATING");
+      setHint("Fill out RATING");
     } else if (e.tag === "") {
-      setHint("TAG");
+      setHint("Fill out TAG");
     } else if (e.title === "") {
-      setHint("TITLE");
+      setHint("Fill out TITLE");
     } else if (e.worry === "") {
-      setHint("CONTENT");
+      setHint("Fill out CONTENT");
+    } else if (e.createDate === "default") {
+      dispatch(updateNote({ createDate: moment().format() }));
+      setHint("try to change");
     } else {
-      setHint("All Done, ready to send");
+      setHint("");
       setSendBtn(true);
-      sendFormContent()
+      sendFormContent();
     }
   }
 
   function sendFormContent() {
     setLoading(true);
     SaveNote(formContent)
-      .then((e) =>
-        dispatch(openModal({ show: true, headlines: "Success", msg: e }))
-      )
+      .then((e) => {
+        dispatch(openModal({ show: true, headlines: "Success", msg: e }));
+        dispatch(saveNote());
+      })
       .catch((e) =>
         dispatch(openModal({ show: true, headlines: "Failed", msg: e }))
       );
     setLoading(false);
     setSendBtn(false);
-    dispatch(clearUpNote())
-    setHint("All Fields");
   }
 
+  useEffect(() => {
+    dispatch(clearUpNote());
+    dispatch(updateNote({ createDate: time}))
+  }, [formContent.isComplete]);
+
+  useEffect(() => {
+    setTimeout(() => {
+        time;
+    },1000);
+});
+
   return (
-    <>
+    <div onLoad={() => dispatch(updateNote({ createDate: time }))}>
       {modalState.show && <Modal />}
       <PageTitle>Add A New Note </PageTitle>
       <GridContainer>
@@ -99,8 +113,8 @@ export default function CreateNotePage() {
         >
           Send
         </SendBtn>
-        <p>Fill out {hint}</p>
+        <p>{hint}</p>
       </GridContainer>
-    </>
+    </div>
   );
 }

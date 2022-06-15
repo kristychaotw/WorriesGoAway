@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCircle } from "react-icons/fa";
 import { StyledRating } from "../../../components/styles/note.css";
+import { useSelector } from "react-redux";
 
 export default function StressRating(props) {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const formContent = useSelector((state) => state.form.value);
 
   function handleRating(ratingValue) {
     setRating(ratingValue);
     props.newRate(ratingValue);
   }
+
+  useEffect(() => {
+    setRating(null);
+  }, [formContent.isComplete]);
+
   return (
     <>
       <StyledRating>
@@ -19,7 +26,7 @@ export default function StressRating(props) {
           return (
             <label key={"circle" + ratingValue}>
               <input
-              style={{display:'none'}}
+                style={{ display: "none" }}
                 type="radio"
                 name="rating"
                 value={ratingValue}

@@ -16,7 +16,7 @@ const animalList = [
 const initialState = animalList[0];
 let newIndex;
 export const stampSlice = createSlice({
-  name: "user",
+  name: "stamp",
   initialState: { value: initialState },
   reducers: {
     next: (state) => {
@@ -38,9 +38,12 @@ export const stampSlice = createSlice({
     pick: (state) => {
       state.value.picked = true;
     },
+    unPick: (state) => {
+      state.value = initialState;
+    },
   },
 });
 
-export const { next, prev, pick } = stampSlice.actions;
+export const { next, prev, pick, unPick } = stampSlice.actions;
 
 export default stampSlice.reducer;

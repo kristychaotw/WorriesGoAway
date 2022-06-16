@@ -62,8 +62,8 @@ export const ModalBtn = styled.div`
   border: none;
   margin: 0 auto;
   margin-top: ${({ theme }) => theme.spacing.l};
-  padding: 10px 20px;
-  width: 100px;
+  padding: 10px 15px;
+  width: 150px;
   text-align: center;
   color: ${({ theme }) => theme.colors.white};
   cursor: pointer;

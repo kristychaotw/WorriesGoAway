@@ -11,7 +11,6 @@ import { openModal } from "../../reducers/modal";
 import { clearUpNote, saveNote, updateNote } from "../../reducers/form";
 import { useEffect } from "react";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
 
 
 const GridContainer = styled.div`
@@ -49,7 +48,6 @@ export default function CreateNotePage() {
   const [loading, setLoading] = useState(false);
   const [sendBtn, setSendBtn] = useState(false);
   let time = moment().format()
-  const nav = useNavigate();
 
 
 

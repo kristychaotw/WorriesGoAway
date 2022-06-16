@@ -248,7 +248,7 @@ export const TextInput = styled.input`
 export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
-  margin: 30px auto;
+  margin: 20px auto;
   margin-bottom: ${({ marginbt }) => marginbt};
   margin-left: ${({ margin }) => margin};
   padding: 10px;
@@ -305,7 +305,7 @@ export const FormContainer = styled.div`
   width: 400px;
   margin: 30px auto;
   margin-bottom: 80px;
-  padding: 40px 0px;
+  padding: 20px 0px;
   text-align: center;
   background: #00000040;
   border: 1px solid rgba(19, 19, 19, 0.053);

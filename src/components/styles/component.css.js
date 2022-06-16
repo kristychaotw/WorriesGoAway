@@ -69,17 +69,19 @@ export const P = styled.p`
   color: #f0f0f0;
   font-weight: 500;
   grid-area: ${({ grid }) => grid};
+
 `;
 
-
 export const MsgLogin = styled.p`
-  margin: 0 25%;
   padding: 10px;
   color: #ffd166;
   font-weight: 500;
   text-align: left;
   grid-area: ${({ grid }) => grid};
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    padding: 10px 0px;
 
+  }
 `;
 
 export const MsgHint = styled.p`
@@ -87,7 +89,6 @@ export const MsgHint = styled.p`
   font-weight: 500;
   text-align: left;
   grid-area: ${({ grid }) => grid};
-
 `;
 
 export const PStyled = styled.p`
@@ -177,8 +178,6 @@ export const H3title = styled.div`
   padding-bottom: 40px;
 `;
 
-
-
 export const H3 = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
   line-height: ${({ theme }) => theme.fontSize.xl};
@@ -218,20 +217,18 @@ export const RateBox = styled.div`
 
 export const InputLable = styled.div`
   text-align: left;
-  margin-left: 23%;
   font-weight: 400;
   font-size: 1.2rem;
-  padding: 10px;
+  padding: 10px 0px;
   color: ${(props) => (props.primary ? "#f2f2f2" : "#5185A6")};
 `;
 
 export const TextInput = styled.input`
   height: 30px;
-  width: 50%;
+  width: 100%;
   font-weight: 300;
   font-size: 18px;
   margin-bottom: 10px;
-  align-self: stretch;
   color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
   border: none;
@@ -305,7 +302,7 @@ export const StaticStyled = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  width: 30%;
+  width: 400px;
   margin: 30px auto;
   margin-bottom: 80px;
   padding: 40px 0px;
@@ -315,21 +312,17 @@ export const FormContainer = styled.div`
   border-radius: 5px;
   box-shadow: 3px 3px 5px #000000a1;
 
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    width: 50%;
-  }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 75%;
+    width: 80%;
   }
 `;
 
 export const FormStyled = styled.form`
-  p {
-    text-align: left;
-    margin-left: 25%;
-    margin-right: 25%;
+  margin: 30px 60px;
+  text-align: center;
 
-    text-align: left;
-    color: ${({ theme }) => theme.colors.body};
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    margin: 30px 30px;
+
   }
 `;

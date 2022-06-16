@@ -68,7 +68,7 @@ export default function LoginForm() {
     else msgLogin = await signup(email, pwd);
     if (msgLogin !== "signIn")
       dispatch(openModal({ show: true, headlines: msgLogin, msg: "" }));
-    else nav("/home")
+    else nav("/home");
     setLoading(false);
   }
 
@@ -80,86 +80,84 @@ export default function LoginForm() {
 
   return (
     <FormContainer>
-      <div>
+      <FormStyled>
         {modalState.show && <Modal />}
-        <FormStyled>
-          <InputLable primary>User Email</InputLable>
-          <TextInput
-            ref={emailRef}
-            type="email"
-            required
-            pattern={regexEmail}
-            onFocus={() => setValidationMsg("")}
-            onKeyDown={() => checkFormat("email", emailRef.current.value)}
-          />
-          <InputLable primary>Password</InputLable>
-          <TextInput
-            ref={passwordRef}
-            type="password"
-            required
-            pattern={regexPwd}
-            onFocus={() => setValidationMsg("")}
-            onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
-          />
-        </FormStyled>
+        <InputLable primary>User Email</InputLable>
+        <TextInput
+          ref={emailRef}
+          type="email"
+          required
+          pattern={regexEmail}
+          onFocus={() => setValidationMsg("")}
+          onKeyDown={() => checkFormat("email", emailRef.current.value)}
+        />
+        <InputLable primary>Password</InputLable>
+        <TextInput
+          ref={passwordRef}
+          type="password"
+          required
+          pattern={regexPwd}
+          onFocus={() => setValidationMsg("")}
+          onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
+        />
         <MsgLogin>{validationMsg}</MsgLogin>
-        <div>
-          {loginForm ? (
-            <div>
-              <BtnSubmit
-                marginbt={"10px"}
-                disabled={loading || currentUser}
-                onClick={() =>
-                  handleClick(
-                    emailRef.current.value,
-                    passwordRef.current.value,
-                    "login"
-                  )
-                }
+      </FormStyled>
+      <div>
+        {loginForm ? (
+          <div>
+            <BtnSubmit
+              marginbt={"10px"}
+              disabled={loading || currentUser}
+              onClick={() =>
+                handleClick(
+                  emailRef.current.value,
+                  passwordRef.current.value,
+                  "login"
+                )
+              }
+            >
+              Log In
+            </BtnSubmit>
+            <P style={{ paddingBottom: 20 }}>
+              Need an account ?{" "}
+              <span
+                onClick={changetoSignupForm}
+                style={{ textDecoration: "underline", cursor: "pointer" }}
               >
-                Log In
-              </BtnSubmit>
-              <P style={{ paddingBottom: 20 }}>
-                Need an account ?{" "}
-                <span
-                  onClick={changetoSignupForm}
-                  style={{ textDecoration: "underline", cursor: "pointer" }}
-                >
-                  Register
-                </span>
-              </P>
-            </div>
-          ) : (
-            <div>
-              <BtnSubmit
-                marginbt={"10px"}
-                disabled={loading || currentUser}
-                onClick={() =>
-                  handleClick(
-                    emailRef.current.value,
-                    passwordRef.current.value,
-                    "signup"
-                  )
-                }
-              >
-                Sign Up
-              </BtnSubmit>
+                Register
+              </span>
+            </P>
+          </div>
+        ) : (
+          <div>
+            <BtnSubmit
+              marginbt={"10px"}
+              disabled={loading || currentUser}
+              onClick={() =>
+                handleClick(
+                  emailRef.current.value,
+                  passwordRef.current.value,
+                  "signup"
+                )
+              }
+            >
+              Sign Up
+            </BtnSubmit>
 
-              <P style={{ paddingBottom: 20 }}>
-                Already a user ?{" "}
-                <span
-                  onClick={changetoLoginForm}
-                  style={{ textDecoration: "underline", cursor: "pointer" }}
-                >
-                  Login
-                </span>
-              </P>
-            </div>
-          )}
-          <BtnSubmit color={"#27567d"} onClick={() => getTestAccount()}>
-            Get Test Account
-          </BtnSubmit>
-        </div>
+            <P style={{ paddingBottom: 20 }}>
+              Already a user ?{" "}
+              <span
+                onClick={changetoLoginForm}
+                style={{ textDecoration: "underline", cursor: "pointer" }}
+              >
+                Login
+              </span>
+            </P>
+          </div>
+        )}
+        <BtnSubmit color={"#27567d"} onClick={() => getTestAccount()}>
+          Get Test Account
+        </BtnSubmit>
       </div>
     </FormContainer>
   );

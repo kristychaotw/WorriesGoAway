@@ -72,11 +72,6 @@ export default function LoginForm() {
     setLoading(false);
   }
 
-  useEffect(() => {
-    if (currentUser) {
-      nav("/home");
-    }
-  }, [currentUser]);
 
   return (
     <FormContainer>

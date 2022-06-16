@@ -32,6 +32,11 @@ Add a note             |  Show a note
 * Firebase Firestore, Authentication, Storage
 * Webpack
 * Other libraries: Moment.js
+![P 1](https://user-images.githubusercontent.com/95632624/174138074-3500f8c4-95b0-4fdb-b1f1-53663c5d89d7.png)
+
+## Site Structure
+![p2](https://user-images.githubusercontent.com/95632624/174138193-d07d6a38-2503-49e2-bb36-ce753ff3c6d8.png)
+
 
 ### Develop by
 Kristy Chao

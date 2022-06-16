@@ -28,7 +28,6 @@ export const FormWrapper = styled.div`
 `;
 
 export const NoteWrapper = styled.div`
-  max-width: 1200px;
   width: 100%;
   margin: 20px auto;
   padding: 60px;
@@ -57,6 +56,11 @@ export const NoteWrapper = styled.div`
       "title"
       "content"
       "enddate";
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    padding: 60px 20px;
+
   }
 `;
 

@@ -21,6 +21,7 @@ const ContentWrapperShow = styled.div`
   right: 60px;
   top: 160px;
   width: 50%;
+  max-width: 700px;
   z-index: 10;
   padding-bottom: 100px;
 
@@ -31,7 +32,7 @@ const ContentWrapperShow = styled.div`
     transform: translate(-50%, 0%);
   }
 
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
     width: 80%;
   }
 `;

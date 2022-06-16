@@ -207,7 +207,7 @@ export const TextAreaBox = styled.textarea`
 
 export const SendBtn = styled.button`
   padding: 5px 10px;
-  margin-bottom: 180px;
+  margin-bottom: 20px;
   border: none;
   border-radius: 10px;
   background: #5085a5;
@@ -232,6 +232,16 @@ export const SendBtn = styled.button`
 // ShowNote Page
 export const BtnWrapper = styled.div`
   display: flex;
+  position: absolute;
+  right: 60px;
+  bottom: 30px;
+  z-index: 11;
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    bottom: 60px;
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    right: 5%;
+  }
 `;
 
 export const EndBtnStyled = styled.button`

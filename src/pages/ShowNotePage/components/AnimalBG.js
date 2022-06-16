@@ -10,7 +10,7 @@ import styled from "styled-components";
 const BGWrapper = styled.div`
   z-index: 8;
   width: 100%;
-  height: 140%;
+  height: 100vh;
   position: absolute;
   top: 0px;
   left: 0px;

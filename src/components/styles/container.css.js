@@ -9,29 +9,6 @@ export const AppContainer = styled.div`
   text-align: center;
 `;
 
-// export const Container = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   width: 60%;
-//   max-width: 1200px;
-//   margin: 40px auto;
-//   margin-right: 110px;
-//   margin-top: 230px;
-//   text-align: center;
-//   grid-template-areas:
-//     "email"
-//     "avatar"
-//     "logout";
-//   grid-gap: 60px;
-//   padding-bottom: 120px;
-
-//   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-//     width: 80%;
-//     margin: auto;
-//     justify-items: left;
-//   }
-// `;
-
 export const PageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -52,5 +29,8 @@ export const PageContainer = styled.div`
     margin-top: 20px;
     margin: auto;
     width: 80%;
+  }
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    width: 90%;
   }
 `;

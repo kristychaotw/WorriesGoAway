@@ -13,27 +13,31 @@ const ShowNoteWrapper = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
-  height: 130vh;
+  height: 100vh;
 `;
 
 const ContentWrapperShow = styled.div`
   position: absolute;
   right: 60px;
-  top: 160px;
+  top: 40px;
   width: 50%;
   max-width: 700px;
   z-index: 10;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 70%;
-    top: 150px;
     left: 50%;
     transform: translate(-50%, 0%);
+    height: 70vh;
+
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 80%;
+    width: 85%;
   }
 `;
 
@@ -59,8 +63,8 @@ export default function ShowNotePage() {
         <>
           <ContentWrapperShow>
             <Note note={note}></Note>
-            {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
           </ContentWrapperShow>
+            {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
           <AnimalBG BG={note.animalName}></AnimalBG>
         </>
       ) : (

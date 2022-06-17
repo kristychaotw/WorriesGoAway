@@ -38,6 +38,6 @@ Add a note             |  Show a note
 ![p2](https://user-images.githubusercontent.com/95632624/174138193-d07d6a38-2503-49e2-bb36-ce753ff3c6d8.png)
 
 
-### Develop by
+## Develop by
 Kristy Chao  
 Any comment or bug report on this project, email me: kristy334420@gmail.com

@@ -40,4 +40,5 @@ Add a note             |  Show a note
 
 ### Develop by
 Kristy Chao
-Any comment or bug report on this project, email me: kristy334420@gmail.com
+Any comment or bug report on this project,  
+email me: kristy334420@gmail.com

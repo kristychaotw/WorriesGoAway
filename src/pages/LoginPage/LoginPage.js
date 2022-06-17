@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import whaleBG from "../../../src/components/images/loginBG.jpg";
 import { WebTitle } from "../../components/styles/component.css";
@@ -17,7 +17,10 @@ const BgContainer = styled.div`
 export default function LoginPage() {
   const currentUser = useAuthUser().currentUser;
   const nav = useNavigate();
-  if (currentUser) nav("/home");
+
+  useEffect(() => {
+    if (currentUser) nav("/home");
+  }, [currentUser]);
 
   return (
     <>

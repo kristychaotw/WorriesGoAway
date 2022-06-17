@@ -23,9 +23,9 @@ export default function LoginPage() {
     <>
       <BgContainer>
         <WebTitle>Worry Note</WebTitle>
-        <LoginForm></LoginForm>
+        <LoginForm />
       </BgContainer>
-      <Cover></Cover>
+      <Cover />
     </>
   );
 }

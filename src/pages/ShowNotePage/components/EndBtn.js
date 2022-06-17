@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { UpdateNoteEndTime } from "../../../reducers/utils/dbNote";
 import { BtnWrapper, EndBtnStyled } from "../../../components/styles/note.css";
 

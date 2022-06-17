@@ -23,7 +23,7 @@ export default function Modal() {
             <ModalBtn onClick={() => dispatch(closeModal())}>Add more notes</ModalBtn>
           )}
           {modalState.msg === "successfully saved" && (
-            <ModalBtn onClick={() => nav("/home")}>See my list</ModalBtn>
+            <ModalBtn onClick={() => nav("/list")}>See my list</ModalBtn>
           )}
         </ModalContent>
       </Overlay>

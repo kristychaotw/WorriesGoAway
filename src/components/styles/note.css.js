@@ -237,17 +237,17 @@ export const BtnWrapper = styled.div`
   bottom: 30px;
   z-index: 11;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    bottom: 60px;
+    bottom: 80px;
+    right: 15%;
+
   }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    right: 5%;
+    right: 7.5%;
   }
 `;
 
 export const EndBtnStyled = styled.button`
-  margin-right: 0;
-  justify-content: end;
-  height: 60px;
+  height: 40px;
   padding: 5px 10px;
   margin: 10px 0px;
   border: none;
@@ -255,8 +255,8 @@ export const EndBtnStyled = styled.button`
   background: #5085a5;
   color: #fcfcfc;
   font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-  box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
+  font-size: ${({ theme }) => theme.fontSize.l};
+  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.25);
 
   &:hover {
     background-color: #587b90;

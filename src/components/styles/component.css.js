@@ -33,8 +33,7 @@ export const WebTitle = styled.div`
   padding: 5px 10px;
   color: #e6e6e6;
   text-align: center;
-  /* border-top: 5px solid #8ba6bc; */
-  padding-top: 100px;
+  padding-top: 50px;
 `;
 
 export const PageTitle = styled.div`
@@ -53,6 +52,11 @@ export const PageTitle = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     position: static;
   }
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const TitleLable = styled.div`
@@ -69,7 +73,6 @@ export const P = styled.p`
   color: #f0f0f0;
   font-weight: 500;
   grid-area: ${({ grid }) => grid};
-
 `;
 
 export const MsgLogin = styled.p`
@@ -80,7 +83,6 @@ export const MsgLogin = styled.p`
   grid-area: ${({ grid }) => grid};
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     padding: 10px 0px;
-
   }
 `;
 
@@ -188,7 +190,7 @@ export const H3 = styled.div`
   border-bottom: ${({ border }) => border};
   padding: ${({ padding }) => padding};
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    padding: 20px;
+    padding: 10px 20px;
   }
 `;
 
@@ -233,6 +235,7 @@ export const TextInput = styled.input`
   background-color: transparent;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.whiteh80};
+  border-radius: 0%;
   outline: none;
   ::placeholder {
     color: ${({ theme }) => theme.colors.white};
@@ -305,7 +308,7 @@ export const FormContainer = styled.div`
   width: 400px;
   margin: 30px auto;
   margin-bottom: 80px;
-  padding: 20px 0px;
+  padding: 10px 0px;
   text-align: center;
   background: #00000040;
   border: 1px solid rgba(19, 19, 19, 0.053);
@@ -318,11 +321,10 @@ export const FormContainer = styled.div`
 `;
 
 export const FormStyled = styled.form`
-  margin: 30px 60px;
+  margin: 20px 60px 30px 60px;
   text-align: center;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    margin: 30px 30px;
-
+    margin: 20px 30px;
   }
 `;

@@ -34,6 +34,7 @@ export const WebTitle = styled.div`
   color: #e6e6e6;
   text-align: center;
   padding-top: 50px;
+  letter-spacing: 5px;
 `;
 
 export const PageTitle = styled.div`
@@ -77,7 +78,7 @@ export const P = styled.p`
 
 export const MsgLogin = styled.p`
   padding: 10px;
-  color: #ffd166;
+  color: ${({ theme }) => theme.colors.hint};
   font-weight: 500;
   text-align: left;
   grid-area: ${({ grid }) => grid};
@@ -87,7 +88,7 @@ export const MsgLogin = styled.p`
 `;
 
 export const MsgHint = styled.p`
-  color: #ffd166;
+  color: ${({ theme }) => theme.colors.hint};
   font-weight: 500;
   text-align: left;
   grid-area: ${({ grid }) => grid};

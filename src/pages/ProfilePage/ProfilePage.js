@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { useAuthUser, logout } from "../../firebase";
 import { H3, PageTitle } from "../../components/styles/component.css";
 import Avatar from "./components/avatar";

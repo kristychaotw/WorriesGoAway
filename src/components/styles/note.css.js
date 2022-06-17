@@ -21,10 +21,9 @@ export const FormWrapper = styled.div`
     "tcontent . ."
     "content content content";
 
-    @media (max-width: ${({ theme }) => theme.device.mobile}) {
-      padding: 60px 20px;
-
-    }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    padding: 60px 20px;
+  }
 `;
 
 export const NoteWrapper = styled.div`
@@ -60,7 +59,6 @@ export const NoteWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     padding: 60px 20px;
-
   }
 `;
 
@@ -239,7 +237,6 @@ export const BtnWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     bottom: 80px;
     right: 15%;
-
   }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     right: 7.5%;
@@ -247,7 +244,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const EndBtnStyled = styled.button`
-  height: 40px;
+  height: 50px;
   padding: 5px 10px;
   margin: 10px 0px;
   border: none;

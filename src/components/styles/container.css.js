@@ -22,8 +22,8 @@ export const PageContainer = styled.div`
     "email"
     "avatar"
     "logout";
-  grid-gap: 60px;
-  padding-bottom: 120px;
+  grid-gap: 40px;
+  padding-bottom: 20px;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     display: block;
     margin-top: 20px;

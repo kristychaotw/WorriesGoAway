@@ -4,6 +4,7 @@ import whaleBG from "../../../src/components/images/loginBG.jpg";
 import { WebTitle } from "../../components/styles/component.css";
 import Cover from "./components/Cover";
 import LoginForm from "./components/LoginForm";
+import ScrollDown from "./components/ScrollDown";
 import { useAuthUser } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 
@@ -28,6 +29,7 @@ export default function LoginPage() {
         <WebTitle>Worry Note</WebTitle>
         <LoginForm />
       </BgContainer>
+      <ScrollDown />
       <Cover />
     </>
   );

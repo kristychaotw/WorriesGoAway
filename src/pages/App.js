@@ -30,6 +30,7 @@ const theme = {
     dark80: "#65656580",
     lightpurple: "#e4e5e9",
     word: "#4A4A4A",
+    hint:"#ffd166"
   },
   fontSize: {
     s: "0.8rem",

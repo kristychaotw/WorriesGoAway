@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListCard from "./components/ListCard";
-import { PStyled, PageTitle } from "../../components/styles/component.css";
+import { PageTitle, MsgHint } from "../../components/styles/component.css";
 import styled from "styled-components";
 import db, { useAuthUser } from "../../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
@@ -64,7 +64,11 @@ export default function ListPage() {
           {sortNote.map((note) => {
             return <ListCard key={nanoid()} note={note}></ListCard>;
           })}
-          {!notes.length && <PStyled>Oops! Your list is empty. Go add at least one note.</PStyled>}
+          {!notes.length && (
+            <MsgHint>
+              Oops! Your list is empty. Go add at least one note.
+            </MsgHint>
+          )}
         </ContentWrapper>
       </GridContainer>
     </>

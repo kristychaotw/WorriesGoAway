@@ -20,14 +20,14 @@ export const Wrapper = styled.div`
   justify-items: left;
   margin: 60px 0 40px 0;
 
-  input{
+  input {
     grid-area: input;
   }
   button {
     grid-area: uploadbtn;
     border: 1px solid ${({ theme }) => theme.colors.dark};
     border-radius: 3px;
-    padding: 0px 10px;
+    padding: 1px 10px;
     color: #000;
   }
 `;

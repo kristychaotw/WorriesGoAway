@@ -4,7 +4,7 @@ import Note from "./components/Note";
 import styled from "styled-components";
 import { doc, onSnapshot } from "firebase/firestore";
 import EndBtn from "./components/EndBtn";
-import { PageTitle, PStyled } from "../../components/styles/component.css";
+import { PageTitle, MsgHint } from "../../components/styles/component.css";
 import { ContentWrapper, GridContainer } from "../ListPage/ListPage";
 import db, { useAuthUser } from "../../firebase";
 
@@ -52,7 +52,6 @@ export default function ShowNotePage() {
       const unsub = onSnapshot(docRef, (q) => {
         if (q.data().author === currentUser.uid) setNote(...note, q.data());
       });
-
       return unsub;
     }
   }, []);
@@ -72,10 +71,10 @@ export default function ShowNotePage() {
           <PageTitle>My Note</PageTitle>
           <GridContainer>
             <ContentWrapper>
-              <PStyled>
+              <MsgHint>
                 Oops! You didn't select any note. Go list page and select a
                 note.
-              </PStyled>
+              </MsgHint>
             </ContentWrapper>
           </GridContainer>
         </>

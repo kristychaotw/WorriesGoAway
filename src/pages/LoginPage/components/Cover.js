@@ -110,7 +110,7 @@ const DeveloperBox = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 90%;
+    width: 100%;
     margin: 20px auto;
   }
 `;

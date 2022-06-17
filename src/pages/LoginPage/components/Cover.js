@@ -110,7 +110,9 @@ const DeveloperBox = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-  width: 90%;
+    width: 90%;
+    margin: 20px auto;
+
   }
 `;
 
@@ -183,8 +185,13 @@ export default function Cover() {
           <p>Frontend Developer</p>
           <h3>Kristy Chao</h3>
           <Flexdiv>
-           <a href="https://github.com/kristychaotw/WorriesGoAway"> <img src={`${github}`}></img></a>
-            <a href="https://www.linkedin.com/in/kristy-chao-b637b0187/"><img src={`${linkedin}`}></img></a>
+            <a href="https://github.com/kristychaotw/WorriesGoAway">
+              {" "}
+              <img src={`${github}`}></img>
+            </a>
+            <a href="https://www.linkedin.com/in/kristy-chao-b637b0187/">
+              <img src={`${linkedin}`}></img>
+            </a>
           </Flexdiv>
         </div>
       </DeveloperBox>

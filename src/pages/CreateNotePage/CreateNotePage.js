@@ -12,7 +12,6 @@ import { clearUpNote, saveNote, updateNote } from "../../reducers/form";
 import { useEffect } from "react";
 import moment from "moment";
 
-
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -27,7 +26,6 @@ const GridContainer = styled.div`
   margin-top: 230px;
   z-index: 11;
   padding-bottom: 120px;
-
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: repeat(2, 1fr);
@@ -47,9 +45,7 @@ export default function CreateNotePage() {
   const [hint, setHint] = useState("");
   const [loading, setLoading] = useState(false);
   const [sendBtn, setSendBtn] = useState(false);
-  let time = moment().format()
-
-
+  let time = moment().format();
 
   function handleSendBtn(e) {
     setSendBtn(false);
@@ -89,14 +85,14 @@ export default function CreateNotePage() {
 
   useEffect(() => {
     dispatch(clearUpNote());
-    dispatch(updateNote({ createDate: time}))
+    dispatch(updateNote({ createDate: time }));
   }, [formContent.isComplete]);
 
   useEffect(() => {
     setTimeout(() => {
-        time;
-    },1000);
-});
+      time;
+    }, 1000);
+  });
 
   return (
     <div onLoad={() => dispatch(updateNote({ createDate: time }))}>

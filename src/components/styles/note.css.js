@@ -20,13 +20,16 @@ export const FormWrapper = styled.div`
     "title title title"
     "tcontent . ."
     "content content content";
+
+    @media (max-width: ${({ theme }) => theme.device.mobile}) {
+      padding: 60px 20px;
+
+    }
 `;
 
 export const NoteWrapper = styled.div`
-  max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
-  /* height: 100vh; */
+  margin: 20px auto;
   padding: 60px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
@@ -42,7 +45,8 @@ export const NoteWrapper = styled.div`
     "content content"
     "enddate enddate";
 
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    margin-top: 150px;
     grid-template-columns: 1fr;
     grid-template-areas:
       "stamp"
@@ -52,6 +56,11 @@ export const NoteWrapper = styled.div`
       "title"
       "content"
       "enddate";
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    padding: 60px 20px;
+
   }
 `;
 
@@ -69,11 +78,16 @@ export const StampWrapper = styled.div`
   justify-items: end;
   align-items: start;
   position: absolute;
-  top: 90px;
+  top: ${({ top }) => top || 110}px;
   right: -35px;
 
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    top: ${({ top }) => top || 240}px;
+    right: -35px;
+  }
+
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    top: 35px;
+    top: ${({ top }) => top - 50 || 190}px;
     right: -10px;
   }
 `;
@@ -159,11 +173,12 @@ export const TitleBox = styled.input`
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
+  grid-area: ${({ grid }) => grid};
+  outline: 2px solid #8ba6bc;
+  width: 100%;
   ::placeholder {
     color: #8ba6bc;
   }
-  grid-area: ${({ grid }) => grid};
-  outline: 2px solid #8ba6bc;
   :focus {
     outline: 3px solid #8ba6bc;
   }
@@ -176,11 +191,13 @@ export const TextAreaBox = styled.textarea`
   background: #fcfcfc;
   border: none;
   border-radius: 3px;
+  outline: 2px solid #8ba6bc;
+  width: 100%;
+
   ::placeholder {
     color: #8ba6bc;
   }
   grid-area: ${({ grid }) => grid};
-  outline: 2px solid #8ba6bc;
   :focus {
     outline: 3px solid #8ba6bc;
   }
@@ -190,7 +207,7 @@ export const TextAreaBox = styled.textarea`
 
 export const SendBtn = styled.button`
   padding: 5px 10px;
-  margin-bottom: 180px;
+  margin-bottom: 20px;
   border: none;
   border-radius: 10px;
   background: #5085a5;
@@ -215,12 +232,22 @@ export const SendBtn = styled.button`
 // ShowNote Page
 export const BtnWrapper = styled.div`
   display: flex;
+  position: absolute;
+  right: 60px;
+  bottom: 30px;
+  z-index: 11;
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    bottom: 80px;
+    right: 15%;
+
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    right: 7.5%;
+  }
 `;
 
 export const EndBtnStyled = styled.button`
-  margin-right: 0;
-  justify-content: end;
-  height: 60px;
+  height: 40px;
   padding: 5px 10px;
   margin: 10px 0px;
   border: none;
@@ -228,8 +255,8 @@ export const EndBtnStyled = styled.button`
   background: #5085a5;
   color: #fcfcfc;
   font-weight: 500;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-  box-shadow: 1px 1px 2px 0px hsla(0, 0%, 0%, 0.25);
+  font-size: ${({ theme }) => theme.fontSize.l};
+  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.25);
 
   &:hover {
     background-color: #587b90;

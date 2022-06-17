@@ -9,7 +9,7 @@ export const AppContainer = styled.div`
   text-align: center;
 `;
 
-export const Container = styled.div`
+export const PageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   width: 60%;
@@ -23,10 +23,14 @@ export const Container = styled.div`
     "avatar"
     "logout";
   grid-gap: 60px;
-
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+  padding-bottom: 120px;
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    display: block;
+    margin-top: 20px;
+    margin: auto;
     width: 80%;
-    margin-right: auto;
-    margin-top: auto;
+  }
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    width: 90%;
   }
 `;

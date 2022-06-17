@@ -29,24 +29,27 @@ export const storage = getStorage(app);
 const db = getFirestore(app);
 export default getFirestore();
 export const auth = getAuth(app);
+let authResult;
 
-export function signup(email, password) {
-  let signUpResult;
-  // firebase.auth().createUserWithEmailAndPassword(email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
-  createUserWithEmailAndPassword(auth, email, password).then((e)=>signUpResult=e).catch((e)=>signUpResult=e.message);
-  return signUpResult;
+export async function signup(email, password) {
+  authResult = await createUserWithEmailAndPassword(auth, email, password)
+    .then((e) => (authResult = e.operationType))
+    .catch((e) => (authResult =e.code));
+  return authResult;
 }
 
-export function logout() {
-  let logoutResult;
-  signOut(auth).then((e)=>logoutResult=e).catch((e)=>logoutResult=e.message)
-  return logoutResult;
+export async function login(email, password) {
+  authResult = await signInWithEmailAndPassword(auth, email, password)
+    .then((e) => (authResult = e.operationType))
+    .catch((e) => (authResult = e.code));
+  return authResult;
 }
 
-export function login(email, password) {
-  let signInResult;
-  signInWithEmailAndPassword(auth, email, password).then((e)=>signInResult=e).catch((e)=>signInResult=e.message);
-  return signInResult
+export async function logout() {
+  authResult = await signOut(auth)
+    .then((e) => (authResult = e))
+    .catch((e) => (authResult = e.code));
+  return authResult;
 }
 
 // Custom Hook

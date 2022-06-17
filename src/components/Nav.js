@@ -14,11 +14,11 @@ import { NavContainer } from "./styles/nav.css";
 
 export default function Nav() {
   const nav = [
-    { name: "Add", url: add, urlActive: addActive, path: "/Add" },
-    { name: "Home", url: home, urlActive: homeActive, path: "/Home" },
-    { name: "List", url: list, urlActive: listActive, path: "/List" },
-    { name: "Whale", url: whale, urlActive: whaleActive, path: "/Whale" },
-    { name: "User", url: none, urlActive: none, path: "/User" },
+    { name: "Add", url: add, urlActive: addActive, path: "/add" },
+    { name: "Home", url: home, urlActive: homeActive, path: "/home" },
+    { name: "List", url: list, urlActive: listActive, path: "/list" },
+    { name: "Whale", url: whale, urlActive: whaleActive, path: "/note" },
+    { name: "User", url: none, urlActive: none, path: "/user" },
   ];
 
   const [iconActive, setIconActive] = useState("Home");

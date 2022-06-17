@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { UpdateNoteEndTime } from "../../../reducers/utils/dbNote";
 import { BtnWrapper, EndBtnStyled } from "../../../components/styles/note.css";
 
@@ -6,7 +6,7 @@ export default function EndBtn({ noteID }) {
   const [loading, setLoading] = useState(false);
   const [worryState, setWorryState] = useState({
     worry: true,
-    endtext: "Free this worry",
+    endtext: "Free from this worry",
   });
   const endState = { worry: false, endtext: "Worry Finished" };
 

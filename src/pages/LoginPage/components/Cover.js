@@ -1,97 +1,199 @@
 import React from "react";
 import styled from "styled-components";
-import { H3, PStyled, P } from "../../../components/styles/component.css";
-import { TitleLable } from "../../../components/styles/note.css";
+import coverMain from "../../../components/images/cover/cover-main.png";
+import coverf1 from "../../../components/images/cover/cover-f1.png";
+import coverf2 from "../../../components/images/cover/cover-f2.png";
+import coverf3 from "../../../components/images/cover/cover-f3.png";
+import duck from "../../../components/images/cover/duck.png";
+import github from "../../../components/images/cover/github.svg";
+import linkedin from "../../../components/images/cover/linkedin.svg";
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.body};
-  padding: 100px 25%;
-  border-top: 20px solid ${({ theme }) => theme.colors.lightpurple};
-  border-bottom: 60px solid ${({ theme }) => theme.colors.lightpurple};
-  @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    padding: 100px 15%;
-
-}
+  width: 80%;
+  max-width: 900px;
+  margin: 200px auto;
 `;
 
-const FeatureBox = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 6fr;
-  grid-template-areas:
-    "p h4"
-    "p h5";
-  grid-row-gap: 0;
-  grid-column-gap: 20px;
-  justify-items: left;
-  align-items: baseline;
-
+const FeatureWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-top: 90px;
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "p"
-      "h4"
-      "h5";
-    grid-row-gap: 10px;
+    display: block;
+  }
+`;
+
+const Span = styled.span`
+  color: #ffc24a;
+  text-decoration: underline;
+  cursor: default;
+`;
+
+const Header = styled.h1`
+  margin: 100px auto;
+  margin-top: 120px;
+  font-size: 50px;
+  text-align: center;
+`;
+
+const Para = styled.div`
+  margin-top: 90px;
+  h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #5085a5;
+    letter-spacing: 1px;
+  }
+  p {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #242424;
+  }
+`;
+
+const Feature = styled.div`
+  text-align: left;
+  font-size: 22px;
+  color: #242424;
+  width: 100%;
+  padding: 20px;
+
+  img {
+    width: 50%;
+    margin-top: 20px;
+    margin: 0 auto;
   }
 
-  h4,
-  h5 {
-    font-size: ${({ theme }) => theme.fontSize.l};
-    line-height: ${({ theme }) => theme.fontSize.xl};
+  h3 {
     font-weight: 600;
-    text-align: start;
-    color: ${({ theme }) => theme.colors.word};
-    grid-area: ${({ grid }) => grid};
-    margin-bottom: 30px;
+    margin-top: 30px;
   }
-  h5 {
+  p {
     font-weight: 400;
-    grid-area: h5;
+    margin-top: 15px;
   }
-  h4 {
-    grid-area: h4;
-    height: ${({ theme }) => theme.fontSize.xl};
+
+  @media (max-width: ${({ theme }) => theme.device.tablet}) {
+    padding: 10px;
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    margin-top: 60px;
+  }
+`;
+
+const DeveloperBox = styled.div`
+  margin: 80px auto;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  width: 600px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+  }
+  h3 {
+    font-size: 26px;
+    font-weight: 400;
+    text-align: end;
+    padding-left: 0;
+    margin-left: 0;
+    text-align: start;
   }
 
   p {
-    font-size: 120px;
-    color: ${({ theme }) => theme.colors.lightpurple};
-    font-weight: 900;
-    text-align: left;
-    grid-area: p;
+    font-size: 22;
+    font-style: italic;
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 90%;
+    margin: 20px auto;
+  }
+`;
+
+const Flexdiv = styled.div`
+  display: flex;
+  justify-content: left;
+  img {
+    width: 30px;
+    height: 30px;
+    margin: 15px 10px 10px 0;
   }
 `;
 
 export default function Cover() {
   return (
     <Container>
-      <PStyled>Sense your worry with animal timer</PStyled>
-      <TitleLable>ABOUT Worry Note</TitleLable>
-      <br></br>
-      <H3>Note + Animal Timer</H3>
-      <TitleLable>FEATURES</TitleLable>
-      <FeatureBox>
-        <p>1</p>
-        <h4>Unique Animal Timer</h4>
-        <h5>5 animals timer including whale, cat, rabbit, polar bear, brown bear</h5>
-      </FeatureBox>
-      <FeatureBox>
-        <p>2</p>
-        <h4>Catch your thought with a note</h4>
-        <h5>Write down what you are worried about with a simple use note</h5>
-      </FeatureBox>
-      <FeatureBox>
-        <p>3</p>
-        <h4>Personal Overview Report</h4>
-        <h5>Track and analyze your overall stress level</h5>
-      </FeatureBox>
-
-      <TitleLable>GUIDE</TitleLable>
-      <H3>1. Add notes</H3>
-      <H3>2. Show note list</H3>
-      <H3>3. Get the Overview report</H3>
-      <TitleLable>DEVELOP BY</TitleLable>
-      <H3>Kristy Chao</H3>
+      <Header>Welcome to Worry Note</Header>
+      <img src={`${coverMain}`}></img>
+      <Para>
+        <h2>
+          A mood note features different animal timers <br></br>Fun and easy to
+          use
+        </h2>
+        <p>
+          This app is designed to let you experience your worry / thought /
+          sufferings in an alternative sense of time -- through animals'
+          behaviors
+        </p>
+      </Para>
+      <FeatureWrapper>
+        <Feature>
+          <img src={`${coverf1}`}></img>
+          <h3>Mood Note</h3>
+          <p>Record your worry and stress level</p>
+        </Feature>
+        <Feature>
+          <img src={`${coverf2}`}></img>
+          <h3>Animal Timer</h3>
+          <p>Switch your way of perceiving time through animal behaviors</p>
+        </Feature>
+        <Feature>
+          <img src={`${coverf3}`}></img>
+          <h3>User Report</h3>
+          <p>Summarize usages and get insights from your worries</p>
+        </Feature>
+      </FeatureWrapper>
+      <Para>
+        <h2>Desktop and Mobile Friendly</h2>
+        <p>Content adapts to multiple devices' screen sizes</p>
+      </Para>
+      <img></img>
+      <Para>
+        <h2>Programming Tools</h2>
+        <p>
+          This is a SPA website built with React hooks and React router,{" "}
+          <br></br>and it is hosted by Firebase Hosting. <br></br>
+          <br></br> Visit Github for more details.
+        </p>
+      </Para>
+      <Para>
+        <h2>Meet the Developer</h2>
+        <p>
+          Any comment or bug report on this project, contact{" "}
+          <Span>kristy334420@gmail.com</Span>
+        </p>
+      </Para>
+      <DeveloperBox>
+        <img src={`${duck}`}></img>
+        <div>
+          <p>Frontend Developer</p>
+          <h3>Kristy Chao</h3>
+          <Flexdiv>
+            <a href="https://github.com/kristychaotw/WorriesGoAway">
+              {" "}
+              <img src={`${github}`}></img>
+            </a>
+            <a href="https://www.linkedin.com/in/kristy-chao-b637b0187/">
+              <img src={`${linkedin}`}></img>
+            </a>
+          </Flexdiv>
+        </div>
+      </DeveloperBox>
     </Container>
   );
 }

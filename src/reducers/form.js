@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import moment from "moment";
+
+
 
 const formInitialState = {
   id: "",
@@ -8,13 +9,12 @@ const formInitialState = {
   rating: "",
   worry: "",
   animal: "",
-  createDate: moment().format(),
+  createDate: "default",
+  endDate: "",
   error: "",
   isComplete: false,
-  endDate: "",
   author: "",
 };
-
 
 export const formSlice = createSlice({
   name: "form",
@@ -26,18 +26,10 @@ export const formSlice = createSlice({
       state.value[item] = itemValue;
     },
     saveNote: (state) => {
-      state.value.isStored = true;
-    },
-    failtoSaveNote: (state) => {
-      state.value.error = "failed to save the note";
+      state.value.isComplete = true;
     },
     clearUpNote: (state) => {
-      state.value= formInitialState;
-      state.value.animal="";
-      state.value.title="";
-      state.value.worry="";
-      state.value.tag="";
-      state.value.rating="";
+      state.value = formInitialState;
     },
     default: (state) => {
       state;
@@ -45,7 +37,7 @@ export const formSlice = createSlice({
   },
 });
 
-export const { updateNote, saveNote, failtoSaveNote, clearUpNote } =
+export const { updateNote, saveNote, clearUpNote, updateTime } =
   formSlice.actions;
 
 export default formSlice.reducer;

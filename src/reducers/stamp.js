@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import whale from "../components/images/icons/whale.svg";
 import cat from "../components/images/icons/cat.svg";
-import rabbit from "../components/images/icons/rabbit2.svg";
+import rabbit from "../components/images/icons/rabbit.svg";
 import polarbear from "../components/images/icons/polarbear.svg";
 import brownbear from "../components/images/icons/brownbear.svg";
 
@@ -16,7 +16,7 @@ const animalList = [
 const initialState = animalList[0];
 let newIndex;
 export const stampSlice = createSlice({
-  name: "user",
+  name: "stamp",
   initialState: { value: initialState },
   reducers: {
     next: (state) => {
@@ -38,9 +38,12 @@ export const stampSlice = createSlice({
     pick: (state) => {
       state.value.picked = true;
     },
+    unPick: (state) => {
+      state.value = initialState;
+    },
   },
 });
 
-export const { next, prev, pick } = stampSlice.actions;
+export const { next, prev, pick, unPick } = stampSlice.actions;
 
 export default stampSlice.reducer;

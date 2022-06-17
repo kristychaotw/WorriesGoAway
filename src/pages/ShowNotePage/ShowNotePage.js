@@ -1,19 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimalBG from "./components/AnimalBG";
 import Note from "./components/Note";
 import styled from "styled-components";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  getDoc,
-  onSnapshot,
-} from "firebase/firestore";
-import db from "../../firebase";
+import { doc, onSnapshot } from "firebase/firestore";
 import EndBtn from "./components/EndBtn";
-import { PageTitle } from "../../components/styles/component.css";
+import { PageTitle, PStyled } from "../../components/styles/component.css";
+import { ContentWrapper, GridContainer } from "../ListPage/ListPage";
+import db, { useAuthUser } from "../../firebase";
 
 const ShowNoteWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.body};
@@ -23,51 +16,69 @@ const ShowNoteWrapper = styled.div`
   height: 100vh;
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapperShow = styled.div`
   position: absolute;
   right: 60px;
-  top: 160px;
+  top: 40px;
   width: 50%;
+  max-width: 700px;
   z-index: 10;
+  padding-bottom: 30px;
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     width: 70%;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, 0%);
+    height: 70vh;
+
   }
 
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    width: 80%;
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    width: 85%;
   }
 `;
 
 export default function ShowNotePage() {
   const selectedNoteID = localStorage.getItem("showItemID");
   const [note, setNote] = useState([]);
+  const currentUser = useAuthUser().currentUser;
 
   useEffect(() => {
-    const docRef = doc(db, "notes", selectedNoteID);
-    const unsub = onSnapshot(docRef, (q) => {
-      setNote(...note, q.data());
-    });
+    if (selectedNoteID) {
+      const docRef = doc(db, "notes", selectedNoteID);
+      const unsub = onSnapshot(docRef, (q) => {
+        if (q.data().author === currentUser.uid) setNote(...note, q.data());
+      });
 
-    return unsub;
+      return unsub;
+    }
   }, []);
 
   return (
     <ShowNoteWrapper>
-      <PageTitle>Selecet a note in the list to view its result.</PageTitle>
-      {note ? (
+      {note.length !== 0 ? (
         <>
-          <ContentWrapper>
+          <ContentWrapperShow>
             <Note note={note}></Note>
+          </ContentWrapperShow>
             {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
-          </ContentWrapper>
           <AnimalBG BG={note.animalName}></AnimalBG>
         </>
       ) : (
-        <></>
+        <>
+          <PageTitle>My Note</PageTitle>
+          <GridContainer>
+            <ContentWrapper>
+              <PStyled>
+                Oops! You didn't select any note. Go list page and select a
+                note.
+              </PStyled>
+            </ContentWrapper>
+          </GridContainer>
+        </>
       )}
     </ShowNoteWrapper>
   );

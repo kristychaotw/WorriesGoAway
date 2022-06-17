@@ -30,10 +30,10 @@ export default function ListCard({
 
   return (
     <StyledCardWrapper onClick={() => handleClick(docID)}>
-      <Link to="/Whale">
+      <Link to="/note">
         <StyledCard>
           <H3title grid={"gtitle"}>{title}</H3title>
-          <TagBox grid={"gtag"} align={"start"}>
+          <TagBox grid={"gtag"}>
             {tag}
           </TagBox>
           <img src={animal}></img>

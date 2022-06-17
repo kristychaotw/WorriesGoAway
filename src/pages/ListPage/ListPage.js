@@ -1,40 +1,34 @@
 import React, { useState, useEffect } from "react";
 import ListCard from "./components/ListCard";
-import { PageTitle } from "../../components/styles/component.css";
+import { PStyled, PageTitle } from "../../components/styles/component.css";
 import styled from "styled-components";
 import db, { useAuthUser } from "../../firebase";
-import {
-  collection,
-  onSnapshot,
-  query,
-  where,
-  getDocs,
-  orderBy,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 import moment from "moment";
 import { nanoid } from "@reduxjs/toolkit";
 
-const GridContainer = styled.div`
+export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
-  grid-template-areas: ". list list list";
+  grid-template-areas: ". nlist nlist nlist";
   width: 85%;
   max-width: 1200px;
   margin: 60px auto;
   margin-right: 90px;
   margin-top: 230px;
+  padding-bottom: 120px;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
-    grid-template-areas: "list";
+    grid-template-areas: "nlist";
     margin-right: auto;
     margin-top: auto;
   }
 `;
 
-const ContentWrapper = styled.div`
-  grid-area: list;
+export const ContentWrapper = styled.div`
+  grid-area: nlist;
 `;
 
 export default function ListPage() {
@@ -44,7 +38,7 @@ export default function ListPage() {
   useEffect(() => {
     const q = query(
       collection(db, "notes"),
-      where("author", "==", currentUser.uid),
+      where("author", "==", currentUser.uid)
     );
     const notesDB = [];
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -70,6 +64,7 @@ export default function ListPage() {
           {sortNote.map((note) => {
             return <ListCard key={nanoid()} note={note}></ListCard>;
           })}
+          {!notes.length && <PStyled>Oops! Your list is empty. Go add at least one note.</PStyled>}
         </ContentWrapper>
       </GridContainer>
     </>

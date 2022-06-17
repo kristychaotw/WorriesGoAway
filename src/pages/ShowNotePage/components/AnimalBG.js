@@ -7,21 +7,28 @@ import brownbearBG from "../../../components/images/brownbear3BG.jpg";
 
 import styled from "styled-components";
 
-const DarkLayer = styled.div`
-  background-color: #00000044;
-  width: 100%;
-  height: 120vh;
-`;
 const BGWrapper = styled.div`
   z-index: 8;
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   position: absolute;
+  top: 0px;
+  left: 0px;
   background-image: url(${({ BGsrc }) => BGsrc});
-  background-size: contain;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left top;
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    background-position: center top;
+  }
+
+`;
+
+const DarkLayer = styled.div`
+  background-color: #00000044;
+  width: 100%;
+  height: 100%;
 `;
 
 export default function AnimalBG({ BG }) {

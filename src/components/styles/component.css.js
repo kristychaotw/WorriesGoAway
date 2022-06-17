@@ -33,8 +33,7 @@ export const WebTitle = styled.div`
   padding: 5px 10px;
   color: #e6e6e6;
   text-align: center;
-  /* border-top: 5px solid #8ba6bc; */
-  padding-top: 100px;
+  padding-top: 50px;
 `;
 
 export const PageTitle = styled.div`
@@ -52,6 +51,11 @@ export const PageTitle = styled.div`
   left: 0px;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     position: static;
+  }
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -71,14 +75,31 @@ export const P = styled.p`
   grid-area: ${({ grid }) => grid};
 `;
 
-export const MsgP = styled.p`
-  margin: 0 25%;
+export const MsgLogin = styled.p`
   padding: 10px;
-  color: #e6e6e6;
-  margin-top: 20px;
+  color: #ffd166;
   font-weight: 500;
-  border-left: 4px solid ${({ theme }) => theme.colors.forth};
-  border-right: 4px solid ${({ theme }) => theme.colors.forth};
+  text-align: left;
+  grid-area: ${({ grid }) => grid};
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    padding: 10px 0px;
+  }
+`;
+
+export const MsgHint = styled.p`
+  color: #ffd166;
+  font-weight: 500;
+  text-align: left;
+  grid-area: ${({ grid }) => grid};
+`;
+
+export const PStyled = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: 300;
+  color: #656565;
+  grid-area: ${({ grid }) => grid};
+  justify-self: end;
+  text-align: ${({ align }) => align || "end"};
 `;
 
 export const H2 = styled.h2`
@@ -132,12 +153,19 @@ export const StyledCard = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     margin: auto;
     width: 85%;
-    grid-template-columns: 1fr 120px 30px;
-    grid-column-gap: 10px;
+    grid-template-columns: 1fr 110px 35px;
+    grid-column-gap: 15px;
     grid-template-areas:
       "gtitle gtitle ganimal"
       "gtitle gtitle gtag"
       "grate  gtime  gtime";
+  }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    grid-template-columns: 1fr 90px 35px;
+    grid-template-areas:
+      "gtitle gtitle gtitle"
+      "grate gtag ganimal"
+      "gtime  gtime  gtime";
   }
 `;
 
@@ -152,15 +180,6 @@ export const H3title = styled.div`
   padding-bottom: 40px;
 `;
 
-export const PStyled = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.s};
-  font-weight: 300;
-  color: #656565;
-  grid-area: ${({ grid }) => grid};
-  justify-self: end;
-  text-align: ${({ align }) => align || "end"};
-`;
-
 export const H3 = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
   line-height: ${({ theme }) => theme.fontSize.xl};
@@ -171,7 +190,7 @@ export const H3 = styled.div`
   border-bottom: ${({ border }) => border};
   padding: ${({ padding }) => padding};
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    padding: 20px;
+    padding: 10px 20px;
   }
 `;
 
@@ -180,8 +199,11 @@ export const TagBox = styled.div`
   font-weight: 300;
   color: #656565;
   grid-area: ${({ grid }) => grid};
-  justify-self: ${({ align }) => align || "end"};
-  /* background-color: ${({ theme }) => theme.colors.dark}; */
+  justify-self: start;
+
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    justify-self: end;
+  }
 `;
 
 export const RateBox = styled.div`
@@ -197,24 +219,23 @@ export const RateBox = styled.div`
 
 export const InputLable = styled.div`
   text-align: left;
-  margin-left: 23%;
   font-weight: 400;
   font-size: 1.2rem;
-  padding: 10px;
+  padding: 10px 0px;
   color: ${(props) => (props.primary ? "#f2f2f2" : "#5185A6")};
 `;
 
 export const TextInput = styled.input`
   height: 30px;
-  width: 50%;
+  width: 100%;
   font-weight: 300;
   font-size: 18px;
   margin-bottom: 10px;
-  align-self: stretch;
   color: ${({ theme }) => theme.colors.white};
   background-color: transparent;
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.whiteh80};
+  border-radius: 0%;
   outline: none;
   ::placeholder {
     color: ${({ theme }) => theme.colors.white};
@@ -230,13 +251,13 @@ export const TextInput = styled.input`
 export const BtnSubmit = styled.button`
   border: none;
   width: 50%;
-  margin: 50px auto;
+  margin: 20px auto;
   margin-bottom: ${({ marginbt }) => marginbt};
   margin-left: ${({ margin }) => margin};
   padding: 10px;
   border-radius: 40px;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ theme }) => theme.colors.forth};
+  background: ${({ color }) => color || "#8ba6bc"};
   font-weight: bold;
   display: block;
   box-shadow: 2px 2px 4px #000000a1;
@@ -261,6 +282,7 @@ export const StaticStyled = styled.div`
   position: relative;
   padding: ${({ theme }) => theme.spacing.l};
   grid: ${({ grid }) => grid};
+  margin-top: 40px;
 
   h3 {
     position: absolute;
@@ -283,31 +305,26 @@ export const StaticStyled = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  width: 30%;
+  width: 400px;
   margin: 30px auto;
   margin-bottom: 80px;
-  padding: 40px 0px;
+  padding: 10px 0px;
   text-align: center;
   background: #00000040;
   border: 1px solid rgba(19, 19, 19, 0.053);
   border-radius: 5px;
   box-shadow: 3px 3px 5px #000000a1;
 
-  @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    width: 50%;
-  }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    width: 75%;
+    width: 80%;
   }
 `;
 
 export const FormStyled = styled.form`
-  p {
-    text-align: left;
-    margin-left: 25%;
-    margin-right: 25%;
+  margin: 20px 60px 30px 60px;
+  text-align: center;
 
-    text-align: left;
-    color: ${({ theme }) => theme.colors.body};
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    margin: 20px 30px;
   }
 `;

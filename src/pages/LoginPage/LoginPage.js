@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 import whaleBG from "../../../src/components/images/loginBG.jpg";
 import { WebTitle } from "../../components/styles/component.css";
@@ -7,6 +7,8 @@ import LoginForm from "./components/LoginForm";
 import ScrollDown from "./components/ScrollDown";
 import { useAuthUser } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FMContextVar, FMContextTrans } from "../App";
 
 const BgContainer = styled.div`
   background-image: url(${whaleBG});
@@ -16,6 +18,8 @@ const BgContainer = styled.div`
 `;
 
 export default function LoginPage() {
+  const pageVariants = useContext(FMContextVar);
+  const pageTransition = useContext(FMContextTrans);
   const currentUser = useAuthUser().currentUser;
   const nav = useNavigate();
 

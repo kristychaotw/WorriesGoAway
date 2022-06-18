@@ -50,6 +50,7 @@ export const PageTitle = styled.div`
   position: fixed;
   top: 0px;
   left: 0px;
+  animation: titleAnimation 0.3s;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     position: static;
   }
@@ -57,6 +58,15 @@ export const PageTitle = styled.div`
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     margin-top: 50px;
     margin-bottom: 20px;
+  }
+
+  @keyframes titleAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;
 

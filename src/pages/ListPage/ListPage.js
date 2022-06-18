@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ListCard from "./components/ListCard";
 import { PageTitle, MsgHint } from "../../components/styles/component.css";
 import styled from "styled-components";
@@ -6,6 +6,8 @@ import db, { useAuthUser } from "../../firebase";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import moment from "moment";
 import { nanoid } from "@reduxjs/toolkit";
+import { motion } from "framer-motion";
+import { FMContextVar, FMContextTrans } from "../App";
 
 export const GridContainer = styled.div`
   display: grid;
@@ -32,6 +34,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export default function ListPage() {
+  const pageVariants = useContext(FMContextVar);
+  const pageTransition = useContext(FMContextTrans);
   const [notes, setNotes] = useState([]);
   const currentUser = useAuthUser().currentUser;
 
@@ -59,18 +63,26 @@ export default function ListPage() {
   return (
     <>
       <PageTitle>My Note List</PageTitle>
-      <GridContainer>
-        <ContentWrapper>
-          {sortNote.map((note) => {
-            return <ListCard key={nanoid()} note={note}></ListCard>;
-          })}
-          {!notes.length && (
-            <MsgHint>
-              Oops! Your list is empty. Go add at least one note.
-            </MsgHint>
-          )}
-        </ContentWrapper>
-      </GridContainer>
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+      >
+        <GridContainer>
+          <ContentWrapper>
+            {sortNote.map((note) => {
+              return <ListCard key={nanoid()} note={note}></ListCard>;
+            })}
+            {!notes.length && (
+              <MsgHint>
+                Oops! Your list is empty. Go add at least one note.
+              </MsgHint>
+            )}
+          </ContentWrapper>
+        </GridContainer>
+      </motion.div>
     </>
   );
 }

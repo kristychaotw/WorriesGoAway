@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "../components/Nav";
-import { Routes, Route } from "react-router-dom";
 import CreateNotePage from "./CreateNotePage/CreateNotePage";
 import LoginPage from "./LoginPage/LoginPage";
 import ListPage from "./ListPage/ListPage";
@@ -14,6 +14,8 @@ import HomePage from "./HomePage/HomePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
+import { AnimatePresence } from "framer-motion";
+import { duration } from "moment";
 
 const theme = {
   colors: {
@@ -30,7 +32,7 @@ const theme = {
     dark80: "#65656580",
     lightpurple: "#e4e5e9",
     word: "#4A4A4A",
-    hint:"#ffd166"
+    hint: "#ffd166",
   },
   fontSize: {
     s: "0.8rem",
@@ -54,35 +56,70 @@ const theme = {
   maxWidth: "1800px",
 };
 
+export const FMContextVar = React.createContext();
+export const FMContextTrans = React.createContext();
+
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: "-100vh",
+    scale: 0.8,
+  },
+  in: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+  },
+  out: {
+    opacity: 0,
+    y: "100vh",
+    scale: 1.2,
+  },
+};
+
+const pageTransition = {
+  // type: "spring",
+  // stiffness: 80,
+  type: "tween",
+  ease: "easeIn",
+  duration: 0.8,
+};
+
 export default function App() {
   const currentUser = useContext(AuthContext);
-
+  const location = useLocation();
   return (
     <div>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles />
-          <Nav />
-          <AppContainer
-            padding={currentUser == null && "0"}
-            maxWidth={currentUser == null && "2000px"}
-          >
-            <Routes>
-              <Route path="/" element={<LoginPage />} />
-              <Route path="/test" element={<Test />} />
-              <Route path="*" element={<Test />} />
-              <Route element={<PrivateRoute />}>
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/add" element={<CreateNotePage />} />
-                <Route path="/list" element={<ListPage />} />
-                <Route path="/note" element={<ShowNotePage />} />
-                <Route path="/user" element={<ProfilePage />} />
+        <FMContextVar.Provider value={pageVariants}>
+          <FMContextTrans.Provider value={pageTransition}>
+            <ThemeProvider theme={theme}>
+              <GlobalStyles />
+              <Nav />
+              <AppContainer
+                style={{ overflowX: "hidden" }}
+                padding={currentUser == null && "0"}
+                maxWidth={currentUser == null && "2000px"}
+              >
+                <AnimatePresence exitBeforeEnter>
+                  <Routes location={location} key={location.pathname}>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="*" element={<Test />} />
+                    <Route element={<PrivateRoute />}>
+                      <Route path="/home" element={<HomePage />} />
+                      <Route path="/add" element={<CreateNotePage />} />
+                      <Route path="/list" element={<ListPage />} />
+                      <Route path="/note" element={<ShowNotePage />} />
+                      <Route path="/user" element={<ProfilePage />} />
 
-                <Route path="*" element={<div>404 Not Found</div>} />
-              </Route>
-            </Routes>
-          </AppContainer>
-        </ThemeProvider>
+                      <Route path="*" element={<div>404 Not Found</div>} />
+                    </Route>
+                  </Routes>
+                </AnimatePresence>
+              </AppContainer>
+            </ThemeProvider>
+          </FMContextTrans.Provider>
+        </FMContextVar.Provider>
       </AuthProvider>
     </div>
   );

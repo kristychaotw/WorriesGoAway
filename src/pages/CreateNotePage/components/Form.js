@@ -24,7 +24,11 @@ export default function Form({ upload }) {
   return (
     <>
       <FormWrapper onLoad={() => dispatch(updateNote({ author: currentUser }))}>
-        <StampWrapper top={90} onLoad={() => dispatch(updateNote({ id: id }))}>
+        <StampWrapper
+          top={70}
+          right={-30}
+          onLoad={() => dispatch(updateNote({ id: id }))}
+        >
           <Stamp />
         </StampWrapper>
         <TitleLable grid={"trate"}>Stress Level</TitleLable>

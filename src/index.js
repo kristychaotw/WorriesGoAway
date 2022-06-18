@@ -11,7 +11,7 @@ import stampReducer from "./reducers/stamp";
 import formReducer from "./reducers/form";
 import listReducer from "./reducers/list";
 import modalReducer from "./reducers/modal";
-import thunk from "redux-thunk";
+import GlobalStyles from "./components/styles/Global";
 
 const store = configureStore({
   reducer: {
@@ -24,7 +24,6 @@ const store = configureStore({
 
 const container = document.querySelector("#root");
 const root = createRoot(container);
-
 
 root.render(
   <BrowserRouter>

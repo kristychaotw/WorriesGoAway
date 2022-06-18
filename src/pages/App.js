@@ -15,7 +15,6 @@ import Test from "./Test";
 import { AuthProvider } from "../firebase";
 import { AuthContext } from "../firebase";
 import { AnimatePresence } from "framer-motion";
-import { duration } from "moment";
 
 const theme = {
   colors: {
@@ -63,25 +62,20 @@ const pageVariants = {
   initial: {
     opacity: 0,
     y: "-100vh",
-    scale: 0.8,
   },
   in: {
     opacity: 1,
     y: 0,
-    scale: 1,
   },
   out: {
     opacity: 0,
     y: "100vh",
-    scale: 1.2,
   },
 };
 
 const pageTransition = {
-  // type: "spring",
-  // stiffness: 80,
-  type: "tween",
-  ease: "easeIn",
+  type: "spring",
+  stiffness: 70,
   duration: 0.8,
 };
 
@@ -90,11 +84,11 @@ export default function App() {
   const location = useLocation();
   return (
     <div>
+      <GlobalStyles />
       <AuthProvider>
         <FMContextVar.Provider value={pageVariants}>
           <FMContextTrans.Provider value={pageTransition}>
             <ThemeProvider theme={theme}>
-              <GlobalStyles />
               <Nav />
               <AppContainer
                 style={{ overflowX: "hidden" }}

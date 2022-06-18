@@ -7,7 +7,6 @@ import LoginForm from "./components/LoginForm";
 import ScrollDown from "./components/ScrollDown";
 import { useAuthUser } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { FMContextVar, FMContextTrans } from "../App";
 
 const BgContainer = styled.div`

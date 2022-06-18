@@ -40,7 +40,7 @@ export default function NavItem({ icon, handleIconChanged,iconActive }) {
           space={icon.name === "Add" && "1"}
           onClick={() => handleIconChanged(icon.name)}
         >
-          <IconWrapper wh={icon.name==="User"?"100%":"auto"}borderR={icon.name==="User"?"100%":"0%"} border={icon.name==="User"? "2px":"0"}>
+          <IconWrapper wh={icon.name==="user"?"100%":"auto"}borderR={icon.name==="user"?"100%":"0%"} border={icon.name==="user"? "2px":"0"}>
             <img
               src={iconActive === icon.name ? `${icon.urlActive}` : `${icon.url}`}
             ></img>

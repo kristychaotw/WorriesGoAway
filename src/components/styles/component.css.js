@@ -34,6 +34,7 @@ export const WebTitle = styled.div`
   color: #e6e6e6;
   text-align: center;
   padding-top: 50px;
+  letter-spacing: 5px;
 `;
 
 export const PageTitle = styled.div`
@@ -49,6 +50,7 @@ export const PageTitle = styled.div`
   position: fixed;
   top: 0px;
   left: 0px;
+  animation: titleAnimation 0.3s;
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     position: static;
   }
@@ -56,6 +58,15 @@ export const PageTitle = styled.div`
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     margin-top: 50px;
     margin-bottom: 20px;
+  }
+
+  @keyframes titleAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
@@ -77,7 +88,7 @@ export const P = styled.p`
 
 export const MsgLogin = styled.p`
   padding: 10px;
-  color: #ffd166;
+  color: ${({ theme }) => theme.colors.hint};
   font-weight: 500;
   text-align: left;
   grid-area: ${({ grid }) => grid};
@@ -87,7 +98,7 @@ export const MsgLogin = styled.p`
 `;
 
 export const MsgHint = styled.p`
-  color: #ffd166;
+  color: ${({ theme }) => theme.colors.hint};
   font-weight: 500;
   text-align: left;
   grid-area: ${({ grid }) => grid};

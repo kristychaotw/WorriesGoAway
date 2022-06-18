@@ -21,16 +21,15 @@ export const FormWrapper = styled.div`
     "tcontent . ."
     "content content content";
 
-    @media (max-width: ${({ theme }) => theme.device.mobile}) {
-      padding: 60px 20px;
-
-    }
+  @media (max-width: ${({ theme }) => theme.device.mobile}) {
+    padding: 60px 20px;
+  }
 `;
 
 export const NoteWrapper = styled.div`
   width: 100%;
-  margin: 20px auto;
-  padding: 60px;
+  margin: 10px auto;
+  padding: 40px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0 10px 10px 10px;
   box-shadow: 2px 4px 4px 0px #00000040;
@@ -60,7 +59,6 @@ export const NoteWrapper = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     padding: 60px 20px;
-
   }
 `;
 
@@ -78,22 +76,22 @@ export const StampWrapper = styled.div`
   justify-items: end;
   align-items: start;
   position: absolute;
-  top: ${({ top }) => top || 110}px;
-  right: -35px;
+  top: ${({ top }) => top || 80}px;
+  right: ${({ right }) => right || -35}px;
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
-    top: ${({ top }) => top || 240}px;
-    right: -35px;
+    top: ${({ top }) => top || 220}px;
+    right: ${({ right }) => right || -35}px;
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
-    top: ${({ top }) => top - 50 || 190}px;
-    right: -10px;
+    top: ${({ top }) => top - 35 || 185}px;
+    right: ${({ right }) => right + 15 || -15}px;
   }
 `;
 
 export const Line = styled.div`
-  width: 250px;
+  width: 200px;
   height: 0px;
   border-bottom: 2px dashed ${({ theme }) => theme.colors.primary};
   transform: rotate(45deg);
@@ -109,8 +107,8 @@ export const Line = styled.div`
     animation-name: imgAnimation;
     animation-duration: 0.5s;
     position: absolute;
-    right: 88px;
-    top: -80px;
+    right: 75px;
+    top: -65px;
     @media (max-width: ${({ theme }) => theme.device.mobile}) {
       right: 30px;
       top: -35px;
@@ -239,7 +237,6 @@ export const BtnWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     bottom: 80px;
     right: 15%;
-
   }
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     right: 7.5%;
@@ -247,7 +244,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const EndBtnStyled = styled.button`
-  height: 40px;
+  height: 50px;
   padding: 5px 10px;
   margin: 10px 0px;
   border: none;

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import AnimalBG from "./components/AnimalBG";
 import Note from "./components/Note";
 import styled from "styled-components";
 import { doc, onSnapshot } from "firebase/firestore";
 import EndBtn from "./components/EndBtn";
-import { PageTitle, PStyled } from "../../components/styles/component.css";
+import { PageTitle, MsgHint } from "../../components/styles/component.css";
 import { ContentWrapper, GridContainer } from "../ListPage/ListPage";
 import db, { useAuthUser } from "../../firebase";
+import { motion } from "framer-motion";
+import { FMContextVar, FMContextTrans } from "../App";
 
 const ShowNoteWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.body};
@@ -33,7 +35,6 @@ const ContentWrapperShow = styled.div`
     left: 50%;
     transform: translate(-50%, 0%);
     height: 70vh;
-
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
@@ -42,6 +43,8 @@ const ContentWrapperShow = styled.div`
 `;
 
 export default function ShowNotePage() {
+  const pageVariants = useContext(FMContextVar);
+  const pageTransition = useContext(FMContextTrans);
   const selectedNoteID = localStorage.getItem("showItemID");
   const [note, setNote] = useState([]);
   const currentUser = useAuthUser().currentUser;
@@ -52,34 +55,59 @@ export default function ShowNotePage() {
       const unsub = onSnapshot(docRef, (q) => {
         if (q.data().author === currentUser.uid) setNote(...note, q.data());
       });
-
       return unsub;
     }
   }, []);
 
   return (
-    <ShowNoteWrapper>
-      {note.length !== 0 ? (
-        <>
-          <ContentWrapperShow>
-            <Note note={note}></Note>
-          </ContentWrapperShow>
+    <>
+      <PageTitle>My Note</PageTitle>
+      <ShowNoteWrapper>
+        {note.length !== 0 ? (
+          <>
+            <motion.div
+              style={{ zIndex: "99" }}
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <ContentWrapperShow>
+                <Note note={note}></Note>
+              </ContentWrapperShow>
+            </motion.div>
             {note.endDate ? <></> : <EndBtn noteID={selectedNoteID} />}
-          <AnimalBG BG={note.animalName}></AnimalBG>
-        </>
-      ) : (
-        <>
-          <PageTitle>My Note</PageTitle>
-          <GridContainer>
-            <ContentWrapper>
-              <PStyled>
-                Oops! You didn't select any note. Go list page and select a
-                note.
-              </PStyled>
-            </ContentWrapper>
-          </GridContainer>
-        </>
-      )}
-    </ShowNoteWrapper>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <AnimalBG BG={note.animalName}></AnimalBG>
+            </motion.div>
+          </>
+        ) : (
+          <>
+            <GridContainer>
+              <motion.div
+                style={{ zIndex: "99" }}
+                initial="out"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <ContentWrapperShow>
+                  <MsgHint>
+                    Oops! You didn't select any note. Go list page and select a
+                    note.
+                  </MsgHint>
+                </ContentWrapperShow>
+              </motion.div>
+            </GridContainer>
+          </>
+        )}
+      </ShowNoteWrapper>
+    </>
   );
 }

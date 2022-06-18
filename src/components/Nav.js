@@ -11,14 +11,15 @@ import listActive from "./images/icons/list_active.svg";
 import whaleActive from "./images/icons/whale_active.svg";
 import NavItem from "./NavItem";
 import { NavContainer } from "./styles/nav.css";
+import { useLocation } from "react-router-dom";
 
 export default function Nav() {
   const nav = [
-    { name: "Add", url: add, urlActive: addActive, path: "/add" },
-    { name: "Home", url: home, urlActive: homeActive, path: "/home" },
-    { name: "List", url: list, urlActive: listActive, path: "/list" },
-    { name: "Whale", url: whale, urlActive: whaleActive, path: "/note" },
-    { name: "User", url: none, urlActive: none, path: "/user" },
+    { name: "add", url: add, urlActive: addActive, path: "/add" },
+    { name: "home", url: home, urlActive: homeActive, path: "/home" },
+    { name: "list", url: list, urlActive: listActive, path: "/list" },
+    { name: "note", url: whale, urlActive: whaleActive, path: "/note" },
+    { name: "user", url: none, urlActive: none, path: "/user" },
   ];
 
   const [iconActive, setIconActive] = useState("Home");
@@ -27,40 +28,35 @@ export default function Nav() {
     setIconActive(e);
   }
 
-  const currentUser = useAuthUser().currentUser;
-  const [navIcons, setNavIcons] = useState(nav);
-
-  const updateList = (newPhoto) => {
-    const newlist = navIcons.map((icon) =>
-      icon.name === "User"
-        ? {
-            ...icon,
-            url: newPhoto ? newPhoto : none,
-            urlActive: newPhoto ? newPhoto : none,
-          }
-        : icon
-    );
-  };
+  const location = useLocation();
+  let path = location.pathname;
+  let pathName;
+  if (path !== none) {
+    pathName = path.slice(1, path.length);
+  } else {
+    pathName === path;
+  }
 
   useEffect(() => {
-    {
-      if (currentUser) {
-        updateList(currentUser.photoURL);
-      }
-    }
-  }, [currentUser]);
+    if (pathName !== iconActive) setIconActive(pathName);
+  }, [path]);
+
+  const [navIcons, setNavIcons] = useState(nav);
+  const currentUser = useAuthUser().currentUser;
 
   return currentUser ? (
     <div>
       <NavContainer>
-        {navIcons.map((icon) => (
-          <NavItem
-            key={icon.name}
-            icon={icon}
-            handleIconChanged={handleIconChanged}
-            iconActive={iconActive}
-          ></NavItem>
-        ))}
+        {navIcons.map((icon) => {
+          return (
+            <NavItem
+              key={icon.name}
+              icon={icon}
+              handleIconChanged={handleIconChanged}
+              iconActive={iconActive}
+            ></NavItem>
+          );
+        })}
       </NavContainer>
     </div>
   ) : (

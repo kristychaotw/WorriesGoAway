@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import SelectAnimal from "./components/SelectAnimal";
 import Form from "./components/Form";
@@ -11,6 +11,8 @@ import { openModal } from "../../reducers/modal";
 import { clearUpNote, saveNote, updateNote } from "../../reducers/form";
 import { useEffect } from "react";
 import moment from "moment";
+import { motion } from "framer-motion";
+import { FMContextVar, FMContextTrans } from "../App";
 
 const GridContainer = styled.div`
   display: grid;
@@ -39,6 +41,8 @@ const GridContainer = styled.div`
 `;
 
 export default function CreateNotePage() {
+  const pageVariants = useContext(FMContextVar);
+  const pageTransition = useContext(FMContextTrans);
   const dispatch = useDispatch();
   const modalState = useSelector((state) => state.modal.value);
   const formContent = useSelector((state) => state.form.value);
@@ -95,21 +99,30 @@ export default function CreateNotePage() {
   });
 
   return (
-    <div onLoad={() => dispatch(updateNote({ createDate: time }))}>
-      {modalState.show && <Modal />}
+    <>
       <PageTitle>Add A New Note </PageTitle>
-      <GridContainer>
-        <SelectAnimal></SelectAnimal>
-        <Form></Form>
-        <SendBtn
-          disabled={loading || sendBtn}
-          grid={"send"}
-          onClick={() => handleSendBtn(formContent)}
-        >
-          Send
-        </SendBtn>
-        <MsgHint grid={"msg"}>{hint}</MsgHint>
-      </GridContainer>
-    </div>
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+        onLoad={() => dispatch(updateNote({ createDate: time }))}
+      >
+        {modalState.show && <Modal />}
+        <GridContainer>
+          <SelectAnimal></SelectAnimal>
+          <Form></Form>
+          <SendBtn
+            disabled={loading || sendBtn}
+            grid={"send"}
+            onClick={() => handleSendBtn(formContent)}
+          >
+            Send
+          </SendBtn>
+          <MsgHint grid={"msg"}>{hint}</MsgHint>
+        </GridContainer>
+      </motion.div>
+    </>
   );
 }

@@ -34,7 +34,7 @@ let authResult;
 export async function signup(email, password) {
   authResult = await createUserWithEmailAndPassword(auth, email, password)
     .then((e) => (authResult = e.operationType))
-    .catch((e) => (authResult =e.code));
+    .catch((e) => (authResult = e.code));
   return authResult;
 }
 

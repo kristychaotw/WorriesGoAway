@@ -31,8 +31,7 @@ html{
 }
 
 body{
-    font-family: 'Raleway', sans-serif;
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: 'Raleway', sans-serif,'Noto Sans TC', sans-serif;
     background-color: #F2F2F2;
     color:#656565;
 }

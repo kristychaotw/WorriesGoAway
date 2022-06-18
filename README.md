@@ -33,8 +33,7 @@ Add a note             |  Show a note
 * NPM
 * Webpack
 * Other libraries: Moment.js 、Framer Motion
-
-![P 1](https://user-images.githubusercontent.com/95632624/174439980-0d6219ef-41ea-49fb-b985-28fd996bee80.png)
+![P 1](https://user-images.githubusercontent.com/95632624/174441433-4129a150-65ad-4f6f-891e-3b6910c49cc0.png)
 
 
 ## Site Structure

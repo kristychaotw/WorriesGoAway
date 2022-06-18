@@ -1,4 +1,4 @@
-![螢幕擷取畫面 2022-06-12 143426](https://user-images.githubusercontent.com/95632624/173220539-75f2699b-430f-4af6-bf98-2a98f41980eb.jpg)
+![web2](https://user-images.githubusercontent.com/95632624/174442702-f2f0ca85-5386-4cb7-8c26-60a807f26b26.jpg)
 ### 🚀 [Worry Note](https://worries-go-away.web.app/)
 Sense your worry with animal timer - fun and easy to use  
 
@@ -20,9 +20,10 @@ Change time perception, change the way you sense your worries.
 2. Show note list
 3. Get the Overview report
 
-Add a note             |  Show a note
+Add a note             |  Overview Report
 :-------------------------:|:-------------------------:
-![螢幕擷取畫面 2022-06-12 143656](https://user-images.githubusercontent.com/95632624/173220687-28fd7a23-bdc0-4b5a-83ce-5c7099f3debf.jpg) | ![螢幕擷取畫面 2022-06-12 143314](https://user-images.githubusercontent.com/95632624/173220502-8f76997e-dca2-4085-9f73-4cc7df0cc077.jpg) 
+![螢幕擷取畫面 2022-06-12 143656](https://user-images.githubusercontent.com/95632624/173220687-28fd7a23-bdc0-4b5a-83ce-5c7099f3debf.jpg) | ![image](https://user-images.githubusercontent.com/95632624/174442468-83258982-3de2-4089-bffd-aec6cfa16f48.png)
+
 
 
 ## Built with

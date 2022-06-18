@@ -30,12 +30,16 @@ Add a note             |  Show a note
 * React Redux
 * Firebase Hosting
 * Firebase Firestore, Authentication, Storage
+* NPM
 * Webpack
-* Other libraries: Moment.js
-![P 1](https://user-images.githubusercontent.com/95632624/174138074-3500f8c4-95b0-4fdb-b1f1-53663c5d89d7.png)
+* Other libraries: Moment.js 、Framer Motion
+
+![P 1](https://user-images.githubusercontent.com/95632624/174439980-0d6219ef-41ea-49fb-b985-28fd996bee80.png)
+
 
 ## Site Structure
-![p2](https://user-images.githubusercontent.com/95632624/174138193-d07d6a38-2503-49e2-bb36-ce753ff3c6d8.png)
+
+![p2](https://user-images.githubusercontent.com/95632624/174439985-891e990f-a363-4844-9468-2cbdc2d54f66.png)
 
 
 ## Develop by

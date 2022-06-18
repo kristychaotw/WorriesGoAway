@@ -5,7 +5,8 @@ Sense your worry with animal timer - fun and easy to use
 
 
 ## About Worry Note
-Note + Animal Timer
+It's a mood note application with special animal timers.
+Change time perception, change the way you sense your worries.
 
 ## Features
 1. **Unique Animal Timer** 5 animals timer including whale, cat, rabbit, polar bear, brown bear  

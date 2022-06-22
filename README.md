@@ -41,7 +41,7 @@ Add a note             |  Overview Report
 * Firebase Firestore, Authentication, Storage
 * NPM
 * Webpack
-* B
+* Babel
 * Other libraries: Moment.js 、Framer Motion
 ![P 1](https://user-images.githubusercontent.com/95632624/174441433-4129a150-65ad-4f6f-891e-3b6910c49cc0.png)
 

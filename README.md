@@ -8,12 +8,19 @@ Sense your worry with animal timer - fun and easy to use
 It's a mood note application with special animal timers.
 Change time perception, change the way you sense your worries.
 
+## Technical Highlights
+* Managed component state with hooks and React Redux
+* Reduced coding lines by sharing styles and login state with useContext 
+* Created smooth UI transitions with CSS Animation and Framer Motion library
+* Used cloud services such as Firestore and Authentication as back end.
+* Packed with NPM, Webpack, and Babel
+
+
+
 ## Features
 1. **Unique Animal Timer** 5 animals timer including whale, cat, rabbit, polar bear, brown bear  
 2. **Catch your thought with note** Write down what you are worried about with simple use note  
 3. **Personal Overview Report** Track and analyze your overall stress level.  
-
-
 
 ## Guide
 1. Add notes

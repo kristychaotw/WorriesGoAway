@@ -8,12 +8,16 @@ import moment from "moment";
 import { nanoid } from "@reduxjs/toolkit";
 import { motion } from "framer-motion";
 import { FMContextVar, FMContextTrans } from "../App";
+import FilterBar from "./components/FilterBar";
 
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 40px;
-  grid-template-areas: ". nlist nlist nlist";
+  grid-column-gap: 40px;
+  grid-template-areas:
+    ". bar bar bar" 
+    ". subBar subBar subBar"
+    ". nlist nlist nlist";
   width: 85%;
   max-width: 1200px;
   margin: 60px auto;
@@ -23,7 +27,10 @@ export const GridContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
-    grid-template-areas: "nlist";
+    grid-template-areas: 
+    "bar"
+    "subBar"
+    "nlist";
     margin-right: auto;
     margin-top: auto;
   }
@@ -38,6 +45,7 @@ export default function ListPage() {
   const pageTransition = useContext(FMContextTrans);
   const [notes, setNotes] = useState([]);
   const currentUser = useAuthUser().currentUser;
+  const [originalNotes, setOriginalNotes] = useState([]);
 
   useEffect(() => {
     const q = query(
@@ -50,15 +58,14 @@ export default function ListPage() {
         const newdoc = { ...doc.data(), docID: doc.id };
         notesDB.push(newdoc);
       });
-
-      setNotes(...notes, notesDB);
+      const sortNote = notesDB.sort((a, b) =>
+        moment(a.createDate).format() > moment(b.createDate).format() ? -1 : 1
+      );
+      setOriginalNotes(...originalNotes, sortNote);
+      setNotes(...notes, sortNote);
     });
     return unsubscribe;
   }, []);
-
-  const sortNote = notes.sort((a, b) =>
-    moment(a.createDate).format() > moment(b.createDate).format() ? -1 : 1
-  );
 
   return (
     <>
@@ -71,8 +78,9 @@ export default function ListPage() {
         transition={pageTransition}
       >
         <GridContainer>
+          <FilterBar setNotes={setNotes} originalNotes={originalNotes} notes={notes}/>
           <ContentWrapper>
-            {sortNote.map((note) => {
+            {notes.map((note) => {
               return <ListCard key={nanoid()} note={note}></ListCard>;
             })}
             {!notes.length && (

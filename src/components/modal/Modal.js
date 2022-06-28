@@ -1,6 +1,6 @@
 import React from "react";
 import { Overlay, ModalContent, ModalWrapper, ModalBtn } from "./modal.css";
-import { closeModal } from "../reducers/modal";
+import { closeModal } from "../../reducers/modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

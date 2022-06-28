@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles, ResetStyle } from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Nav from "../components/Nav";
+import Nav from "../components/nav/Nav"
 import CreateNotePage from "./CreateNotePage/CreateNotePage";
 import LoginPage from "./LoginPage/LoginPage";
 import ListPage from "./ListPage/ListPage";

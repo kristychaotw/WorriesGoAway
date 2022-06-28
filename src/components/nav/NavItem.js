@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavBtn, IconWrapper } from "./styles/nav.css";
+import { NavBtn, IconWrapper } from "./nav.css";
 
 
 

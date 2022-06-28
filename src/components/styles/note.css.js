@@ -207,7 +207,7 @@ export const TextAreaBox = styled.textarea`
 `;
 
 export const SendBtn = styled.button`
-  padding: 5px 10px;
+  padding: 8px 10px;
   margin-bottom: 20px;
   border: none;
   border-radius: 10px;

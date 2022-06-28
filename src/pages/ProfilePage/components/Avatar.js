@@ -6,7 +6,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../../components/Modal";
+import Modal from "../../../components/modal/Modal";
 import { openModal } from "../../../reducers/modal";
 
 export const Wrapper = styled.div`
@@ -68,23 +68,23 @@ export default function Avatar() {
             updateAuthPhotoURL(url);
           })
           .catch((error) => {
-            // dispatch(
-            //   openModal({
-            //     show: true,
-            //     headlines: "Failed to Upload",
-            //     msg: error.message,
-            //   })
-            // );
+            dispatch(
+              openModal({
+                show: true,
+                headlines: "Failed to Upload",
+                msg: error.message,
+              })
+            );
           });
       })
       .catch((error) => {
-        // dispatch(
-        //   openModal({
-        //     show: true,
-        //     headlines: "Failed to Upload",
-        //     msg: error.message,
-        //   })
-        // );
+        dispatch(
+          openModal({
+            show: true,
+            headlines: "Failed to Upload",
+            msg: error.message,
+          })
+        );
       });
     setLoading(false);
   };
@@ -93,22 +93,22 @@ export default function Avatar() {
     setLoading(true);
     updateProfile(currentUser, { photoURL: url })
       .then(() => {
-        // dispatch(
-        //   openModal({
-        //     show: true,
-        //     headlines: "Success",
-        //     msg: "success to add an photo",
-        //   })
-        // );
+        dispatch(
+          openModal({
+            show: true,
+            headlines: "Success",
+            msg: "success to add an photo",
+          })
+        );
       })
       .catch((error) => {
-        // dispatch(
-        //   openModal({
-        //     show: true,
-        //     headlines: "Failed",
-        //     msg: error.message,
-        //   })
-        // );
+        dispatch(
+          openModal({
+            show: true,
+            headlines: "Failed",
+            msg: error.message,
+          })
+        );
       });
     setLoading(false);
   };
@@ -122,7 +122,7 @@ export default function Avatar() {
 
   return (
     <Wrapper>
-      {/* {modalState.show && <Modal />} */}
+      {modalState.show && <Modal />}
       <div grid={"input"}>
         <label htmlFor="myfile"></label>
         <input

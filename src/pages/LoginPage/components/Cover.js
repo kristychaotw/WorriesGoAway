@@ -43,17 +43,19 @@ const Para = styled.div`
     font-weight: 600;
     color: #5085a5;
     letter-spacing: 1px;
+    line-height: 3rem;
   }
   p {
     margin-top: 20px;
     font-size: 22px;
     font-weight: 400;
     color: #242424;
+    line-height:2rem;
   }
 `;
 
 const Feature = styled.div`
-  text-align: left;
+  text-align: center;
   font-size: 22px;
   color: #242424;
   width: 100%;
@@ -68,10 +70,12 @@ const Feature = styled.div`
   h3 {
     font-weight: 600;
     margin-top: 30px;
+    line-height: 3rem;
   }
   p {
     font-weight: 400;
     margin-top: 15px;
+    line-height:2rem;
   }
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {

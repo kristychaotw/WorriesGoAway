@@ -22,9 +22,9 @@ const GridContainer = styled.div`
     "picker form form form"
     ". send msg msg";
   width: 85%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 60px auto;
-  margin-right: 90px;
+  margin-right: 40px;
   margin-top: 230px;
   z-index: 11;
   padding-bottom: 120px;

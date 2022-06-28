@@ -13,6 +13,7 @@ const ScrollStyled = styled.div`
   }
   p {
     width: 200px;
+    padding:5px 0px;
     border-radius: 50px;
     margin: 0 auto;
     color: ${({ theme }) => theme.colors.third};

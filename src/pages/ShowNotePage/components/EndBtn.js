@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UpdateNoteEndTime } from "../../../reducers/utils/dbNote";
+import { UpdateNoteEndTime } from "../../../reducers/db/updateNote";
 import { BtnWrapper, EndBtnStyled } from "../../../components/styles/note.css";
 
 export default function EndBtn({ noteID }) {

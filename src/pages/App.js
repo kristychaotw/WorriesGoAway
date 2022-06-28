@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../components/styles/Global";
+import { GlobalStyles, ResetStyle } from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Nav from "../components/Nav";
+import Nav from "../components/nav/Nav"
 import CreateNotePage from "./CreateNotePage/CreateNotePage";
 import LoginPage from "./LoginPage/LoginPage";
 import ListPage from "./ListPage/ListPage";
@@ -13,7 +13,6 @@ import ProfilePage from "./ProfilePage/ProfilePage";
 import HomePage from "./HomePage/HomePage";
 import Test from "./Test";
 import { AuthProvider } from "../firebase";
-import { AuthContext } from "../firebase";
 import { AnimatePresence } from "framer-motion";
 
 const theme = {
@@ -80,24 +79,20 @@ const pageTransition = {
 };
 
 export default function App() {
-  const currentUser = useContext(AuthContext);
   const location = useLocation();
   return (
     <div>
+      <ResetStyle />
       <GlobalStyles />
       <AuthProvider>
         <FMContextVar.Provider value={pageVariants}>
           <FMContextTrans.Provider value={pageTransition}>
             <ThemeProvider theme={theme}>
               <Nav />
-              <AppContainer
-                style={{ overflowX: "hidden" }}
-                padding={currentUser == null && "0"}
-                maxWidth={currentUser == null && "2000px"}
-              >
+              <AppContainer>
                 <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
-                    <Route path="/" element={<LoginPage />} />
+                    <Route exact path="/" element={<LoginPage />} />
                     <Route path="*" element={<Test />} />
                     <Route element={<PrivateRoute />}>
                       <Route path="/home" element={<HomePage />} />
@@ -105,8 +100,7 @@ export default function App() {
                       <Route path="/list" element={<ListPage />} />
                       <Route path="/note" element={<ShowNotePage />} />
                       <Route path="/user" element={<ProfilePage />} />
-
-                      <Route path="*" element={<div>404 Not Found</div>} />
+                      <Route path="*" element={<Test />} />
                     </Route>
                   </Routes>
                 </AnimatePresence>

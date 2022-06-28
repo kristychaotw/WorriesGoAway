@@ -6,7 +6,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../../components/Modal";
+import Modal from "../../../components/modal/Modal";
 import { openModal } from "../../../reducers/modal";
 
 export const Wrapper = styled.div`

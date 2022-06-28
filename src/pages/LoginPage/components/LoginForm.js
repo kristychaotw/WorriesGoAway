@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import { useAuthUser } from "../../../firebase";
 import {
   FormContainer,
@@ -12,7 +12,7 @@ import {
 import { login, signup } from "../../../firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../../components/Modal";
+import Modal from "../../../components/modal/Modal";
 import { openModal } from "../../../reducers/modal";
 
 export default function LoginForm() {
@@ -83,6 +83,7 @@ export default function LoginForm() {
           type="email"
           required
           pattern={regexEmail}
+          autoComplete="current-email"
           onFocus={() => setValidationMsg("")}
           onKeyDown={() => checkFormat("email", emailRef.current.value)}
         />
@@ -92,6 +93,7 @@ export default function LoginForm() {
           type="password"
           required
           pattern={regexPwd}
+          autoComplete="current-password"
           onFocus={() => setValidationMsg("")}
           onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
         />

@@ -83,6 +83,7 @@ export default function LoginForm() {
           type="email"
           required
           pattern={regexEmail}
+          autoComplete="current-email"
           onFocus={() => setValidationMsg("")}
           onKeyDown={() => checkFormat("email", emailRef.current.value)}
         />
@@ -92,6 +93,7 @@ export default function LoginForm() {
           type="password"
           required
           pattern={regexPwd}
+          autoComplete="current-password"
           onFocus={() => setValidationMsg("")}
           onKeyDown={() => checkFormat("pwd", passwordRef.current.value)}
         />

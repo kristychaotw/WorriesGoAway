@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../components/styles/Global";
+import { GlobalStyles, ResetStyle } from "../components/styles/Global";
 import { AppContainer } from "../components/styles/container.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Nav from "../components/Nav";
@@ -84,6 +84,7 @@ export default function App() {
   const location = useLocation();
   return (
     <div>
+      <ResetStyle />
       <GlobalStyles />
       <AuthProvider>
         <FMContextVar.Provider value={pageVariants}>
@@ -105,7 +106,6 @@ export default function App() {
                       <Route path="/list" element={<ListPage />} />
                       <Route path="/note" element={<ShowNotePage />} />
                       <Route path="/user" element={<ProfilePage />} />
-
                       <Route path="*" element={<div>404 Not Found</div>} />
                     </Route>
                   </Routes>

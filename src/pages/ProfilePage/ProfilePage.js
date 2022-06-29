@@ -20,7 +20,9 @@ export default function ProfilePage() {
   }
   return (
     <>
-      <PageTitle>Profile Page</PageTitle>
+      <PageTitle>
+        <h3>Profile Page</h3>
+      </PageTitle>
       <motion.div
         initial="initial"
         animate="in"

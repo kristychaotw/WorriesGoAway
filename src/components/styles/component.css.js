@@ -39,25 +39,37 @@ export const WebTitle = styled.div`
 
 export const PageTitle = styled.div`
   font-family: "Raleway", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 3rem;
-  color: #e6e6e6;
-  padding-left: 10%;
-  text-align: left;
-  margin-top: 90px;
-  margin-bottom: 80px;
   position: fixed;
   top: 0px;
   left: 0px;
+  margin-top: 90px;
+  margin-bottom: 80px;
+  padding-left: 10%;
+  text-align: left;
   animation: titleAnimation 0.3s;
+  font-style: italic;
+  font-weight: 400;
+  h3 {
+    color: #e6e6e6;
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: ${({ theme }) => theme.colors.nav};
+  }
+
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     position: static;
+    h3 {
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     margin-top: 50px;
     margin-bottom: 40px;
+    h3 {
+    }
   }
 
   @keyframes titleAnimation {

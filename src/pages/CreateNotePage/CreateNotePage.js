@@ -100,7 +100,10 @@ export default function CreateNotePage() {
 
   return (
     <>
-      <PageTitle>Add A New Note </PageTitle>
+      <PageTitle>
+        <h3>Add A New Note </h3>
+        <p>Pick an animal as your timer</p>
+      </PageTitle>
       <motion.div
         initial="initial"
         animate="in"

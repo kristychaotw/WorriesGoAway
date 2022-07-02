@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import { useAuthUser } from "../../../firebase";
 import {
   FormContainer,
@@ -68,10 +68,9 @@ export default function LoginForm() {
     else msgLogin = await signup(email, pwd);
     if (msgLogin !== "signIn")
       dispatch(openModal({ show: true, headlines: msgLogin, msg: "" }));
-    else nav("/home");
+    else nav("/");
     setLoading(false);
   }
-
 
   return (
     <FormContainer>

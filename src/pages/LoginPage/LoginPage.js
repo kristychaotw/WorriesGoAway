@@ -7,7 +7,6 @@ import LoginForm from "./components/LoginForm";
 import ScrollDown from "./components/ScrollDown";
 import { useAuthUser } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { FMContextVar, FMContextTrans } from "../App";
 
 const BgContainer = styled.div`
   background-image: url(${whaleBG});
@@ -17,13 +16,11 @@ const BgContainer = styled.div`
 `;
 
 export default function LoginPage() {
-  const pageVariants = useContext(FMContextVar);
-  const pageTransition = useContext(FMContextTrans);
   const currentUser = useAuthUser().currentUser;
   const nav = useNavigate();
 
   useEffect(() => {
-    if (currentUser) nav("/home");
+    if (currentUser) nav("/");
   }, [currentUser]);
 
   return (

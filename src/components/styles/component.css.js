@@ -50,7 +50,7 @@ export const PageTitle = styled.div`
   font-style: italic;
   font-weight: 400;
   h3 {
-    color: #e6e6e6;
+    color: #e4e4e4;
     font-size: 3rem;
   }
   p {

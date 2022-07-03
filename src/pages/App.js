@@ -95,7 +95,7 @@ export default function App() {
                     <Route exact path="/login" element={<LoginPage />} />
                     <Route path="*" element={<Test />} />
                     <Route element={<PrivateRoute />}>
-                      <Route path="/" element={<HomePage />} />
+                      <Route exact path="/" element={<HomePage />} />
                       <Route path="/add" element={<CreateNotePage />} />
                       <Route path="/list" element={<ListPage />} />
                       <Route path="/note" element={<ShowNotePage />} />

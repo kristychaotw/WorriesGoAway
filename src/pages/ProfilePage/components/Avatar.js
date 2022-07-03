@@ -5,20 +5,18 @@ import avatarsvg from "../../../components/images/icons/avatar.svg";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { updateProfile } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
-import Modal from "../../../components/modal/Modal";
-import { openModal } from "../../../reducers/modal";
+import { useDispatch} from "react-redux";
 
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 30px;
+  grid-row-gap: 20px;
   grid-template-areas:
     "avatar"
     "input"
     "uploadbtn";
   justify-items: left;
-  margin: 60px 0 40px 0;
+  margin: 60px 0 20px 0;
 
   input {
     grid-area: input;
@@ -44,13 +42,12 @@ export const StyledAvatar = styled.img`
   justify-self: center;
 `;
 
-export default function Avatar() {
+export default function Avatar({openModal}) {
   const currentUser = useAuthUser().currentUser;
   const [photoFile, setPhotoFile] = useState(null);
   const [photoURL, setPhotoURL] = useState(`${avatarsvg}`);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const modalState = useSelector((state) => state.modal.value);
 
   function handleChange(e) {
     if (e.target.files[0]) {
@@ -122,7 +119,6 @@ export default function Avatar() {
 
   return (
     <Wrapper>
-      {modalState.show && <Modal />}
       <div grid={"input"}>
         <label htmlFor="myfile"></label>
         <input

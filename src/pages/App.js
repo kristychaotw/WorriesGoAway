@@ -92,10 +92,10 @@ export default function App() {
               <AppContainer>
                 <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
-                    <Route exact path="/" element={<LoginPage />} />
+                    <Route exact path="/login" element={<LoginPage />} />
                     <Route path="*" element={<Test />} />
                     <Route element={<PrivateRoute />}>
-                      <Route path="/home" element={<HomePage />} />
+                      <Route exact path="/" element={<HomePage />} />
                       <Route path="/add" element={<CreateNotePage />} />
                       <Route path="/list" element={<ListPage />} />
                       <Route path="/note" element={<ShowNotePage />} />

@@ -15,7 +15,7 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 40px;
   grid-template-areas:
-    ". bar bar bar" 
+    ". bar bar bar"
     ". subBar subBar subBar"
     ". nlist nlist nlist";
   width: 85%;
@@ -27,10 +27,10 @@ export const GridContainer = styled.div`
 
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     grid-template-columns: 1fr;
-    grid-template-areas: 
-    "bar"
-    "subBar"
-    "nlist";
+    grid-template-areas:
+      "bar"
+      "subBar"
+      "nlist";
     margin-right: auto;
     margin-top: auto;
   }
@@ -69,7 +69,10 @@ export default function ListPage() {
 
   return (
     <>
-      <PageTitle>My Note List</PageTitle>
+      <PageTitle>
+        <h3>My Note List</h3>
+        <p>Choose one note to see your animal timer</p>
+      </PageTitle>
       <motion.div
         initial="initial"
         animate="in"
@@ -78,7 +81,11 @@ export default function ListPage() {
         transition={pageTransition}
       >
         <GridContainer>
-          <FilterBar setNotes={setNotes} originalNotes={originalNotes} notes={notes}/>
+          <FilterBar
+            setNotes={setNotes}
+            originalNotes={originalNotes}
+            notes={notes}
+          />
           <ContentWrapper>
             {notes.map((note) => {
               return <ListCard key={nanoid()} note={note}></ListCard>;

@@ -61,7 +61,9 @@ export default function ShowNotePage() {
 
   return (
     <>
-      <PageTitle>My Note</PageTitle>
+      <PageTitle>
+        <h3>My Note</h3>
+      </PageTitle>
       <ShowNoteWrapper>
         {note.length !== 0 ? (
           <>

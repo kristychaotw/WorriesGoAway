@@ -169,6 +169,7 @@ export const TagButton = styled.button`
 `;
 
 export const TitleBox = styled.input`
+  font-family: monospace;
   font-size: 1em;
   padding: 10px;
   background: #fcfcfc;

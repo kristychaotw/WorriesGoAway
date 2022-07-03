@@ -16,13 +16,13 @@ import { useLocation } from "react-router-dom";
 export default function Nav() {
   const nav = [
     { name: "add", url: add, urlActive: addActive, path: "/add" },
-    { name: "home", url: home, urlActive: homeActive, path: "/home" },
+    { name: "home", url: home, urlActive: homeActive, path: "/" },
     { name: "list", url: list, urlActive: listActive, path: "/list" },
     { name: "note", url: whale, urlActive: whaleActive, path: "/note" },
     { name: "user", url: none, urlActive: none, path: "/user" },
   ];
 
-  const [iconActive, setIconActive] = useState("Home");
+  const [iconActive, setIconActive] = useState("home");
 
   function handleIconChanged(e) {
     setIconActive(e);
@@ -31,14 +31,11 @@ export default function Nav() {
   const location = useLocation();
   let path = location.pathname;
   let pathName;
-  if (path !== none) {
-    pathName = path.slice(1, path.length);
-  } else {
-    pathName === path;
-  }
+  if (path !== none) pathName = path.slice(1, path.length);
 
   useEffect(() => {
     if (pathName !== iconActive) setIconActive(pathName);
+    if (pathName ==="") setIconActive('home')
   }, [path]);
 
   const [navIcons, setNavIcons] = useState(nav);

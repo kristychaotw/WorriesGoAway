@@ -75,7 +75,7 @@ export default function Note({ note }) {
             <H3title
               grid={"foreword"}
               padding={"60px"}
-              border={"2px dashed #000"}
+              border={"2px dashed #656565"}
             >
               ... during the time you are worried,
               <br />

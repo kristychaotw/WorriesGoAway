@@ -55,20 +55,16 @@ export async function logout() {
 // Custom Hook
 
 export const AuthContext = React.createContext();
-export const AuthUpdateContext = React.createContext();
-
-export function useAuthUser() {
-  return useContext(AuthContext);
-}
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
     return unsub;
-  }, [currentUser]);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ currentUser }}>
@@ -76,3 +72,7 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export function useAuthUser() {
+  return useContext(AuthContext);
+}

@@ -39,25 +39,37 @@ export const WebTitle = styled.div`
 
 export const PageTitle = styled.div`
   font-family: "Raleway", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 3rem;
-  color: #e6e6e6;
-  padding-left: 10%;
-  text-align: left;
-  margin-top: 90px;
-  margin-bottom: 80px;
   position: fixed;
   top: 0px;
   left: 0px;
+  margin-top: 90px;
+  margin-bottom: 80px;
+  padding-left: 10%;
+  text-align: left;
   animation: titleAnimation 0.3s;
+  font-style: italic;
+  font-weight: 400;
+  h3 {
+    color: #e4e4e4;
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: ${({ theme }) => theme.colors.nav};
+  }
+
   @media (max-width: ${({ theme }) => theme.device.tablet}) {
     position: static;
+    h3 {
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     margin-top: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    h3 {
+    }
   }
 
   @keyframes titleAnimation {
@@ -181,9 +193,9 @@ export const StyledCard = styled.div`
 `;
 
 export const H3title = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.fontSize.l};
   line-height: ${({ theme }) => theme.fontSize.xxl};
-  font-weight: 600;
+  font-weight: 500;
   text-align: start;
   color: ${({ theme }) => theme.colors.word};
   grid-area: ${({ grid }) => grid};
@@ -211,6 +223,7 @@ export const TagBox = styled.div`
   color: #656565;
   grid-area: ${({ grid }) => grid};
   justify-self: start;
+  align-self: center;
 
   @media (max-width: ${({ theme }) => theme.device.mobile}) {
     justify-self: end;

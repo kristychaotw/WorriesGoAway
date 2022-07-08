@@ -65,8 +65,10 @@ export const NoteWrapper = styled.div`
 export const TextWrapper = styled.div`
   border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
   grid-area: ${({ grid }) => grid};
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.fontSize.l};
+  line-height: ${({ theme }) => theme.fontSize.xl};
   margin-top: 20px;
+  padding-bottom: 5px;
   font-weight: ${({ fontWeight }) => fontWeight};
   text-align: start;
 `;
@@ -132,7 +134,7 @@ export const Line = styled.div`
 export const TitleLable = styled.div`
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.xl};
-  padding: 30px 0px 5px 0px;
+  padding: 30px 0px 8px 0px;
   color: ${({ theme }) => theme.colors.primary};
   text-align: left;
   grid-area: ${({ grid }) => grid};
@@ -140,10 +142,11 @@ export const TitleLable = styled.div`
 
 export const StyledRating = styled.div`
   display: flex;
-  width: 180px;
+  width: 140px;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
   grid-area: ${({ grid }) => grid};
 `;
 
@@ -156,7 +159,7 @@ export const TagButton = styled.button`
   margin-right: 20px;
   margin-bottom: 10px;
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: 20px;
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ theme }) => theme.colors.white};
 
@@ -166,6 +169,7 @@ export const TagButton = styled.button`
 `;
 
 export const TitleBox = styled.input`
+  font-family: monospace;
   font-size: 1em;
   padding: 10px;
   background: #fcfcfc;
@@ -204,7 +208,7 @@ export const TextAreaBox = styled.textarea`
 `;
 
 export const SendBtn = styled.button`
-  padding: 5px 10px;
+  padding: 8px 10px;
   margin-bottom: 20px;
   border: none;
   border-radius: 10px;

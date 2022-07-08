@@ -1,4 +1,3 @@
-import "./index.css";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import React from "react";
@@ -11,7 +10,6 @@ import stampReducer from "./reducers/stamp";
 import formReducer from "./reducers/form";
 import listReducer from "./reducers/list";
 import modalReducer from "./reducers/modal";
-import GlobalStyles from "./components/styles/Global";
 
 const store = configureStore({
   reducer: {

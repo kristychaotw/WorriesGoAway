@@ -33,7 +33,7 @@ export default function StressRating(props) {
                 onClick={() => handleRating(ratingValue)}
               />
               <FaCircle
-                size={26}
+                size={22}
                 color={ratingValue <= (hover || rating) ? "#8BA6BC" : "#e4e5e9"}
                 onMouseEnter={() => setHover(ratingValue)}
                 onMouseLeave={() => setHover(null)}

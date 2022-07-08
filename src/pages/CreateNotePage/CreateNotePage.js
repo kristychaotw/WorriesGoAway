@@ -5,8 +5,8 @@ import Form from "./components/Form";
 import { MsgHint, PageTitle } from "../../components/styles/component.css";
 import { SendBtn } from "../../components/styles/note.css";
 import { useDispatch, useSelector } from "react-redux";
-import SaveNote from "../../reducers/utils/dbNote";
-import Modal from "../../components/Modal";
+import SaveNote from "../../reducers/db/updateNote";
+import Modal from "../../components/modal/Modal";
 import { openModal } from "../../reducers/modal";
 import { clearUpNote, saveNote, updateNote } from "../../reducers/form";
 import { useEffect } from "react";
@@ -22,9 +22,9 @@ const GridContainer = styled.div`
     "picker form form form"
     ". send msg msg";
   width: 85%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 60px auto;
-  margin-right: 90px;
+  margin-right: 40px;
   margin-top: 230px;
   z-index: 11;
   padding-bottom: 120px;
@@ -100,7 +100,10 @@ export default function CreateNotePage() {
 
   return (
     <>
-      <PageTitle>Add A New Note </PageTitle>
+      <PageTitle>
+        <h3>Add A New Note </h3>
+        <p>Pick an animal as your timer</p>
+      </PageTitle>
       <motion.div
         initial="initial"
         animate="in"

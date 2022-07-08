@@ -11,7 +11,10 @@ export default function HomePage() {
   const pageTransition = useContext(FMContextTrans);
   return (
     <>
-      <PageTitle>Home Page</PageTitle>
+      <PageTitle>
+        <h3>Home Page</h3>
+        <p>View your note report</p>
+      </PageTitle>
       <motion.div
         initial="initial"
         animate="in"

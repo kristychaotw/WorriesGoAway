@@ -100,6 +100,7 @@ export default function CreateNotePage() {
 
   return (
     <>
+      {modalState.show && <Modal />}
       <PageTitle>
         <h3>Add A New Note </h3>
         <p>Pick an animal as your timer</p>
@@ -112,7 +113,6 @@ export default function CreateNotePage() {
         transition={pageTransition}
         onLoad={() => dispatch(updateNote({ createDate: time }))}
       >
-        {modalState.show && <Modal />}
         <GridContainer>
           <SelectAnimal></SelectAnimal>
           <Form></Form>

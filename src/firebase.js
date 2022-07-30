@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -14,12 +13,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD-rzNyg-1KShr9zk_n_DwW2k3aMKFoNpA",
-  authDomain: "worries-go-away.firebaseapp.com",
-  projectId: "worries-go-away",
-  storageBucket: "worries-go-away.appspot.com",
-  messagingSenderId: "502950006184",
-  appId: "1:502950006184:web:5f2341538356cc4325619d",
+  apiKey: 'AIzaSyD-rzNyg-1KShr9zk_n_DwW2k3aMKFoNpA',
+  authDomain: 'worries-go-away.firebaseapp.com',
+  projectId: 'worries-go-away',
+  storageBucket: 'worries-go-away.appspot.com',
+  messagingSenderId: '502950006184',
+  appId: '1:502950006184:web:5f2341538356cc4325619d',
 };
 
 // Initialize Firebase

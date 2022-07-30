@@ -11,6 +11,7 @@ import formReducer from "./reducers/form";
 import listReducer from "./reducers/list";
 import modalReducer from "./reducers/modal";
 
+
 const store = configureStore({
   reducer: {
     stamp: stampReducer,
